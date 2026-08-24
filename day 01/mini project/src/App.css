@@ -1,0 +1,56 @@
+.app {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+header {
+  border-bottom: 2px solid #000000;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+}
+
+header h1 {
+  color: #2c2c2c;
+  margin: 0 0 5px;
+}
+
+header p {
+  color: #000000;
+  margin: 0;
+  font-style: italic;
+}
+
+h2 {
+  color: #000000;
+}
+
+main>p {
+  color: #666;
+}
+
+.dish-list {
+  display: grid;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.dish {
+  border: 1px solid #ddd;
+  padding: 15px 20px;
+  background: rgb(129, 228, 164);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dish h3 {
+  margin: 0;
+  color: #000000;
+}
+
+.dish p {
+  margin: 0;
+  font-weight: 600;
+  color: #000000;
+}
