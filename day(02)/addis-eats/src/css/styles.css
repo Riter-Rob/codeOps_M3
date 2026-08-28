@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+}
+.header h1 {
+  font-size: 1.8rem;
+}
+.header h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+.header p {
+  font-size: 1.1rem;
+  margin-top: 0.4rem;
+}
+
+/* Category Bar */
+.category_bar {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.8rem 1rem;
+}
+.category_bar button {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.category_bar button.active {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+/* Card Grid */
+.card_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+}
+.card h2 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+}
+.card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+}
+.card em {
+  font-style: italic;
+  color: #888;
+}
+.card button {
+  margin-top: 0.6rem;
+  padding: 0.3rem 1.2rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.card button:hover {
+  background-color: #eee;
+}
+
+/* Order Form */
+.order_form {
+  max-width: 400px;
+  margin: 1.5rem auto;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.order_form h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.order_form input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+.order_form button {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.order_form button:hover {
+  background-color: #555;
+}
+.message {
+  margin-top: 0.8rem;
+  text-align: center;
+  color: green;
+  font-size: 0.9rem;
+}
+.message.error {
+  color: red;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #333;
+  color: #fff;
+  margin-top: 2rem;
+}

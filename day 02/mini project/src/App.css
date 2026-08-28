@@ -1,0 +1,70 @@
+.app {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+header {
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 30px;
+}
+
+h1 {
+  color: #333;
+}
+
+h2 {
+  color: #444;
+}
+
+p {
+  color: #666;
+}
+
+.menu {
+  display: grid;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+@media screen and (min-width: 680px) {
+  .menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.dish {
+  padding: 15px;
+}
+
+.dish h3 {
+  margin: 0 0 8px;
+}
+
+.dish p {
+  margin: 0;
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: rgb(238, 97, 97);
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.empty-state {
+  border: 1px dashed #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}

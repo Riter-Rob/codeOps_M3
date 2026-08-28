@@ -1,0 +1,49 @@
+{
+  "name": "Addis Eats",
+  "version": "1.0.0",
+  "description": "A simple menu for Addis Eats",
+  "items": [
+    {
+      "id": 1,
+      "name": "Doro Wot",
+      "price": 120,
+      "category": "Main Dish",
+      "isSpicy": true
+    },
+    {
+      "id": 2,
+      "name": "Injera",
+      "price": 80,
+      "category": "Side Dish",
+      "isSpicy": false
+    },
+    {
+      "id": 3,
+      "name": "Shiro",
+      "price": 100,
+      "category": "Main Dish",
+      "isSpicy": true
+    },
+    {
+      "id": 4,
+      "name": "Tibs",
+      "price": 150,
+      "category": "Main Dish",
+      "isSpicy": false
+    },
+    {
+      "id": 5,
+      "name": "Tej",
+      "price": 50,
+      "category": "Beverage",
+      "isSpicy": false
+    },
+    {
+      "id": 6,
+      "name": "Ayib",
+      "price": 60,
+      "category": "Side Dish",
+      "isSpicy": false
+    }
+  ]
+}
