@@ -1,15 +1,17 @@
 import React from 'react'
-import Cards from './Cards'
-const menu = [
-  {
-    title: 'Spaghetti', 
-    description: 'A classic Italian pasta dish made with spaghetti noodles and a tomato-based sauce, often served with meatballs or vegetables.'
-  }]
+import Dish from './Dish'
+const menu=[
+  {name:'Spaghetti',price:120},
+  {name:'Pizza',price:150},
+  {name:'Burger',price:200}
+];
   
 export default function Main() {
   return (
     <div className='card_container'>
-         <Cards title={menu[0].title} description={menu[0].description} />
+      {menu.map((item,index) => (
+         <Dish key={index} name={item.name} price={item.price} />
+      ))}
     </div>
    
   )

@@ -17,3 +17,8 @@ h1{
     padding: 1rem;
     text-align: center;
 }
+@media(min-width:680px){
+    .card{
+        flex-basis: calc(33.33% - 1rem);
+    }
+}
