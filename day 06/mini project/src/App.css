@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.app {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  margin-bottom: 1rem;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+}
+
+.header h2 {
+  font-size: 1.1rem;
+  margin-top: 0.3rem;
+}
+
+.search_input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.category_bar {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.8rem 0;
+}
+
+.category_bar button {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.category_bar button.active {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}
+
+.card_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.card em {
+  font-style: italic;
+  color: #888;
+}
+
+.empty_state {
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  color: #999;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px 0;
+  color: #888;
+}
+
+.error {
+  color: red;
+  padding: 1rem;
+  border: 1px solid red;
+  border-radius: 4px;
+}
+
+.header {
+  position: relative;
+}
+
+.cart_badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #333;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.card button {
+  margin-top: 0.6rem;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #fff;
+  font-size: 0.85rem;
+}
+
+.card button:hover {
+  background: #f0f0f0;
+}
+
+.checkout_panel {
+  margin-top: 1.5rem;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.checkout_panel h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.checkout_panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.8rem 0;
+}
+
+.checkout_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+.checkout_item button {
+  padding: 0.15rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #fff;
+  font-size: 0.8rem;
+}
+
+.checkout_total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+}
+
+.checkout_total button {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #fff;
+  font-size: 0.85rem;
+}
