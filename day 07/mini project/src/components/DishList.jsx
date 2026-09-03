@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react'
 import Dish from './Dish'
-import { useCart } from '../CartProvider'
+import { useCartStore } from '../store/cartStore'
 
 function DishList({ dishes, loading, error }) {
-  const { dispatch } = useCart()
+  const addItem = useCartStore((state) => state.addItem)
 
   const handleAdd = useCallback((dish) => {
-    dispatch({ type: 'add', dish })
-  }, [dispatch])
+    addItem(dish)
+  }, [addItem])
 
   if (loading) return <p className='loading'>Loading the menu...</p>
   if (error) return <p className='error'>{error}</p>

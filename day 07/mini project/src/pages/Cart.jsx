@@ -1,9 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useCart } from '../CartProvider'
+import { useCartStore } from '../store/cartStore'
 
 function Cart() {
-  const { items, total, dispatch } = useCart()
+  const items = useCartStore((state) => state.items)
+  const remove = useCartStore((state) => state.remove)
+  const clear = useCartStore((state) => state.clear)
+
+  const total = items.reduce((s, d) => s + d.price, 0)
 
   if (items.length === 0) {
     return (
@@ -25,7 +29,7 @@ function Cart() {
           <li key={i} className='checkout_item'>
             <span>{dish.name}</span>
             <span>{dish.price} ETB</span>
-            <button onClick={() => dispatch({ type: 'remove', id: dish.id })}>
+            <button onClick={() => remove(dish.id)}>
               Remove
             </button>
           </li>
@@ -33,7 +37,7 @@ function Cart() {
       </ul>
       <div className='checkout_total'>
         <strong>Total: {total} ETB</strong>
-        <button onClick={() => dispatch({ type: 'clear' })}>Clear cart</button>
+        <button onClick={clear}>Clear cart</button>
       </div>
       <div style={{ marginTop: '1.5rem' }}>
         <Link to='/checkout' className='checkout_btn'>

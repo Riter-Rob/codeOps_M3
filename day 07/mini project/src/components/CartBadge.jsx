@@ -1,12 +1,12 @@
 import React from 'react'
-import { useCart } from '../CartProvider'
+import { useCartStore } from '../store/cartStore'
 
 function CartBadge() {
-  const { items } = useCart()
+  const count = useCartStore((state) => state.items.length)
 
   return (
     <span className='cart_badge'>
-      {items.length}
+      {count}
     </span>
   )
 }

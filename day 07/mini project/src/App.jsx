@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
-import { CartProvider } from './CartProvider'
 import { AuthProvider } from './context/AuthContext'
+import { ThemeProvider } from './context/ThemeContext'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Menu from './pages/Menu'
@@ -15,30 +15,30 @@ import RequireAuth from './components/RequireAuth'
 
 function App() {
   return (
-    <AuthProvider>
-      <CartProvider>
+    <ThemeProvider>
+      <AuthProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Layout />}>
+            <Route path='/' element={<Layout />}>
               <Route index element={<Home />} />
-              <Route path="menu" element={<Menu />} />
-              <Route path="menu/:id" element={<DishDetail />} />
-              <Route path="cart" element={<Cart />} />
+              <Route path='menu' element={<Menu />} />
+              <Route path='menu/:id' element={<DishDetail />} />
+              <Route path='cart' element={<Cart />} />
               <Route
-                path="checkout"
+                path='checkout'
                 element={
                   <RequireAuth>
                     <Checkout />
                   </RequireAuth>
                 }
               />
-              <Route path="login" element={<Login />} />
-              <Route path="*" element={<NotFound />} />
+              <Route path='login' element={<Login />} />
+              <Route path='*' element={<NotFound />} />
             </Route>
           </Routes>
         </BrowserRouter>
-      </CartProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 

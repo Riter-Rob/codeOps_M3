@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { useCart } from '../CartProvider'
+import { useCartStore } from '../store/cartStore'
 import { useAuth } from '../context/AuthContext'
 
 function Navbar() {
-  const { items } = useCart()
+  const count = useCartStore((state) => state.items.length)
   const { user, logout } = useAuth()
 
   return (
@@ -30,7 +30,7 @@ function Navbar() {
           to='/cart'
           className={({ isActive }) => (isActive ? 'nav_item active' : 'nav_item')}
         >
-          Cart ({items.length})
+          Cart ({count})
         </NavLink>
         <NavLink
           to='/checkout'

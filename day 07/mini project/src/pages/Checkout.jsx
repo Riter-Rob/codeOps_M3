@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useCart } from '../CartProvider'
+import { useCartStore } from '../store/cartStore'
 import { useAuth } from '../context/AuthContext'
 
 function Checkout() {
-  const { items, total, dispatch } = useCart()
+  const items = useCartStore((state) => state.items)
+  const clear = useCartStore((state) => state.clear)
   const { user } = useAuth()
   const [submitted, setSubmitted] = useState(false)
 
+  const total = items.reduce((s, d) => s + d.price, 0)
+
   function handlePlaceOrder() {
     setSubmitted(true)
-    dispatch({ type: 'clear' })
+    clear()
   }
 
   if (submitted) {
