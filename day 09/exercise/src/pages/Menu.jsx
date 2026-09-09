@@ -14,6 +14,7 @@ function Menu() {
   const [searchParams, setSearchParams] = useSearchParams()
   const category = searchParams.get('category') || 'All'
   const [search, setSearch] = useState('')
+  const [crash, setCrash] = useState(false)
   const searchRef = useRef(null)
 
   const { data: dishes, loading, error } = useFetch('/dishes.json')
@@ -42,21 +43,30 @@ function Menu() {
 
   return (
     <div>
-      <input
-        ref={searchRef}
-        className='search_input'
-        type='text'
-        placeholder='Search dishes...'
-        value={search}
-        onChange={e => setSearch(e.target.value)}
-      />
+      <div className='menu_top_bar'>
+        <input
+          ref={searchRef}
+          className='search_input'
+          type='text'
+          placeholder='Search dishes...'
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+        />
+        <button
+          type='button'
+          onClick={() => setCrash(prev => !prev)}
+          className='test_crash_btn'
+        >
+          {crash ? 'Disable Crash' : 'Test ErrorBoundary'}
+        </button>
+      </div>
       <CategoryBar
         cats={CATS}
         selected={category}
         onSelect={handleCategorySelect}
       />
       <Profiler id='DishList' onRender={onRenderCallback}>
-        <DishList dishes={shown} loading={loading} error={error} />
+        <DishList dishes={shown} loading={loading} error={error} crash={crash} />
       </Profiler>
     </div>
   )

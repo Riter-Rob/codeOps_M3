@@ -2,22 +2,46 @@ import React, { useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 function DishModal({ isOpen, dish, onClose, triggerRef }) {
+  const modalRef = useRef(null)
   const closeBtnRef = useRef(null)
 
   useEffect(() => {
     if (!isOpen) return
+
+    const originalOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
 
     closeBtnRef.current?.focus()
 
     function handleKeyDown(e) {
       if (e.key === 'Escape') {
         onClose()
+        return
+      }
+
+      if (e.key === 'Tab') {
+        const focusable = modalRef.current?.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )
+        if (!focusable || focusable.length === 0) return
+
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
       }
     }
 
     window.addEventListener('keydown', handleKeyDown)
 
     return () => {
+      document.body.style.overflow = originalOverflow
       window.removeEventListener('keydown', handleKeyDown)
       triggerRef?.current?.focus()
     }
@@ -28,6 +52,7 @@ function DishModal({ isOpen, dish, onClose, triggerRef }) {
   return createPortal(
     <div className='modal_backdrop' onClick={onClose} role='presentation'>
       <div
+        ref={modalRef}
         className='modal_content'
         role='dialog'
         aria-modal='true'

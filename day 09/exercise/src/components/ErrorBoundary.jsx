@@ -14,15 +14,22 @@ class ErrorBoundary extends Component {
     console.error('ErrorBoundary caught an error:', error, errorInfo)
   }
 
+  resetError = () => {
+    this.setState({ hasError: false, error: null })
+  }
+
   render() {
     if (this.state.hasError) {
       if (typeof this.props.fallback === 'function') {
-        return this.props.fallback(this.state.error)
+        return this.props.fallback(this.state.error, this.resetError)
       }
       return this.props.fallback || (
         <div className='error'>
           <h3>Something went wrong.</h3>
           <p>{this.state.error?.message}</p>
+          <button type='button' onClick={this.resetError} className='retry_btn'>
+            Try Again
+          </button>
         </div>
       )
     }

@@ -3,7 +3,7 @@ import Dish from './Dish'
 import DishModal from './DishModal'
 import { useCartStore } from '../store/cartStore'
 
-function DishList({ dishes, loading, error }) {
+function DishList({ dishes, loading, error, crash }) {
   const addItem = useCartStore((state) => state.addItem)
   const [activeDish, setActiveDish] = useState(null)
   const triggerRef = useRef(null)
@@ -34,6 +34,7 @@ function DishList({ dishes, loading, error }) {
             dish={dish}
             onAdd={handleAdd}
             onOpenModal={handleOpenModal}
+            crash={crash}
           />
         ))}
       </div>

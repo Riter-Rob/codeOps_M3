@@ -28,7 +28,17 @@ function AppContent() {
           <Route
             path='menu'
             element={
-              <ErrorBoundary fallback={<div className='error'>Menu could not be loaded.</div>}>
+              <ErrorBoundary
+                fallback={(error, reset) => (
+                  <div className='error'>
+                    <h3>Menu Error</h3>
+                    <p>{error?.message}</p>
+                    <button type='button' onClick={reset} className='retry_btn'>
+                      Try Again
+                    </button>
+                  </div>
+                )}
+              >
                 <Menu />
               </ErrorBoundary>
             }
@@ -38,7 +48,7 @@ function AppContent() {
             path='checkout'
             element={
               <RequireAuth>
-                <Suspense fallback={<Skeleton />}>
+                <Suspense fallback={<Skeleton type='form' />}>
                   <Checkout />
                 </Suspense>
               </RequireAuth>
@@ -47,7 +57,7 @@ function AppContent() {
           <Route
             path='receipt'
             element={
-              <Suspense fallback={<Skeleton />}>
+              <Suspense fallback={<Skeleton type='receipt' />}>
                 <Receipt />
               </Suspense>
             }

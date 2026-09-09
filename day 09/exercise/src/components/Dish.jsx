@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Dish({ dish, onAdd, onOpenModal }) {
+function Dish({ dish, onAdd, onOpenModal, crash }) {
   const { id, name, price, spicy } = dish
 
-  if (name === 'Kitfo') {
-    throw new Error('Deliberate error in Kitfo dish')
+  if (crash && name === 'Kitfo') {
+    throw new Error('Deliberate error in Kitfo dish (ErrorBoundary test)')
   }
 
   return (
