@@ -77,13 +77,17 @@ function Checkout() {
         </div>
 
         <div>
-          <input
-            type='text'
+          <select
             name='area'
-            placeholder='Delivery Area'
             value={form.area}
             onChange={handleChange}
-          />
+          >
+            <option value=''>Select delivery area</option>
+            <option value='Bole'>Bole</option>
+            <option value='Kazanchis'>Kazanchis</option>
+            <option value='Megenagna'>Megenagna</option>
+            <option value='Piassa'>Piassa</option>
+          </select>
         </div>
 
         <div>
