@@ -177,6 +177,63 @@ body {
   cursor: pointer;
 }
 
+.checkout_form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.checkout_form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.checkout_form label {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.checkout_form input,
+.checkout_form select,
+.checkout_form textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.checkout_form textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.checkout_form input[aria-invalid='true'],
+.checkout_form select[aria-invalid='true'] {
+  border-color: red;
+}
+
+.checkout_form button[type='submit'] {
+  padding: 0.6rem 1.2rem;
+  background: #333;
+  color: #fff;
+  border: 1px solid #333;
+  font-size: 1rem;
+}
+
+.checkout_form button[type='submit']:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error_text {
+  color: red;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
 .login_page {
   background: #fff;
   padding: 1.5rem;
@@ -399,4 +456,18 @@ body {
 .app.dark .category_bar button.active {
   background: #eee;
   color: #111;
+}
+
+.app.dark .checkout_form input,
+.app.dark .checkout_form select,
+.app.dark .checkout_form textarea {
+  background: #2a2a2a;
+  color: #eee;
+  border-color: #555;
+}
+
+.app.dark .checkout_form button[type='submit'] {
+  background: #eee;
+  color: #111;
+  border-color: #eee;
 }

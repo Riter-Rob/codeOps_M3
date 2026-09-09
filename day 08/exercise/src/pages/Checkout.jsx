@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { useCartStore } from '../store/cartStore'
 
 const TELEBIRR_RE = /^(?:\+251|0)9\d{8}$/
@@ -36,6 +36,11 @@ function Checkout() {
   })
   const [touched, setTouched] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState(null)
+
+  const nameRef = useRef(null)
+  const phoneRef = useRef(null)
+  const areaRef = useRef(null)
 
   const errors = validate(form)
 
@@ -59,6 +64,30 @@ function Checkout() {
 
   function handleSubmit(e) {
     e.preventDefault()
+
+    setTouched({
+      name: true,
+      phone: true,
+      area: true,
+      notes: true,
+    })
+
+    const firstError = ['name', 'phone', 'area'].find((key) => errors[key])
+    if (firstError) {
+      if (firstError === 'name') nameRef.current?.focus()
+      else if (firstError === 'phone') phoneRef.current?.focus()
+      else if (firstError === 'area') areaRef.current?.focus()
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitError(null)
+
+    setTimeout(() => {
+      setIsSubmitting(false)
+      setSubmitError('TeleBirr payment failed: Network timeout while connecting to Ethio Telecom server.')
+      phoneRef.current?.focus()
+    }, 1000)
   }
 
   if (items.length === 0) {
@@ -90,9 +119,16 @@ function Checkout() {
       <form onSubmit={handleSubmit} className='checkout_form'>
         <h3>Delivery Details</h3>
 
+        {submitError && (
+          <p className='error' role='alert'>
+            {submitError}
+          </p>
+        )}
+
         <div>
           <label htmlFor='name'>Full Name</label>
           <input
+            ref={nameRef}
             id='name'
             type='text'
             name='name'
@@ -113,6 +149,7 @@ function Checkout() {
         <div>
           <label htmlFor='phone'>TeleBirr Phone</label>
           <input
+            ref={phoneRef}
             id='phone'
             type='text'
             name='phone'
@@ -133,6 +170,7 @@ function Checkout() {
         <div>
           <label htmlFor='area'>Delivery Area</label>
           <select
+            ref={areaRef}
             id='area'
             name='area'
             value={form.area}
