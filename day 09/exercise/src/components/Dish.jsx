@@ -2,6 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 function Dish({ id, name, price, spicy, onAdd }) {
+  if (name === 'Kitfo') {
+    throw new Error('Deliberate error in Kitfo dish')
+  }
+
   return (
     <div className='card'>
       <Link to={`/menu/${id}`} className='dish_link'>
