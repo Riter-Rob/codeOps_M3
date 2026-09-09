@@ -90,39 +90,55 @@ function Checkout() {
         <h3>Delivery Details</h3>
 
         <div>
+          <label htmlFor='name'>Full Name</label>
           <input
+            id='name'
             type='text'
             name='name'
             placeholder='Full Name'
             value={form.name}
             onChange={handleChange}
             onBlur={handleBlur}
+            aria-invalid={Boolean(touched.name && errors.name)}
+            aria-describedby={touched.name && errors.name ? 'name-error' : undefined}
           />
           {touched.name && errors.name && (
-            <p className='error_text'>{errors.name}</p>
+            <p id='name-error' className='error_text' role='alert'>
+              {errors.name}
+            </p>
           )}
         </div>
 
         <div>
+          <label htmlFor='phone'>TeleBirr Phone</label>
           <input
+            id='phone'
             type='text'
             name='phone'
             placeholder='TeleBirr (09... or +2519...)'
             value={form.phone}
             onChange={handleChange}
             onBlur={handleBlur}
+            aria-invalid={Boolean(touched.phone && errors.phone)}
+            aria-describedby={touched.phone && errors.phone ? 'phone-error' : undefined}
           />
           {touched.phone && errors.phone && (
-            <p className='error_text'>{errors.phone}</p>
+            <p id='phone-error' className='error_text' role='alert'>
+              {errors.phone}
+            </p>
           )}
         </div>
 
         <div>
+          <label htmlFor='area'>Delivery Area</label>
           <select
+            id='area'
             name='area'
             value={form.area}
             onChange={handleChange}
             onBlur={handleBlur}
+            aria-invalid={Boolean(touched.area && errors.area)}
+            aria-describedby={touched.area && errors.area ? 'area-error' : undefined}
           >
             <option value=''>Select delivery area</option>
             <option value='Bole'>Bole</option>
@@ -131,12 +147,16 @@ function Checkout() {
             <option value='Piassa'>Piassa</option>
           </select>
           {touched.area && errors.area && (
-            <p className='error_text'>{errors.area}</p>
+            <p id='area-error' className='error_text' role='alert'>
+              {errors.area}
+            </p>
           )}
         </div>
 
         <div>
+          <label htmlFor='notes'>Notes (Optional)</label>
           <textarea
+            id='notes'
             name='notes'
             placeholder='Optional delivery notes'
             value={form.notes}
