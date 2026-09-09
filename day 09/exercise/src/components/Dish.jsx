@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Dish({ id, name, price, spicy, onAdd }) {
+function Dish({ dish, onAdd }) {
+  const { id, name, price, spicy } = dish
+
   if (name === 'Kitfo') {
     throw new Error('Deliberate error in Kitfo dish')
   }
@@ -13,7 +15,7 @@ function Dish({ id, name, price, spicy, onAdd }) {
       </Link>
       <p>{price} ETB</p>
       {spicy && <p><em>Spicy</em></p>}
-      <button onClick={onAdd}>Add to cart</button>
+      <button onClick={() => onAdd(dish)}>Add to cart</button>
     </div>
   )
 }

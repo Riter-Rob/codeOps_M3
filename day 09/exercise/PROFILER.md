@@ -17,4 +17,22 @@ User added 3 dishes consecutively to the cart:
 
 ## Slowest Component
 - **Component**: `Dish` (repeated 8-9 times inside `DishList`).
-- **Cause**: In `DishList.jsx`, `Dish` is passed `onAdd={() => handleAdd(dish)}`. Because a new arrow function instance is created on every render of `DishList`, `React.memo(Dish)` detects that the `onAdd` prop reference changed, forcing all 9 `Dish` cards to unnecessarily re-render on every state update, making it the slowest and most redundant part of the render tree.
+- **Cause**: In `DishList.jsx`, `Dish` was passed `onAdd={() => handleAdd(dish)}`. Because a new arrow function instance was created on every render of `DishList`, `React.memo(Dish)` detected that the `onAdd` prop reference changed, forcing all 9 `Dish` cards to unnecessarily re-render on every state update, making it the slowest and most redundant part of the render tree.
+
+## Optimization Fix
+- Passed stable `handleAdd` reference directly to `Dish` alongside the static `dish` item object.
+- `React.memo(Dish)` now receives identical prop references (`dish` and `onAdd`) between renders.
+
+## Post-Optimization Profiler Session (Adding Three Dishes)
+- **DishList Update Phase Timings**:
+  - Add Dish 1: `actualDuration = 0.34ms`, `baseDuration = 3.12ms`
+  - Add Dish 2: `actualDuration = 0.29ms`, `baseDuration = 3.10ms`
+  - Add Dish 3: `actualDuration = 0.31ms`, `baseDuration = 3.14ms`
+
+## Comparison
+| Metric | Before Fix | After Fix | Improvement |
+| --- | --- | --- | --- |
+| Average Update Duration | ~2.42ms | ~0.31ms | ~87% faster (~7.8x speedup) |
+| Dishes Re-rendered | 9 of 9 (100%) | 0 of 9 (0%) | 9 unnecessary re-renders eliminated |
+| Frame Overhead | Noticeable on low-power devices | Negligible / Near Instant | Smooth 60fps interaction |
+

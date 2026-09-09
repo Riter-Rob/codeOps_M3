@@ -18,11 +18,8 @@ function DishList({ dishes, loading, error }) {
       {dishes.map(dish => (
         <Dish
           key={dish.id}
-          id={dish.id}
-          name={dish.name}
-          price={dish.price}
-          spicy={dish.spicy}
-          onAdd={() => handleAdd(dish)}
+          dish={dish}
+          onAdd={handleAdd}
         />
       ))}
     </div>
