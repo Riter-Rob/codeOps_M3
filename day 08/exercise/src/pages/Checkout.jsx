@@ -34,6 +34,7 @@ function Checkout() {
     area: '',
     notes: '',
   })
+  const [touched, setTouched] = useState({})
 
   const errors = validate(form)
 
@@ -44,6 +45,14 @@ function Checkout() {
     setForm((prev) => ({
       ...prev,
       [name]: value,
+    }))
+  }
+
+  function handleBlur(e) {
+    const { name } = e.target
+    setTouched((prev) => ({
+      ...prev,
+      [name]: true,
     }))
   }
 
@@ -87,7 +96,11 @@ function Checkout() {
             placeholder='Full Name'
             value={form.name}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
+          {touched.name && errors.name && (
+            <p className='error_text'>{errors.name}</p>
+          )}
         </div>
 
         <div>
@@ -97,7 +110,11 @@ function Checkout() {
             placeholder='TeleBirr (09... or +2519...)'
             value={form.phone}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
+          {touched.phone && errors.phone && (
+            <p className='error_text'>{errors.phone}</p>
+          )}
         </div>
 
         <div>
@@ -105,6 +122,7 @@ function Checkout() {
             name='area'
             value={form.area}
             onChange={handleChange}
+            onBlur={handleBlur}
           >
             <option value=''>Select delivery area</option>
             <option value='Bole'>Bole</option>
@@ -112,6 +130,9 @@ function Checkout() {
             <option value='Megenagna'>Megenagna</option>
             <option value='Piassa'>Piassa</option>
           </select>
+          {touched.area && errors.area && (
+            <p className='error_text'>{errors.area}</p>
+          )}
         </div>
 
         <div>
@@ -120,6 +141,7 @@ function Checkout() {
             placeholder='Optional delivery notes'
             value={form.notes}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
         </div>
 
