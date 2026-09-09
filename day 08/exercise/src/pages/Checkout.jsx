@@ -35,6 +35,7 @@ function Checkout() {
     notes: '',
   })
   const [touched, setTouched] = useState({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const errors = validate(form)
 
@@ -165,7 +166,9 @@ function Checkout() {
           />
         </div>
 
-        <button type='submit'>Place Order</button>
+        <button type='submit' disabled={isSubmitting}>
+          {isSubmitting ? 'Placing Order...' : `Pay ${total} ETB via TeleBirr`}
+        </button>
       </form>
     </div>
   )
