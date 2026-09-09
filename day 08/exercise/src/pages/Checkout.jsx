@@ -1,6 +1,28 @@
 import React, { useState } from 'react'
 import { useCartStore } from '../store/cartStore'
 
+const TELEBIRR_RE = /^(?:\+251|0)9\d{8}$/
+
+function validate(form) {
+  const errors = {}
+
+  if (!form.name.trim()) {
+    errors.name = 'Name is required'
+  }
+
+  if (!form.phone.trim()) {
+    errors.phone = 'TeleBirr phone number is required'
+  } else if (!TELEBIRR_RE.test(form.phone.trim())) {
+    errors.phone = 'Use 09XXXXXXXX or +2519XXXXXXXX'
+  }
+
+  if (!form.area) {
+    errors.area = 'Delivery area is required'
+  }
+
+  return errors
+}
+
 function Checkout() {
   const items = useCartStore((state) => state.items)
   const remove = useCartStore((state) => state.remove)
@@ -12,6 +34,8 @@ function Checkout() {
     area: '',
     notes: '',
   })
+
+  const errors = validate(form)
 
   const total = items.reduce((sum, item) => sum + item.price * item.qty, 0)
 
