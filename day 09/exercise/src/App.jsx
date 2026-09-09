@@ -8,6 +8,7 @@ import DishDetail from './pages/DishDetail'
 import Checkout from './pages/Checkout'
 import Login from './pages/Login'
 import NotFound from './pages/NotFound'
+import ErrorBoundary from './components/ErrorBoundary'
 import RequireAuth from './components/RequireAuth'
 import { ThemeProvider, useTheme } from './context/ThemeContext'
 import { CartProvider } from './context/CartContext'
@@ -21,7 +22,14 @@ function AppContent() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path='menu' element={<Menu />} />
+          <Route
+            path='menu'
+            element={
+              <ErrorBoundary fallback={<div className='error'>Menu could not be loaded.</div>}>
+                <Menu />
+              </ErrorBoundary>
+            }
+          />
           <Route path='menu/:id' element={<DishDetail />} />
           <Route
             path='checkout'
