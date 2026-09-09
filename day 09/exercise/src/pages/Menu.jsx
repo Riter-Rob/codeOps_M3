@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, Profiler } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import CategoryBar from '../components/CategoryBar'
 import DishList from '../components/DishList'
 import useFetch from '../hooks/useFetch'
 
 const CATS = ['All', 'Main', 'Vegan', 'Grill']
+
+function onRenderCallback(id, phase, actualDuration, baseDuration) {
+  console.log(`[Profiler: ${id}] ${phase} phase: ${actualDuration.toFixed(2)}ms (base: ${baseDuration.toFixed(2)}ms)`)
+}
 
 function Menu() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -51,7 +55,9 @@ function Menu() {
         selected={category}
         onSelect={handleCategorySelect}
       />
-      <DishList dishes={shown} loading={loading} error={error} />
+      <Profiler id='DishList' onRender={onRenderCallback}>
+        <DishList dishes={shown} loading={loading} error={error} />
+      </Profiler>
     </div>
   )
 }
