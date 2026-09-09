@@ -535,3 +535,103 @@ body {
 .app.dark .skeleton_bar {
   background: #444;
 }
+
+.card_btns {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.view_btn {
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.modal_backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal_content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 450px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal_content h2 {
+  margin-bottom: 0.5rem;
+}
+
+.modal_price {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.modal_category,
+.modal_spicy {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.modal_desc {
+  margin: 1rem 0;
+  color: #555;
+  line-height: 1.4;
+}
+
+.modal_actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.close_btn {
+  padding: 0.5rem 1rem;
+  background: #333;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.close_btn:focus {
+  outline: 2px solid #000;
+}
+
+.app.dark .modal_content {
+  background: #2a2a2a;
+  color: #eee;
+}
+
+.app.dark .modal_desc {
+  color: #ccc;
+}
+
+.app.dark .view_btn {
+  background: #3a3a3a;
+  color: #eee;
+  border-color: #555;
+}
+
+.app.dark .close_btn {
+  background: #eee;
+  color: #111;
+  border-color: #eee;
+}

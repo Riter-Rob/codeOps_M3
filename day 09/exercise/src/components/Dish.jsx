@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Dish({ dish, onAdd }) {
+function Dish({ dish, onAdd, onOpenModal }) {
   const { id, name, price, spicy } = dish
 
   if (name === 'Kitfo') {
@@ -15,7 +15,18 @@ function Dish({ dish, onAdd }) {
       </Link>
       <p>{price} ETB</p>
       {spicy && <p><em>Spicy</em></p>}
-      <button onClick={() => onAdd(dish)}>Add to cart</button>
+      <div className='card_btns'>
+        <button type='button' onClick={() => onAdd(dish)}>
+          Add to cart
+        </button>
+        <button
+          type='button'
+          onClick={(e) => onOpenModal(dish, e.currentTarget)}
+          className='view_btn'
+        >
+          Quick View
+        </button>
+      </div>
     </div>
   )
 }
