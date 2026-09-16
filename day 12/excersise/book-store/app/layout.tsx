@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
 
         <footer>
-          <p>© 2026 Book Store</p>
+          <p>2026 Book Store</p>
         </footer>
       </body>
     </html>
