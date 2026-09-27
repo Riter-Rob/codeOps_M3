@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import { validate } from "../lib/validate";
 import { orders } from "../data/orders";
 
-export async function createOrder(prevState, formData) {
+export async function placeOrder(prevState, formData) {
   const data = {
     name: formData.get("name") || "",
     phone: formData.get("phone") || "",
@@ -37,6 +37,7 @@ export async function createOrder(prevState, formData) {
   orders.push(order);
 
   revalidatePath("/checkout");
+  revalidatePath("/orders");
 
   return {
     success: true,
@@ -44,6 +45,8 @@ export async function createOrder(prevState, formData) {
     fieldErrors: {}
   };
 }
+
+export const createOrder = placeOrder;
 
 export async function cancelOrder(orderId) {
   const cookieStore = await cookies();
@@ -64,5 +67,6 @@ export async function cancelOrder(orderId) {
 
   order.status = "cancelled";
   revalidatePath("/checkout");
+  revalidatePath("/orders");
   return { success: true, order };
 }

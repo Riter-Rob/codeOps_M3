@@ -1,12 +1,12 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import { createOrder, cancelOrder } from "../actions/order";
+import { placeOrder, cancelOrder } from "../actions/order";
 
 const AREA_OPTIONS = ["Bole", "Kazanchis", "Megenagna", "Piassa"];
 
 export default function CheckoutForm() {
-  const [state, formAction, isPending] = useActionState(createOrder, {
+  const [state, formAction, isPending] = useActionState(placeOrder, {
     fieldErrors: {},
     success: false
   });

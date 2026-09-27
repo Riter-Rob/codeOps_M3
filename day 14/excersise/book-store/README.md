@@ -34,3 +34,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## API Endpoints
+
+| Method | Endpoint | Description | Status Codes |
+|---|---|---|---|
+| `GET` | `/api/dishes` | Returns full dishes menu | `200 OK` |
+| `GET` | `/api/dishes/[id]` | Returns single dish by ID | `200 OK`, `404 Not Found` |
+| `POST` | `/api/orders` | Validates & creates a new order | `201 Created`, `422 Unprocessable Entity` |
+
+## Server Actions
+
+- `placeOrder`: Server action that processes checkout submissions, validates inputs using the Day 33 schema, associates record ownership with the current session, appends to orders store, and calls `revalidatePath("/checkout")` and `revalidatePath("/orders")`.
+- `cancelOrder`: Server action that verifies active session and record ownership before cancelling the order and revalidating paths.
+
