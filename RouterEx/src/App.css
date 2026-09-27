@@ -1,0 +1,14 @@
+body{
+    display: flex;
+}
+nav{
+    padding: 2px;
+
+}
+nav Link{
+    padding:2px;
+}
+.header{
+    display: flex;
+    color: bisque;
+}
