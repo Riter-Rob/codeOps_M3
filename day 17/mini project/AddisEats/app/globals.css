@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  color: #222;
+  background-color: #fbf9f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Times New Roman", Times, serif;
+  color: #111;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+header {
+  background: #b91c1c;
+  color: white;
+  padding: 1.25rem 2rem;
+  border-bottom: 2px solid #991b1b;
+}
+
+header h1 {
+  color: white;
+  font-size: 1.85rem;
+  margin-bottom: 0.25rem;
+}
+
+header p {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+footer {
+  background: #f5f2eb;
+  border-top: 1px solid #e7e2d7;
+  color: #666;
+  text-align: center;
+  padding: 1.25rem;
+  font-size: 0.9rem;
+}
+
+nav {
+  margin-bottom: 1.5rem;
+}
+
+nav a {
+  color: #b91c1c;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+aside {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #e7e2d7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  min-width: 180px;
+}
+
+aside h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+aside ul {
+  list-style: none;
+  margin: 0.5rem 0;
+}
+
+aside li {
+  padding: 0.35rem 0;
+  color: #444;
+}
+
+aside li a {
+  color: #b91c1c;
+  text-decoration: none;
+}
+
+aside li a:hover {
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background: white;
+  color: #111;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 0.95rem;
+}
+
+button:hover {
+  background: #f0ede6;
+}
+
+input, select, textarea {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1rem;
+}

@@ -1,0 +1,289 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  color: #222;
+  background-color: #fbf9f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Times New Roman", Times, serif;
+  color: #111;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+}
+
+header {
+  background: #b91c1c;
+  color: white;
+  padding: 1.25rem 2rem;
+  border-bottom: 2px solid #991b1b;
+}
+
+header h1 {
+  color: white;
+  font-size: 1.85rem;
+  margin-bottom: 0.25rem;
+}
+
+header p {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+footer {
+  background: #f5f2eb;
+  border-top: 1px solid #e7e2d7;
+  color: #666;
+  text-align: center;
+  padding: 1.25rem;
+  font-size: 0.9rem;
+}
+
+nav {
+  margin-top: 0.5rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 1.25rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.menu-layout {
+  display: flex;
+  gap: 2rem;
+}
+
+aside {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #e7e2d7;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  min-width: 180px;
+  align-self: flex-start;
+}
+
+aside h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+aside ul {
+  list-style: none;
+  margin: 0.5rem 0;
+}
+
+aside li {
+  padding: 0.35rem 0;
+}
+
+aside li a {
+  color: #b91c1c;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+aside li a:hover {
+  text-decoration: underline;
+}
+
+.menu-content {
+  flex: 1;
+}
+
+.dish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.dish-card {
+  background: white;
+  border: 1px solid #e7e2d7;
+  border-radius: 6px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.dish-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.dish-card p {
+  color: #444;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 0.75rem;
+}
+
+.dish-detail {
+  background: white;
+  padding: 1.75rem;
+  border-radius: 6px;
+  border: 1px solid #e7e2d7;
+  max-width: 600px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.dish-detail h2 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.dish-detail p {
+  margin-bottom: 0.75rem;
+}
+
+.cart-box {
+  background: white;
+  border: 1px solid #e7e2d7;
+  border-radius: 6px;
+  padding: 1.5rem;
+  max-width: 520px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f5f2eb;
+}
+
+.cart-total {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  text-align: right;
+  font-weight: bold;
+}
+
+.form-box {
+  background: white;
+  border: 1px solid #e7e2d7;
+  border-radius: 6px;
+  padding: 1.5rem;
+  max-width: 480px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  font-size: 0.95rem;
+  margin-bottom: 0.35rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.55rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.field-error {
+  color: #b91c1c;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background: white;
+  color: #111;
+  text-decoration: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.btn:hover {
+  background: #f0ede6;
+}
+
+.btn-primary {
+  background: #b91c1c;
+  border-color: #b91c1c;
+  color: white;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background: #991b1b;
+}
+
+.error-box {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 1.5rem;
+  border-radius: 6px;
+  color: #991b1b;
+}
+
+.loading-box {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+input, select, textarea {
+  font-family: "Times New Roman", Times, serif;
+}
