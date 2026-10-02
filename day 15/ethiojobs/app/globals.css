@@ -1,0 +1,852 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Typography ─── */
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  background: #f5f4f1;
+  color: #1a1a18;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+h1 { font-size: 2.6rem; letter-spacing: -0.03em; }
+h2 { font-size: 1.7rem; letter-spacing: -0.025em; }
+h3 { font-size: 1.2rem; letter-spacing: -0.02em; }
+
+/* ─── Accent (used in 3 places: nav logo, apply btn, tag) ─── */
+:root {
+  --accent: #1a6b3c;
+}
+
+/* ─── Focus ─── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ─── Layout shell ─── */
+.page-shell {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ─── Navbar ─── */
+.navbar {
+  border-bottom: 1px solid #d6d4ce;
+  background: #f5f4f1;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.navbar-inner {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  list-style: none;
+}
+
+.navbar-nav a {
+  text-decoration: none;
+  color: #3d3d38;
+  font-size: 0.9rem;
+  font-family: 'Courier New', 'Courier', monospace;
+  letter-spacing: 0.01em;
+  transition: color 150ms ease;
+}
+
+.navbar-nav a:hover { color: #1a1a18; }
+
+.navbar-cta {
+  background: var(--accent);
+  color: #f5f4f1 !important;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--accent);
+  font-family: 'Courier New', 'Courier', monospace !important;
+}
+
+.navbar-cta:hover { opacity: 0.88; }
+
+/* ─── Hero ─── */
+.hero {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid #d6d4ce;
+  margin-bottom: 3rem;
+}
+
+.hero h1 {
+  max-width: 640px;
+  margin-bottom: 1.1rem;
+  color: #1a1a18;
+}
+
+.hero p {
+  max-width: 500px;
+  color: #5a5a54;
+  margin-bottom: 1.75rem;
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid currentColor;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #f5f4f1;
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: #145730;
+  border-color: #145730;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #3d3d38;
+  border-color: #c8c6c0;
+}
+
+.btn-ghost:hover {
+  background: #ebe9e4;
+}
+
+.btn-danger {
+  background: #b91c1c;
+  color: #f5f4f1;
+  border-color: #b91c1c;
+}
+
+.btn-danger:hover { background: #991b1b; }
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ─── Category strip (home) ─── */
+.cat-strip {
+  display: grid;
+  grid-template-columns: 5fr 7fr 5fr 6fr;
+  gap: 1px;
+  border: 1px solid #d6d4ce;
+  margin-bottom: 3rem;
+}
+
+.cat-strip a {
+  display: block;
+  padding: 1.25rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  border-right: 1px solid #d6d4ce;
+  background: #faf9f6;
+  transition: background 150ms ease;
+}
+
+.cat-strip a:last-child { border-right: none; }
+.cat-strip a:hover { background: #f0ede7; }
+
+.cat-strip-label {
+  display: block;
+  font-size: 0.85rem;
+  font-family: 'Courier New', 'Courier', monospace;
+  color: #5a5a54;
+  margin-bottom: 0.2rem;
+}
+
+.cat-strip-name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ─── Section headings ─── */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid #d6d4ce;
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-head h2 { font-size: 1.4rem; font-weight: 400; }
+
+.section-head a {
+  font-size: 0.82rem;
+  font-family: 'Courier New', 'Courier', monospace;
+  color: #5a5a54;
+  text-decoration: none;
+}
+
+.section-head a:hover { color: #1a1a18; }
+
+/* ─── Job list ─── */
+.job-list { margin-bottom: 3rem; }
+
+/* ─── Job card ─── */
+.job-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid #d6d4ce;
+  padding: 1.25rem 0;
+}
+
+.job-card:last-child { border-bottom: 1px solid #d6d4ce; }
+
+.job-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.job-card-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+  color: #1a1a18;
+}
+
+.job-card-title:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.job-card-company {
+  font-size: 0.9rem;
+  color: #5a5a54;
+  margin-bottom: 0.75rem;
+}
+
+.job-card-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.tag {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.78rem;
+  padding: 2px 7px;
+  border: 1px solid #c8c6c0;
+  color: #4a4a45;
+  letter-spacing: 0.01em;
+}
+
+.tag-accent {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tag-salary {
+  font-variant-numeric: tabular-nums;
+  border-color: #c4b88a;
+  color: #7a6a2e;
+}
+
+.job-card-excerpt {
+  font-size: 0.9rem;
+  color: #5a5a54;
+  margin-bottom: 0.9rem;
+  max-width: 70ch;
+}
+
+.job-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.job-card-date {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.78rem;
+  color: #8a8a84;
+  font-variant-numeric: tabular-nums;
+}
+
+.save-btn {
+  background: none;
+  border: 1px solid #c8c6c0;
+  padding: 3px 9px;
+  font-size: 0.8rem;
+  font-family: 'Courier New', 'Courier', monospace;
+  color: #5a5a54;
+  cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.save-btn:hover { border-color: #b91c1c; color: #b91c1c; }
+.save-btn.saved { color: #b91c1c; border-color: #b91c1c; }
+
+/* ─── Jobs layout (asymmetric sidebar) ─── */
+.jobs-shell {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  gap: 3rem;
+  align-items: start;
+  padding-top: 2rem;
+}
+
+.jobs-sidebar {
+  border-right: 1px solid #d6d4ce;
+  padding-right: 2rem;
+  position: sticky;
+  top: 4rem;
+}
+
+.sidebar-heading {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8a8a84;
+  margin-bottom: 1rem;
+}
+
+.sidebar-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.sidebar-links a {
+  display: block;
+  text-decoration: none;
+  color: #3d3d38;
+  font-size: 0.9rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color 150ms ease;
+}
+
+.sidebar-links a:hover { color: var(--accent); }
+
+.sidebar-cta {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d6d4ce;
+}
+
+.sidebar-cta p {
+  font-size: 0.82rem;
+  color: #5a5a54;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.sidebar-cta a {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.82rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ─── Search + filters ─── */
+.search-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #c8c6c0;
+  background: #faf9f6;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #1a1a18;
+  transition: border-color 150ms ease;
+}
+
+.search-input:focus { border-color: #1a1a18; outline: none; }
+.search-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.filter-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #d6d4ce;
+}
+
+.filter-label {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8a8a84;
+}
+
+.filter-select {
+  border: 1px solid #c8c6c0;
+  background: #faf9f6;
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.83rem;
+  color: #1a1a18;
+  padding: 0.3rem 0.55rem;
+  cursor: pointer;
+  transition: border-color 150ms ease;
+}
+
+.filter-select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.results-count {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.82rem;
+  color: #8a8a84;
+  margin-bottom: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Empty state ─── */
+.empty-state {
+  padding: 3rem 0;
+  border-top: 1px solid #d6d4ce;
+  border-bottom: 1px solid #d6d4ce;
+}
+
+.empty-state h3 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #3d3d38;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  font-size: 0.88rem;
+  color: #8a8a84;
+  margin-bottom: 1.25rem;
+}
+
+/* ─── Job detail page ─── */
+.job-detail { padding-top: 2rem; }
+
+.back-link {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.82rem;
+  color: #5a5a54;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 1.75rem;
+  transition: color 150ms ease;
+}
+
+.back-link:hover { color: #1a1a18; }
+
+.job-detail-header {
+  border-bottom: 1px solid #d6d4ce;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.job-detail-header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.job-detail-meta {
+  font-size: 0.95rem;
+  color: #5a5a54;
+  margin-bottom: 0.9rem;
+}
+
+.job-detail-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.job-detail-posted {
+  margin-left: auto;
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.78rem;
+  color: #8a8a84;
+  font-variant-numeric: tabular-nums;
+}
+
+.job-section {
+  margin-bottom: 1.75rem;
+}
+
+.job-section h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: 'Courier New', 'Courier', monospace;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #8a8a84;
+  margin-bottom: 0.75rem;
+}
+
+.job-section p {
+  color: #3d3d38;
+  font-size: 0.97rem;
+  line-height: 1.6;
+}
+
+.job-section ul {
+  padding-left: 1.1rem;
+  color: #3d3d38;
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
+
+/* ─── Apply form ─── */
+.apply-form-wrap {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #d6d4ce;
+}
+
+.apply-form-wrap h3 {
+  font-size: 1.05rem;
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+  color: #1a1a18;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5a5a54;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #c8c6c0;
+  background: #faf9f6;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #1a1a18;
+  transition: border-color 150ms ease;
+  width: 100%;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: #1a1a18;
+  outline: none;
+}
+
+.form-input:focus-visible,
+.form-select:focus-visible,
+.form-textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.form-error {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.78rem;
+  color: #b91c1c;
+  margin-top: 0.2rem;
+}
+
+.success-box {
+  padding: 1.25rem;
+  background: #f0f8f3;
+  border: 1px solid #a7d3b5;
+  margin-top: 1.5rem;
+}
+
+.success-box h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1a4d2e;
+  margin-bottom: 0.4rem;
+}
+
+.success-box p {
+  font-size: 0.88rem;
+  color: #2d6a4f;
+}
+
+/* ─── Companies grid (asymmetric) ─── */
+.companies-grid {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 1px;
+  background: #d6d4ce;
+  border: 1px solid #d6d4ce;
+  margin-top: 1.5rem;
+}
+
+.company-card {
+  background: #faf9f6;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.company-card h2 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.company-card h2 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.company-card h2 a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.company-card-sub {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.78rem;
+  color: #8a8a84;
+  letter-spacing: 0.01em;
+}
+
+.company-card-desc {
+  font-size: 0.88rem;
+  color: #5a5a54;
+  line-height: 1.5;
+}
+
+.company-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e8e6e1;
+}
+
+.open-roles {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.78rem;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Applications list ─── */
+.app-list { display: flex; flex-direction: column; }
+
+.app-item {
+  border-top: 1px solid #d6d4ce;
+  padding: 1.25rem 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem 1.5rem;
+  align-items: start;
+}
+
+.app-item:last-child { border-bottom: 1px solid #d6d4ce; }
+
+.app-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.app-meta {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.78rem;
+  color: #8a8a84;
+}
+
+.app-note {
+  font-size: 0.88rem;
+  color: #5a5a54;
+  font-style: italic;
+  margin-top: 0.35rem;
+}
+
+.status-tag {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid #c4b88a;
+  color: #7a6a2e;
+  white-space: nowrap;
+}
+
+.app-footer {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eceae5;
+}
+
+/* ─── Post job ─── */
+.post-job-shell {
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: 9fr 3fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.post-job-aside {
+  padding-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #5a5a54;
+  line-height: 1.5;
+}
+
+.post-job-aside h3 {
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8a8a84;
+  margin-bottom: 0.75rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ─── Saved page ─── */
+.saved-shell { padding-top: 2rem; }
+
+/* ─── Not found ─── */
+.notfound {
+  padding: 5rem 0;
+  border-top: 1px solid #d6d4ce;
+}
+
+.notfound span {
+  display: block;
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: #8a8a84;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.notfound h1 {
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: #1a1a18;
+  margin-bottom: 0.75rem;
+}
+
+.notfound p {
+  color: #5a5a54;
+  max-width: 38ch;
+  margin-bottom: 1.75rem;
+}
+
+/* ─── Loading skeletons ─── */
+.skeleton-list { padding-top: 1rem; }
+.skeleton-item {
+  border-top: 1px solid #d6d4ce;
+  padding: 1.25rem 0;
+}
+
+.skeleton-bar {
+  background: #e8e6e1;
+  height: 0.95rem;
+  margin-bottom: 0.6rem;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton-bar.wide { width: 55%; }
+.skeleton-bar.mid { width: 35%; }
+.skeleton-bar.narrow { width: 22%; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+/* ─── Error ─── */
+.error-box {
+  padding: 2rem 0;
+  border-top: 1px solid #d6d4ce;
+}
+
+.error-box h2 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #b91c1c;
+  margin-bottom: 0.5rem;
+}
+
+.error-box p {
+  font-size: 0.88rem;
+  color: #5a5a54;
+  margin-bottom: 1.25rem;
+}
+
+/* ─── Footer ─── */
+.site-footer {
+  border-top: 1px solid #d6d4ce;
+  padding: 1.25rem 1.5rem;
+  font-family: 'Courier New', 'Courier', monospace;
+  font-size: 0.78rem;
+  color: #8a8a84;
+  margin-top: 4rem;
+}
