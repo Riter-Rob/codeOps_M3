@@ -2,9 +2,24 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 const dishes = [
-  { id: "1", name: "Shiro", image: "/dishes/shiro.jpg" },
-  { id: "2", name: "cake", image: "/dishes/cake.jpg" },
-  { id: "3", name: "Pasta", image: "/dishes/pasta.jpg" },
+  {
+    id: "1",
+    name: "Shiro",
+    image: "/dishes/shiro.jpg",
+    alt: "Rich spiced Ethiopian chickpea stew served bubbling hot in a clay pot"
+  },
+  {
+    id: "2",
+    name: "cake",
+    image: "/dishes/cake.jpg",
+    alt: "Traditional sweet Ethiopian spiced honey cake garnished with powdered sugar"
+  },
+  {
+    id: "3",
+    name: "Pasta",
+    image: "/dishes/pasta.jpg",
+    alt: "Italian-Ethiopian fusion pasta tossed with savory spiced berbere tomato sauce"
+  },
 ];
 
 export async function generateStaticParams() {
@@ -27,7 +42,7 @@ export default async function DishPage({ params }) {
       <div style={{ maxWidth: "450px" }}>
         <Image
           src={dish.image}
-          alt={`${dish.name} - detailed culinary presentation`}
+          alt={dish.alt}
           width={300}
           height={200}
           sizes="(max-width: 640px) 100vw, 450px"

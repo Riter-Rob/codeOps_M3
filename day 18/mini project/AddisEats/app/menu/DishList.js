@@ -2,9 +2,24 @@ import Image from "next/image";
 
 async function getDishes() {
   return [
-    { id: "1", name: "Special Shiro", image: "/dishes/shiro.jpg" },
-    { id: "2", name: "Honey Cake", image: "/dishes/cake.jpg" },
-    { id: "3", name: "Addis Pasta", image: "/dishes/pasta.jpg" },
+    {
+      id: "1",
+      name: "Shiro",
+      image: "/dishes/shiro.jpg",
+      alt: "Rich spiced Ethiopian chickpea stew served bubbling hot in a clay pot"
+    },
+    {
+      id: "2",
+      name: "Honey Cake",
+      image: "/dishes/cake.jpg",
+      alt: "Traditional sweet Ethiopian spiced honey cake garnished with powdered sugar"
+    },
+    {
+      id: "3",
+      name: "Addis Pasta",
+      image: "/dishes/pasta.jpg",
+      alt: "Italian-Ethiopian fusion pasta tossed with savory spiced berbere tomato sauce"
+    },
   ];
 }
 
@@ -19,7 +34,7 @@ export default async function DishList() {
           <div key={dish.id} style={{ border: "1px solid #e5e7eb", borderRadius: "8px", overflow: "hidden", background: "#fff" }}>
             <Image
               src={dish.image}
-              alt={`${dish.name} - freshly prepared traditional Ethiopian recipe`}
+              alt={dish.alt}
               width={300}
               height={200}
               sizes="(max-width: 640px) 100vw, 300px"

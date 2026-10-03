@@ -13,7 +13,7 @@ export default async function Home() {
       <div style={{ margin: "1.5rem 0", maxWidth: "800px" }}>
         <Image
           src="/hero.jpg"
-          alt="Traditional Ethiopian dining feast and cultural culinary experience at Addis Eats"
+          alt="Traditional Ethiopian culinary spread and fresh coffee banquet at Addis Eats"
           width={800}
           height={400}
           priority

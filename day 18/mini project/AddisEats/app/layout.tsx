@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Providers>
 
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-ADDIS123"
+          src="https://www.googletagmanager.com/gtag/js?id=G-ADDISEATS123"
           strategy="lazyOnload"
         />
       </body>

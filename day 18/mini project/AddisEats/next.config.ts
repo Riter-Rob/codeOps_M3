@@ -9,11 +9,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "res.cloudinary.com",
+        hostname: "assets.example.com",
       },
     ],
   },
 };
 
 export default nextConfig;
-
