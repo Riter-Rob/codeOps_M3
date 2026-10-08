@@ -6,13 +6,13 @@ import Providers from "./components/Providers";
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://addis-eats-six.vercel.app"),
   title: {
-    default: "Addis Eats | Authentic Ethiopian Food Delivery",
+    default: "Addis Eats Ethiopian Food Delivery",
     template: "%s | Addis Eats",
   },
-  description: "Order authentic Ethiopian food in Addis Ababa. Fresh Doro Wat, sizzling Tibs, and fasting Beyainatu.",
+  description: "Order Ethiopian food in Addis Ababa. Fresh Doro Wat, Tibs, and Beyainatu.",
   openGraph: {
     title: "Addis Eats",
-    description: "Authentic Ethiopian food delivered to your door.",
+    description: "Ethiopian food delivered to your door.",
     siteName: "Addis Eats",
     locale: "en_US",
     type: "website",

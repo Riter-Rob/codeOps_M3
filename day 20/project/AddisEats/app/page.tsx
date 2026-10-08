@@ -6,7 +6,7 @@ import { dishes } from "./data/dishes";
 
 export const metadata = {
   title: "Home",
-  description: "Authentic Ethiopian food delivered to your door in Addis Ababa. Fresh Doro Wat, sizzling Tibs, and fasting Beyainatu.",
+  description: "Ethiopian food in Addis Ababa. Fresh Doro Wat, Tibs, and Beyainatu.",
   alternates: {
     canonical: "/",
   },
