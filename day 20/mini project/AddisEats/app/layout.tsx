@@ -1,29 +1,18 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
 import Providers from "./components/Providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://addis-eats-six.vercel.app"),
   title: {
-    default: "Addis Eats | Authentic Ethiopian Food & Cultural Books",
+    default: "Addis Eats | Authentic Ethiopian Food Delivery",
     template: "%s | Addis Eats",
   },
-  description: "Browse and order authentic Ethiopian cuisine and cultural literature with fresh ingredients and traditional spices.",
+  description: "Order authentic Ethiopian food in Addis Ababa. Fresh Doro Wat, sizzling Tibs, and fasting Beyainatu.",
   openGraph: {
     title: "Addis Eats",
-    description: "Authentic Ethiopian cuisine, traditional wat stews, and cultural literature.",
+    description: "Authentic Ethiopian food delivered to your door.",
     siteName: "Addis Eats",
     locale: "en_US",
     type: "website",
@@ -32,7 +21,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en">
       <body>
         <Providers>
           <header className="site-header">
@@ -54,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
 
           <footer>
-            <p>Addis Eats · Food delivery in Bole, Kazanchis, Megenagna & Piassa · Open daily 11am – 10pm</p>
+            <p>Addis Eats · Food delivery in Bole, Kazanchis, Megenagna &amp; Piassa · Open daily 11am – 10pm</p>
           </footer>
         </Providers>
 

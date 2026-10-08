@@ -7,15 +7,14 @@ export default function Counter() {
 
   return (
     <div>
-      <p style={{ fontSize: "0.8125rem", color: "var(--color-text-muted)", marginBottom: "0.5rem" }}>
-        Selected Item Count: <strong style={{ color: "var(--color-primary)", fontVariantNumeric: "tabular-nums" }}>{count}</strong>
+      <p style={{ fontSize: "0.8125rem", color: "#6b7280", marginBottom: "0.4rem" }}>
+        Order count: <strong style={{ color: "#b91c1c" }} className="tabular">{count}</strong>
       </p>
-      <div style={{ display: "flex", gap: "0.4rem" }}>
+      <div style={{ display: "flex", gap: "0.35rem" }}>
         <button
           type="button"
           onClick={() => setCount(count + 1)}
-          className="btn btn-secondary"
-          style={{ padding: "0.25rem 0.65rem", fontSize: "0.875rem" }}
+          className="btn btn-secondary btn-sm"
           aria-label="Increase count"
         >
           +
@@ -23,8 +22,7 @@ export default function Counter() {
         <button
           type="button"
           onClick={() => setCount(Math.max(0, count - 1))}
-          className="btn btn-secondary"
-          style={{ padding: "0.25rem 0.65rem", fontSize: "0.875rem" }}
+          className="btn btn-secondary btn-sm"
           aria-label="Decrease count"
         >
           -
