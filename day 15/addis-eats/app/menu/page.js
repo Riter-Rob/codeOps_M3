@@ -1,41 +1,51 @@
 import Link from "next/link";
-import { getDishes } from "../../lib/dishes";
+import { Suspense } from "react";
+import CategoryBar from "./CategoryBar";
+import DishList from "./DishList";
+import DishSearch from "./DishSearch";
+import NavigationButton from "./NavigationButton";
+import FilterShell from "./FilterShell";
 
-export const revalidate = 3600;
+export const revalidate = 60;
 
-export default async function MenuPage({ searchParams }) {
-  const params = await searchParams;
-  const category = params?.category;
-  let dishes = await getDishes();
+export const metadata = {
+  title: "Menu & Specialties",
+  description: "Browse our authentic Ethiopian menu featuring traditional stews, grilled specialties, and vegan fasting platters.",
+  alternates: {
+    canonical: "/menu",
+  },
+};
 
-  if (category) {
-    dishes = dishes.filter((d) => d.category === category);
-  }
-
+export default async function Menu() {
   return (
-    <section>
-      <h2>Our Menu</h2>
-      {category && (
-        <p style={{ margin: "0.5rem 0", color: "#78716c", fontSize: "0.9rem" }}>
-          Showing category: <strong>{category}</strong> (<Link href="/menu">clear filter</Link>)
-        </p>
-      )}
-      <div className="dish-grid">
-        {dishes.map((dish) => (
-          <article key={dish.id} className="dish-card">
-            <div>
-              <h3>{dish.name}</h3>
-              <p>{dish.description}</p>
-            </div>
-            <div>
-              <p className="price">{dish.price} ETB</p>
-              <Link href={`/menu/${dish.id}`} className="btn">
-                View Dish
-              </Link>
-            </div>
-          </article>
-        ))}
+    <div>
+      <nav className="breadcrumbs" aria-label="Breadcrumbs">
+        <Link href="/">Home</Link>
+        <span className="separator">/</span>
+        <span style={{ color: "var(--color-text-muted)" }}>Menu & Specialties</span>
+      </nav>
+
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem", flexWrap: "wrap", gap: "1rem" }}>
+        <div>
+          <h1 style={{ margin: 0 }}>Authentic Ethiopian Menu</h1>
+          <p style={{ marginTop: "0.25rem", color: "var(--color-text-muted)" }}>
+            Handcrafted with organic Ethiopian spices, slow-simmered sauces, and fresh teff injera.
+          </p>
+        </div>
+        <NavigationButton />
       </div>
-    </section>
+
+      <Suspense fallback={<p style={{ color: "var(--color-text-muted)" }}>Loading live search...</p>}>
+        <DishSearch />
+      </Suspense>
+
+      <CategoryBar />
+
+      <FilterShell>
+        <Suspense fallback={<p style={{ color: "var(--color-text-muted)" }}>Loading culinary specialties...</p>}>
+          <DishList />
+        </Suspense>
+      </FilterShell>
+    </div>
   );
 }
