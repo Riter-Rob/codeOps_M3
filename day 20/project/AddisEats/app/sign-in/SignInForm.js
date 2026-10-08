@@ -14,24 +14,31 @@ export default function SignInForm({ nextUrl }) {
   }
 
   return (
-    <div style={{ maxWidth: "420px", margin: "0 auto", padding: "1.5rem", border: "1px solid #e5e7eb", borderRadius: "8px" }}>
-      <h2 style={{ marginBottom: "1rem", textAlign: "center" }}>Sign In</h2>
+    <div className="form-card">
+      <h1 style={{ fontSize: "1.75rem", marginBottom: "0.25rem", textAlign: "center" }}>
+        Welcome to Addis Eats
+      </h1>
+      <p style={{ textAlign: "center", fontSize: "0.875rem", color: "var(--color-text-faint)", marginBottom: "1.5rem" }}>
+        Sign in to manage your orders or access staff services
+      </p>
 
       {nextUrl && (
-        <div style={{ padding: "8px", backgroundColor: "#f3f4f6", borderRadius: "4px", marginBottom: "1rem", fontSize: "0.875rem" }}>
-          Target destination: <code>{nextUrl}</code>
+        <div style={{ padding: "0.5rem 0.75rem", backgroundColor: "var(--color-surface-subtle)", borderRadius: "var(--radius-sm)", marginBottom: "1.25rem", fontSize: "0.8125rem", border: "1px solid var(--color-border)" }}>
+          Redirect destination: <code style={{ color: "var(--color-primary)", fontWeight: "600" }}>{nextUrl}</code>
         </div>
       )}
 
       {state?.error && (
-        <p style={{ color: "#dc2626", fontSize: "0.875rem", marginBottom: "1rem" }}>{state.error}</p>
+        <p className="form-error" style={{ marginBottom: "1rem" }}>
+          {state.error}
+        </p>
       )}
 
-      <form action={formAction} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <form action={formAction} style={{ display: "flex", flexDirection: "column" }}>
         <input type="hidden" name="next" value={nextUrl || ""} />
 
-        <div>
-          <label htmlFor="username" style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}>Username</label>
+        <div className="form-group">
+          <label htmlFor="username">Full Name / Account Name</label>
           <input
             id="username"
             name="username"
@@ -39,64 +46,62 @@ export default function SignInForm({ nextUrl }) {
             onChange={(e) => setUsername(e.target.value)}
             placeholder="e.g. Abebe Bikila"
             required
-            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
+            className="form-input"
           />
         </div>
 
-        <div>
-          <label htmlFor="role" style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}>Role</label>
+        <div className="form-group">
+          <label htmlFor="role">Role Permission</label>
           <select
             id="role"
             name="role"
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
+            className="form-input"
           >
-            <option value="customer">Customer</option>
-            <option value="staff">Staff</option>
+            <option value="customer">Customer (Order Placement & History)</option>
+            <option value="staff">Staff (Kitchen Queue Management)</option>
           </select>
         </div>
 
         <button
           type="submit"
           disabled={isPending}
-          style={{
-            padding: "10px",
-            backgroundColor: isPending ? "#9ca3af" : "#2563eb",
-            color: "#fff",
-            border: "none",
-            borderRadius: "4px",
-            cursor: isPending ? "not-allowed" : "pointer",
-            fontWeight: "600"
-          }}
+          className="btn btn-primary"
+          style={{ width: "100%", padding: "0.75rem", marginTop: "0.5rem" }}
         >
-          {isPending ? "Signing In..." : "Sign In"}
+          {isPending ? "Authenticating..." : "Sign In to Account"}
         </button>
       </form>
 
-      <div style={{ marginTop: "1.5rem", borderTop: "1px solid #e5e7eb", paddingTop: "1rem" }}>
-        <p style={{ fontSize: "0.875rem", color: "#6b7280", marginBottom: "8px" }}>Quick test accounts:</p>
-        <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+      <div style={{ marginTop: "1.75rem", borderTop: "1px solid var(--color-border)", paddingTop: "1.25rem" }}>
+        <p style={{ fontSize: "0.75rem", fontWeight: "600", textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--color-text-faint)", marginBottom: "0.5rem" }}>
+          Quick Demo Accounts:
+        </p>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
           <button
             type="button"
             onClick={() => setPreset("Abebe Bikila", "customer")}
-            style={{ padding: "6px 10px", textAlign: "left", fontSize: "0.875rem", cursor: "pointer" }}
+            className="btn btn-secondary"
+            style={{ justifyContent: "flex-start", padding: "0.4rem 0.75rem", fontSize: "0.8125rem", width: "100%" }}
           >
-            Abebe Bikila (Customer - has seed order)
+            Abebe Bikila · Customer (Has seed order)
           </button>
           <button
             type="button"
             onClick={() => setPreset("Chala Kebede", "customer")}
-            style={{ padding: "6px 10px", textAlign: "left", fontSize: "0.875rem", cursor: "pointer" }}
+            className="btn btn-secondary"
+            style={{ justifyContent: "flex-start", padding: "0.4rem 0.75rem", fontSize: "0.8125rem", width: "100%" }}
           >
-            Chala Kebede (Customer - different account)
+            Chala Kebede · Customer (Different account)
           </button>
           <button
             type="button"
             onClick={() => setPreset("Chef Almaz", "staff")}
-            style={{ padding: "6px 10px", textAlign: "left", fontSize: "0.875rem", cursor: "pointer" }}
+            className="btn btn-secondary"
+            style={{ justifyContent: "flex-start", padding: "0.4rem 0.75rem", fontSize: "0.8125rem", width: "100%" }}
           >
-            Chef Almaz (Staff - kitchen access)
+            Chef Almaz · Staff (Kitchen access)
           </button>
         </div>
       </div>

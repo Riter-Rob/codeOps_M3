@@ -14,12 +14,20 @@ export default async function OrderStatusPage() {
   const initialOrder = orders[0];
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <nav style={{ marginBottom: "1rem" }}>
-        <Link href="/">Home</Link>{" | "}
-        <Link href="/menu">Menu</Link>{" | "}
-        <Link href="/orders">Orders</Link>
+    <div>
+      <nav className="breadcrumbs" aria-label="Breadcrumbs">
+        <Link href="/">Home</Link>
+        <span className="separator">/</span>
+        <span style={{ color: "var(--color-text-muted)" }}>Order Tracking</span>
       </nav>
+
+      <div style={{ marginBottom: "1.5rem" }}>
+        <h1>Live Order Tracking</h1>
+        <p style={{ color: "var(--color-text-muted)", marginTop: "0.25rem" }}>
+          Real-time fulfillment updates streamed directly from our kitchen queue.
+        </p>
+      </div>
+
       <OrderStatus id={initialOrder?.id || "1"} fallbackData={initialOrder} />
     </div>
   );

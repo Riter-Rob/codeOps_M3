@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import useSWR from "swr";
 import fetcher from "../lib/fetcher";
 
@@ -12,10 +13,8 @@ export default function DishSearch() {
   const [term, setTerm] = useState(searchParams.get("search") || "");
   const [debouncedTerm, setDebouncedTerm] = useState(term);
 
-  // page number from query string
   const page = Number(searchParams.get("page")) || 1;
 
-  // debounce term
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedTerm(term);
@@ -23,12 +22,10 @@ export default function DishSearch() {
     return () => clearTimeout(timer);
   }, [term]);
 
-  // null key when term is empty
   const key = debouncedTerm.trim()
     ? `/api/dishes?search=${encodeURIComponent(debouncedTerm.trim())}&page=${page}`
     : null;
 
-  // keepPreviousData prevents flickering between searches
   const { data, isValidating } = useSWR(key, fetcher, {
     keepPreviousData: true
   });
@@ -53,58 +50,82 @@ export default function DishSearch() {
   };
 
   return (
-    <div style={{ margin: "1.5rem 0", maxWidth: "480px" }}>
-      <h2>Search Dishes</h2>
-      <input
-        type="text"
-        value={term}
-        onChange={handleSearchChange}
-        placeholder="Type to search (e.g. Wat, Tibs, Shiro)..."
-        style={{
-          width: "100%",
-          padding: "8px 12px",
-          border: "1px solid #ccc",
-          borderRadius: "4px",
-          marginBottom: "1rem"
-        }}
-      />
+    <div style={{ margin: "1.5rem 0 2rem", maxWidth: "560px" }}>
+      <label htmlFor="dish-search-input" style={{ display: "block", fontSize: "0.875rem", fontWeight: "600", marginBottom: "0.4rem", color: "var(--color-text)" }}>
+        Search Menu Dishes (Live Debounced)
+      </label>
+      <div style={{ position: "relative" }}>
+        <input
+          id="dish-search-input"
+          type="text"
+          value={term}
+          onChange={handleSearchChange}
+          placeholder="Search by name, stew type, or ingredients (e.g. Doro, Tibs, Shiro)..."
+          className="form-input"
+          style={{ paddingRight: "2.5rem" }}
+        />
+        {isValidating && (
+          <div style={{ position: "absolute", right: "12px", top: "50%", transform: "translateY(-50%)" }}>
+            <span className="beacon-dot" />
+          </div>
+        )}
+      </div>
 
       {!debouncedTerm.trim() ? (
-        <p style={{ color: "#666" }}>Search box is empty (null SWR key, no request sent).</p>
+        <p style={{ fontSize: "0.8125rem", color: "var(--color-text-faint)", marginTop: "0.5rem" }}>
+          Live search pauses when input is empty (SWR key is null, 0 network requests fired).
+        </p>
       ) : !data ? (
-        <p>Loading dishes...</p>
+        <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", marginTop: "0.75rem" }}>
+          Searching menu records...
+        </p>
       ) : (
-        <div>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <p style={{ margin: 0, fontWeight: 500 }}>
+        <div style={{ marginTop: "1rem" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
+            <span style={{ fontSize: "0.875rem", fontWeight: "600", color: "var(--color-text)" }}>
               Found {data.total} {data.total === 1 ? "dish" : "dishes"}
-            </p>
-            {isValidating && <span style={{ fontSize: "0.8rem", color: "#666" }}>Updating...</span>}
+            </span>
+            {isValidating && (
+              <span style={{ fontSize: "0.75rem", color: "var(--color-ochre)", fontWeight: "600" }}>
+                Refreshing results...
+              </span>
+            )}
           </div>
 
           {data.dishes.length === 0 ? (
-            <p style={{ marginTop: "1rem", color: "#888" }}>No dishes match &quot;{debouncedTerm}&quot;.</p>
+            <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", padding: "1rem 0" }}>
+              No dishes match &quot;{debouncedTerm}&quot;. Try searching for &quot;Wat&quot;, &quot;Tibs&quot;, or &quot;Shiro&quot;.
+            </p>
           ) : (
-            <ul style={{ listStyle: "none", padding: 0, marginTop: "0.75rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
               {data.dishes.map((dish) => (
-                <li
+                <Link
                   key={dish.id}
+                  href={`/menu/${dish.id}`}
                   style={{
-                    padding: "8px 12px",
-                    border: "1px solid #eee",
-                    borderRadius: "4px",
-                    marginBottom: "6px",
                     display: "flex",
-                    justifyContent: "space-between"
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: "0.75rem 1rem",
+                    background: "var(--color-surface)",
+                    border: "1px solid var(--color-border)",
+                    borderRadius: "var(--radius-md)",
+                    textDecoration: "none",
+                    color: "inherit",
+                    transition: "all var(--transition-fast)",
+                    boxShadow: "var(--shadow-xs)"
                   }}
                 >
-                  <span>
-                    <strong>{dish.name}</strong> {dish.spicy && "🌶️"}
-                  </span>
-                  <span>{dish.price} ETB</span>
-                </li>
+                  <div>
+                    <span style={{ fontWeight: "600", color: "var(--color-text)" }}>{dish.name}</span>
+                    <span style={{ marginLeft: "0.5rem", fontSize: "0.75rem", color: "var(--color-text-faint)" }}>({dish.category})</span>
+                  </div>
+                  <strong style={{ color: "var(--color-ochre)", fontVariantNumeric: "tabular-nums" }}>
+                    {dish.price} ETB
+                  </strong>
+                </Link>
               ))}
-            </ul>
+            </div>
           )}
 
           {data.totalPages > 1 && (
@@ -113,24 +134,20 @@ export default function DishSearch() {
                 type="button"
                 disabled={page <= 1}
                 onClick={() => setPage(page - 1)}
-                style={{
-                  padding: "4px 10px",
-                  cursor: page <= 1 ? "not-allowed" : "pointer"
-                }}
+                className="btn btn-secondary"
+                style={{ padding: "0.35rem 0.75rem", fontSize: "0.8125rem", opacity: page <= 1 ? 0.5 : 1 }}
               >
                 Previous
               </button>
-              <span>
+              <span style={{ fontSize: "0.8125rem", color: "var(--color-text-muted)" }}>
                 Page {page} of {data.totalPages}
               </span>
               <button
                 type="button"
                 disabled={page >= data.totalPages}
                 onClick={() => setPage(page + 1)}
-                style={{
-                  padding: "4px 10px",
-                  cursor: page >= data.totalPages ? "not-allowed" : "pointer"
-                }}
+                className="btn btn-secondary"
+                style={{ padding: "0.35rem 0.75rem", fontSize: "0.8125rem", opacity: page >= data.totalPages ? 0.5 : 1 }}
               >
                 Next
               </button>

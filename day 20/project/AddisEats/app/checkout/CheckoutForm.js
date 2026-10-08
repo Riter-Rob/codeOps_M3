@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useState } from "react";
+import Link from "next/link";
 import { placeOrder, cancelOrder } from "../actions/order";
 
 const AREA_OPTIONS = ["Bole", "Kazanchis", "Megenagna", "Piassa"];
@@ -23,108 +24,125 @@ export default function CheckoutForm() {
 
   if (state?.success && state?.order) {
     return (
-      <div style={{ maxWidth: "480px", margin: "0 auto", padding: "1.5rem", border: "1px solid #e5e7eb", borderRadius: "8px" }}>
-        <h2>Order Confirmed!</h2>
-        <p>Order ID: {state.order.id}</p>
-        <p>Thank you, {state.order.name}. Your order has been placed.</p>
-        <p>Status: {state.order.status}</p>
-        {cancelMessage && <p style={{ color: "#dc2626" }}>{cancelMessage}</p>}
-        {state.order.status !== "cancelled" && (
-          <button
-            type="button"
-            onClick={() => handleCancel(state.order.id)}
-            style={{
-              marginTop: "1rem",
-              padding: "0.5rem 1rem",
-              backgroundColor: "#dc2626",
-              color: "#fff",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer"
-            }}
-          >
-            Cancel Order
-          </button>
+      <div className="card" style={{ maxWidth: "520px", margin: "0 auto", padding: "2rem" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "1rem" }}>
+          <span className="badge badge-success">Confirmed</span>
+          <span style={{ fontSize: "0.875rem", color: "var(--color-text-faint)" }}>
+            Ticket #{state.order.id}
+          </span>
+        </div>
+
+        <h2 style={{ margin: "0 0 0.5rem 0" }}>Order Received!</h2>
+        <p style={{ marginBottom: "1.25rem", color: "var(--color-text-muted)" }}>
+          Thank you, <strong>{state.order.name}</strong>. The kitchen is preparing your dishes.
+        </p>
+
+        <div style={{ background: "var(--color-surface-subtle)", padding: "1rem", borderRadius: "var(--radius-md)", marginBottom: "1.5rem" }}>
+          <p style={{ margin: "0.25rem 0" }}><strong>Delivery Area:</strong> {state.order.area}</p>
+          <p style={{ margin: "0.25rem 0" }}><strong>Phone:</strong> {state.order.phone}</p>
+          <p style={{ margin: "0.25rem 0" }}><strong>Current Status:</strong> <span className="badge badge-warning">{state.order.status}</span></p>
+        </div>
+
+        {cancelMessage && (
+          <p style={{ color: "var(--color-danger)", fontSize: "0.875rem", marginBottom: "1rem" }}>
+            {cancelMessage}
+          </p>
         )}
+
+        <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+          {state.order.status !== "cancelled" && (
+            <button
+              type="button"
+              onClick={() => handleCancel(state.order.id)}
+              className="btn btn-danger"
+              style={{ padding: "0.45rem 1rem", fontSize: "0.875rem" }}
+            >
+              Cancel Order
+            </button>
+          )}
+
+          <Link
+            href={`/order-status?id=${state.order.id}`}
+            className="btn btn-primary"
+            style={{ padding: "0.45rem 1rem", fontSize: "0.875rem" }}
+          >
+            Track in Real Time &rarr;
+          </Link>
+        </div>
       </div>
     );
   }
 
   return (
-    <form action={formAction} style={{ display: "flex", flexDirection: "column", gap: "1rem", maxWidth: "480px", margin: "0 auto" }}>
-      <div>
-        <label htmlFor="name" style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}>Full Name</label>
+    <form action={formAction} className="form-card">
+      <div className="form-group">
+        <label htmlFor="name">Full Name</label>
         <input
           id="name"
           name="name"
           defaultValue={state?.data?.name || ""}
-          style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
+          placeholder="e.g. Abebe Bikila"
+          className="form-input"
         />
         {state?.fieldErrors?.name && (
-          <p style={{ color: "#dc2626", fontSize: "0.875rem", margin: "4px 0 0" }}>{state.fieldErrors.name}</p>
+          <p className="form-error">{state.fieldErrors.name}</p>
         )}
       </div>
 
-      <div>
-        <label htmlFor="phone" style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}>TeleBirr Phone Number</label>
+      <div className="form-group">
+        <label htmlFor="phone">TeleBirr / Mobile Phone</label>
         <input
           id="phone"
           name="phone"
           placeholder="09XXXXXXXX or +2519XXXXXXXX"
           defaultValue={state?.data?.phone || ""}
-          style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
+          className="form-input"
         />
         {state?.fieldErrors?.phone && (
-          <p style={{ color: "#dc2626", fontSize: "0.875rem", margin: "4px 0 0" }}>{state.fieldErrors.phone}</p>
+          <p className="form-error">{state.fieldErrors.phone}</p>
         )}
       </div>
 
-      <div>
-        <label htmlFor="area" style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}>Delivery Area</label>
+      <div className="form-group">
+        <label htmlFor="area">Delivery District</label>
         <select
           id="area"
           name="area"
           defaultValue={state?.data?.area || "Bole"}
-          style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
+          className="form-input"
         >
           {AREA_OPTIONS.map((area) => (
             <option key={area} value={area}>{area}</option>
           ))}
         </select>
         {state?.fieldErrors?.area && (
-          <p style={{ color: "#dc2626", fontSize: "0.875rem", margin: "4px 0 0" }}>{state.fieldErrors.area}</p>
+          <p className="form-error">{state.fieldErrors.area}</p>
         )}
       </div>
 
-      <div>
-        <label htmlFor="notes" style={{ display: "block", marginBottom: "4px", fontWeight: "600" }}>Delivery Notes (Optional)</label>
+      <div className="form-group">
+        <label htmlFor="notes">Delivery Landmark / Apartment Notes (Optional)</label>
         <textarea
           id="notes"
           name="notes"
           rows={3}
-          placeholder="Building name, floor, or nearby landmark"
+          placeholder="Building name, office floor, or gate landmark"
           defaultValue={state?.data?.notes || ""}
-          style={{ width: "100%", padding: "8px", border: "1px solid #ccc", borderRadius: "4px" }}
+          className="form-input"
+          style={{ resize: "vertical" }}
         />
         {state?.fieldErrors?.notes && (
-          <p style={{ color: "#dc2626", fontSize: "0.875rem", margin: "4px 0 0" }}>{state.fieldErrors.notes}</p>
+          <p className="form-error">{state.fieldErrors.notes}</p>
         )}
       </div>
 
       <button
         type="submit"
         disabled={isPending}
-        style={{
-          padding: "10px",
-          backgroundColor: isPending ? "#9ca3af" : "#2563eb",
-          color: "#fff",
-          border: "none",
-          borderRadius: "4px",
-          cursor: isPending ? "not-allowed" : "pointer",
-          fontWeight: "600"
-        }}
+        className="btn btn-primary"
+        style={{ width: "100%", padding: "0.75rem", fontSize: "0.9375rem" }}
       >
-        {isPending ? "Placing Order..." : "Place Order"}
+        {isPending ? "Confirming Order..." : "Place Delivery Order"}
       </button>
     </form>
   );

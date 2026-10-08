@@ -23,38 +23,72 @@ export default async function OrdersPage() {
   const initialOrder = userOrders[0];
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <nav style={{ marginBottom: "1rem" }}>
-        <Link href="/">Home</Link>{" | "}
-        <Link href="/menu">Menu</Link>{" | "}
-        <Link href="/orders">Orders</Link>{" | "}
-        <Link href="/kitchen">Kitchen</Link>
+    <div>
+      <nav className="breadcrumbs" aria-label="Breadcrumbs">
+        <Link href="/">Home</Link>
+        <span className="separator">/</span>
+        <span style={{ color: "var(--color-text-muted)" }}>My Orders</span>
       </nav>
 
-      <h1>Orders</h1>
-      <p style={{ color: "#4b5563", marginBottom: "1.5rem" }}>
-        Signed in as <strong>{session.name}</strong> (ID: {session.id})
+      <h1>Order History</h1>
+      <p style={{ color: "var(--color-text-muted)", marginBottom: "1.75rem" }}>
+        Authenticated as <strong>{session.name}</strong> · Account ID: <code style={{ color: "var(--color-text-faint)" }}>{session.id}</code>
       </p>
 
       {initialOrder && (
-        <div style={{ marginBottom: "2rem" }}>
+        <div style={{ marginBottom: "2.5rem" }}>
           <OrderStatus id={initialOrder.id} fallbackData={initialOrder} />
         </div>
       )}
 
-      <h2>All Orders</h2>
+      <h2>Past Account Orders</h2>
       {userOrders.length === 0 ? (
-        <p>No orders placed yet for this account.</p>
+        <div className="card" style={{ padding: "2.5rem", textAlign: "center" }}>
+          <p style={{ margin: 0, color: "var(--color-text-muted)" }}>
+            No orders found under this verified account.
+          </p>
+          <div style={{ marginTop: "1.25rem" }}>
+            <Link href="/menu" className="btn btn-primary">
+              Browse Menu & Place an Order
+            </Link>
+          </div>
+        </div>
       ) : (
-        <ul>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
           {userOrders.map((order) => (
-            <li key={order.id} style={{ marginBottom: "0.5rem" }}>
-              <Link href={`/orders/${order.id}`}>
-                <strong>{order.name}</strong> - {order.phone} ({order.area}) - Status: {order.status}
-              </Link>
-            </li>
+            <Link
+              key={order.id}
+              href={`/orders/${order.id}`}
+              className="card"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: "1rem 1.25rem",
+                flexWrap: "wrap",
+                gap: "0.75rem",
+                boxShadow: "var(--shadow-xs)"
+              }}
+            >
+              <div>
+                <strong style={{ color: "var(--color-text)", fontSize: "1rem" }}>{order.name}</strong>
+                <span style={{ marginLeft: "0.5rem", color: "var(--color-text-faint)", fontSize: "0.8125rem" }}>
+                  #{order.id} · {order.area} ({order.phone})
+                </span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                <span className={`badge ${order.status === "cancelled" ? "badge-danger" : "badge-success"}`}>
+                  {order.status}
+                </span>
+                <span style={{ color: "var(--color-primary)", fontWeight: "600", fontSize: "0.875rem" }}>
+                  Details &rarr;
+                </span>
+              </div>
+            </Link>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

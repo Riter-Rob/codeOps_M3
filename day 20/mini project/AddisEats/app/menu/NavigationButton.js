@@ -10,8 +10,8 @@ export default function NavigationButton() {
   }
 
   return (
-    <button onClick={goToCart}>
-      Go to Cart
+    <button type="button" onClick={goToCart} className="btn btn-secondary">
+      View Cart &rarr;
     </button>
   );
 }

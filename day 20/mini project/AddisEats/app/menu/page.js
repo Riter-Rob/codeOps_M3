@@ -18,32 +18,34 @@ export const metadata = {
 
 export default async function Menu() {
   return (
-    <div style={{ padding: "1.5rem" }}>
-      <NavigationButton />
-      <h1>Menu</h1>
-
-      <nav style={{ margin: "0.5rem 0 1rem" }}>
-        <Link href="/">Home</Link>{" | "}
-        <Link href="/cart">Cart</Link>{" | "}
-        <Link href="/checkout">Checkout</Link>{" | "}
-        <Link href="/orders">Orders</Link>{" | "}
-        <Link href="/order-status">Order Status</Link>
+    <div>
+      <nav className="breadcrumbs" aria-label="Breadcrumbs">
+        <Link href="/">Home</Link>
+        <span className="separator">/</span>
+        <span style={{ color: "var(--color-text-muted)" }}>Menu & Specialties</span>
       </nav>
 
-      <Suspense fallback={<p>Loading search...</p>}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem", flexWrap: "wrap", gap: "1rem" }}>
+        <div>
+          <h1 style={{ margin: 0 }}>Authentic Ethiopian Menu</h1>
+          <p style={{ marginTop: "0.25rem", color: "var(--color-text-muted)" }}>
+            Handcrafted with organic Ethiopian spices, slow-simmered sauces, and fresh teff injera.
+          </p>
+        </div>
+        <NavigationButton />
+      </div>
+
+      <Suspense fallback={<p style={{ color: "var(--color-text-muted)" }}>Loading live search...</p>}>
         <DishSearch />
       </Suspense>
 
       <CategoryBar />
 
       <FilterShell>
-        <Suspense fallback={<p>Loading dishes...</p>}>
+        <Suspense fallback={<p style={{ color: "var(--color-text-muted)" }}>Loading culinary specialties...</p>}>
           <DishList />
         </Suspense>
       </FilterShell>
-
-      <h2>Dish Details</h2>
-      <Link href="/menu/1">View Dish 1</Link>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
 import Providers from "./components/Providers";
@@ -34,15 +35,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body>
         <Providers>
-          <header>
-            <div style={{ fontSize: "1.5rem", fontWeight: "bold", marginBottom: "0.25rem" }}>Addis Eats</div>
-            <p>Discover delicious Ethiopian dishes</p>
+          <header className="site-header">
+            <div className="header-inner">
+              <div className="brand-group">
+                <Link href="/" className="brand-link">
+                  <span className="brand-badge" aria-hidden="true">አዲስ</span>
+                  <div>
+                    <div className="brand-title">Addis Eats</div>
+                    <p className="brand-tagline">Authentic Ethiopian Cuisine & Heritage</p>
+                  </div>
+                </Link>
+              </div>
+
+              <nav className="header-nav" aria-label="Main Navigation">
+                <Link href="/" className="nav-link">Home</Link>
+                <Link href="/menu" className="nav-link">Menu</Link>
+                <Link href="/cart" className="nav-link">Cart</Link>
+                <Link href="/orders" className="nav-link">Orders</Link>
+                <Link href="/order-status" className="nav-link">Status</Link>
+                <Link href="/kitchen" className="nav-link staff-nav">Kitchen</Link>
+              </nav>
+            </div>
           </header>
 
           <main>{children}</main>
 
           <footer>
-            <p>© 2026 Addis Eats</p>
+            <p>© 2026 Addis Eats · Authentic Culinary Traditions of Addis Ababa</p>
           </footer>
         </Providers>
 

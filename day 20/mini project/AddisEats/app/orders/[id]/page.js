@@ -20,19 +20,40 @@ export default async function OrderDetailPage({ params }) {
 
   if (order.sessionId && order.sessionId !== session.id && session.role !== "staff") {
     return (
-      <div style={{ padding: "2rem" }}>
-        <h1 style={{ color: "#dc2626" }}>Access Denied</h1>
-        <p>You cannot view orders from another account.</p>
-        <Link href="/orders">&larr; Back to your orders</Link>
+      <div style={{ maxWidth: "520px", margin: "2rem auto" }}>
+        <div className="card" style={{ padding: "2.5rem" }}>
+          <span className="badge badge-danger" style={{ marginBottom: "0.75rem" }}>
+            Access Denied
+          </span>
+          <h1 style={{ fontSize: "1.75rem", margin: "0.5rem 0" }}>Protected Customer Order</h1>
+          <p style={{ color: "var(--color-text-muted)", marginBottom: "1.25rem" }}>
+            This order ticket belongs to another customer account. You cannot inspect receipts or details across account boundaries.
+          </p>
+          <Link href="/orders" className="btn btn-primary">
+            &larr; Return to Your Orders
+          </Link>
+        </div>
       </div>
     );
   }
 
   return (
-    <div style={{ padding: "2rem" }}>
-      <nav style={{ marginBottom: "1rem" }}>
-        <Link href="/orders">&larr; Back to orders</Link>
+    <div>
+      <nav className="breadcrumbs" aria-label="Breadcrumbs">
+        <Link href="/">Home</Link>
+        <span className="separator">/</span>
+        <Link href="/orders">Orders</Link>
+        <span className="separator">/</span>
+        <span style={{ color: "var(--color-text-muted)" }}>Order #{id}</span>
       </nav>
+
+      <div style={{ marginBottom: "1.5rem" }}>
+        <h1>Order Receipt & Fulfillment</h1>
+        <p style={{ color: "var(--color-text-muted)", marginTop: "0.25rem" }}>
+          Verified receipt for customer <strong>{order.name}</strong>.
+        </p>
+      </div>
+
       <OrderStatus id={id} fallbackData={order} />
     </div>
   );
