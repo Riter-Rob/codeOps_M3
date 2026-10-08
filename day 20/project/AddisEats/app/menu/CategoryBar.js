@@ -1,11 +1,47 @@
+"use client";
+
+import { useRouter, useSearchParams } from "next/navigation";
+
+const CATEGORIES = [
+  { id: "all", label: "All Dishes" },
+  { id: "Traditional", label: "Traditional" },
+  { id: "Fasting", label: "Fasting (የጾም)" },
+  { id: "Tibs", label: "Tibs" },
+];
+
 export default function CategoryBar() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const activeCategory = searchParams.get("category") || "all";
+
+  function handleSelect(catId) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (catId === "all") {
+      params.delete("category");
+    } else {
+      params.set("category", catId);
+    }
+    params.set("page", "1");
+    router.push(`?${params.toString()}`);
+  }
+
   return (
-    <div className="category-tabs" aria-label="Menu categories">
-      <button type="button" className="category-tab active">All Specialties</button>
-      <button type="button" className="category-tab">Traditional Wats</button>
-      <button type="button" className="category-tab">Sizzling Tibs</button>
-      <button type="button" className="category-tab">Vegan Platters</button>
-      <button type="button" className="category-tab">Beverages & Tej</button>
+    <div className="category-filters" role="tablist" aria-label="Menu categories">
+      {CATEGORIES.map((cat) => {
+        const isActive = activeCategory.toLowerCase() === cat.id.toLowerCase();
+        return (
+          <button
+            key={cat.id}
+            type="button"
+            role="tab"
+            aria-selected={isActive}
+            className={`category-btn ${isActive ? "active" : ""}`}
+            onClick={() => handleSelect(cat.id)}
+          >
+            {cat.label}
+          </button>
+        );
+      })}
     </div>
   );
 }

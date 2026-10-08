@@ -9,32 +9,31 @@ export default function OrderStatus({ id = "1", fallbackData }) {
     refreshInterval: 5000
   });
 
-  if (error) return <p className="form-error">Failed to load order status.</p>;
-  if (!order) return <p style={{ color: "var(--color-text-muted)" }}>Loading order status...</p>;
+  if (error) return <p className="field-error">Could not load order status.</p>;
+  if (!order) return <p style={{ color: "#6b7280" }}>Loading order status...</p>;
+
+  const statusClass =
+    order.status === "cancelled"
+      ? "status-cancelled"
+      : order.status === "delivered"
+      ? "status-delivered"
+      : "status-preparing";
 
   return (
-    <div className="card" style={{ maxWidth: "480px" }}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
-        <h2 style={{ margin: 0, fontSize: "1.25rem" }}>Live Order Status</h2>
-        <div className="status-beacon">
-          <span className="beacon-dot" />
-          <span style={{ fontSize: "0.75rem", fontWeight: "600", color: "var(--color-herb)" }}>
-            5s Polling
-          </span>
-        </div>
+    <div className="order-ticket" style={{ maxWidth: "440px" }}>
+      <div className="order-ticket-header">
+        <h2 style={{ margin: 0, fontSize: "1.0625rem" }}>Order #{order.id}</h2>
+        <span className={`status-badge ${statusClass}`}>{order.status}</span>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-        <p style={{ margin: 0 }}><strong>Order Ticket:</strong> #{order.id}</p>
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem", fontSize: "0.875rem", margin: "0.5rem 0" }}>
         <p style={{ margin: 0 }}><strong>Customer:</strong> {order.name}</p>
         <p style={{ margin: 0 }}><strong>Phone:</strong> {order.phone}</p>
-        <p style={{ margin: 0 }}><strong>Delivery District:</strong> {order.area}</p>
-        <div style={{ marginTop: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <strong style={{ fontSize: "0.875rem" }}>Progress:</strong>
-          <span className={`badge ${order.status === "cancelled" ? "badge-danger" : "badge-success"}`}>
-            {order.status}
-          </span>
-        </div>
+        <p style={{ margin: 0 }}><strong>Delivery Area:</strong> {order.area}</p>
+      </div>
+
+      <div style={{ marginTop: "0.5rem", paddingTop: "0.5rem", borderTop: "1px solid #f3f4f6", fontSize: "0.75rem", color: "#9ca3af" }}>
+        Live status · updates every 5s
       </div>
     </div>
   );

@@ -27,67 +27,78 @@ export default async function OrdersPage() {
       <nav className="breadcrumbs" aria-label="Breadcrumbs">
         <Link href="/">Home</Link>
         <span className="separator">/</span>
-        <span style={{ color: "var(--color-text-muted)" }}>My Orders</span>
+        <span style={{ color: "#6b7280" }}>Orders</span>
       </nav>
 
-      <h1>Order History</h1>
-      <p style={{ color: "var(--color-text-muted)", marginBottom: "1.75rem" }}>
-        Authenticated as <strong>{session.name}</strong> · Account ID: <code style={{ color: "var(--color-text-faint)" }}>{session.id}</code>
-      </p>
+      <div style={{ marginBottom: "1.5rem" }}>
+        <h1 style={{ margin: 0 }}>Your Orders</h1>
+        <p style={{ color: "#6b7280", marginTop: "0.25rem" }}>
+          Logged in as <strong>{session.name}</strong>
+        </p>
+      </div>
 
       {initialOrder && (
-        <div style={{ marginBottom: "2.5rem" }}>
+        <div style={{ marginBottom: "2rem" }}>
+          <h2 style={{ fontSize: "1rem", marginBottom: "0.5rem" }}>Active Order</h2>
           <OrderStatus id={initialOrder.id} fallbackData={initialOrder} />
         </div>
       )}
 
-      <h2>Past Account Orders</h2>
+      <h2>Past Orders</h2>
       {userOrders.length === 0 ? (
-        <div className="card" style={{ padding: "2.5rem", textAlign: "center" }}>
-          <p style={{ margin: 0, color: "var(--color-text-muted)" }}>
-            No orders found under this verified account.
+        <div style={{ background: "#ffffff", border: "1px solid #e5e7eb", borderRadius: "6px", padding: "2rem", textAlign: "center" }}>
+          <p style={{ margin: "0 0 1rem", color: "#6b7280" }}>
+            No orders placed yet.
           </p>
-          <div style={{ marginTop: "1.25rem" }}>
-            <Link href="/menu" className="btn btn-primary">
-              Browse Menu & Place an Order
-            </Link>
-          </div>
+          <Link href="/menu" className="btn btn-primary btn-sm">
+            Browse Menu
+          </Link>
         </div>
       ) : (
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-          {userOrders.map((order) => (
-            <Link
-              key={order.id}
-              href={`/orders/${order.id}`}
-              className="card"
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: "1rem 1.25rem",
-                flexWrap: "wrap",
-                gap: "0.75rem",
-                boxShadow: "var(--shadow-xs)"
-              }}
-            >
-              <div>
-                <strong style={{ color: "var(--color-text)", fontSize: "1rem" }}>{order.name}</strong>
-                <span style={{ marginLeft: "0.5rem", color: "var(--color-text-faint)", fontSize: "0.8125rem" }}>
-                  #{order.id} · {order.area} ({order.phone})
-                </span>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                <span className={`badge ${order.status === "cancelled" ? "badge-danger" : "badge-success"}`}>
-                  {order.status}
-                </span>
-                <span style={{ color: "var(--color-primary)", fontWeight: "600", fontSize: "0.875rem" }}>
-                  Details &rarr;
-                </span>
-              </div>
-            </Link>
-          ))}
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", maxWidth: "600px" }}>
+          {userOrders.map((order) => {
+            const statusClass =
+              order.status === "cancelled"
+                ? "status-cancelled"
+                : order.status === "delivered"
+                ? "status-delivered"
+                : "status-preparing";
+
+            return (
+              <Link
+                key={order.id}
+                href={`/orders/${order.id}`}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  padding: "0.75rem 1rem",
+                  background: "#ffffff",
+                  border: "1px solid #e5e7eb",
+                  borderRadius: "6px",
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+              >
+                <div>
+                  <strong style={{ color: "#111827", fontSize: "0.9375rem" }}>
+                    Ticket #{order.id}
+                  </strong>
+                  <span style={{ marginLeft: "0.75rem", color: "#6b7280", fontSize: "0.8125rem" }}>
+                    {order.area} · {order.name}
+                  </span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                  <span className={`status-badge ${statusClass}`}>
+                    {order.status}
+                  </span>
+                  <span style={{ color: "#b91c1c", fontSize: "0.8125rem", fontWeight: 500 }}>
+                    Details &rarr;
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       )}
     </div>
