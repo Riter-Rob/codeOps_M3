@@ -46,7 +46,7 @@ export default async function OrdersPage() {
 
       <h2>Past Orders</h2>
       {userOrders.length === 0 ? (
-        <div style={{ background: "#ffffff", border: "1px solid #e5dcc3", borderRadius: "6px", padding: "2rem", textAlign: "center" }}>
+        <div style={{ background: "#ffffff", border: "1px solid #e5dcc3", borderRadius: "16px", padding: "2.25rem", textAlign: "center", boxShadow: "0 2px 8px rgba(24, 84, 42, 0.04)" }}>
           <p style={{ margin: "0 0 1rem", color: "#6b7280" }}>
             No orders placed yet.
           </p>
@@ -55,7 +55,7 @@ export default async function OrdersPage() {
           </Link>
         </div>
       ) : (
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem", maxWidth: "600px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", maxWidth: "600px" }}>
           {userOrders.map((order) => {
             const statusClass =
               order.status === "cancelled"
@@ -72,12 +72,13 @@ export default async function OrdersPage() {
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  padding: "0.75rem 1rem",
+                  padding: "0.85rem 1.15rem",
                   background: "#ffffff",
                   border: "1px solid #e5dcc3",
-                  borderRadius: "6px",
+                  borderRadius: "14px",
                   textDecoration: "none",
                   color: "inherit",
+                  boxShadow: "0 1px 4px rgba(24, 84, 42, 0.03)"
                 }}
               >
                 <div>

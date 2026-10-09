@@ -24,7 +24,7 @@ export default function Cart() {
         </p>
       </div>
 
-      <div style={{ background: "#fffefa", border: "1px solid #e7e0d4", borderRadius: "10px", padding: "1.25rem" }}>
+      <div style={{ background: "#fffefa", border: "1px solid #e7e0d4", borderRadius: "16px", padding: "1.35rem", boxShadow: "0 2px 8px rgba(24, 84, 42, 0.04)" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: "0.75rem", borderBottom: "1px solid #f3e8cc" }}>
           <div>
             <strong style={{ color: "#365746", fontSize: "1rem" }}>Doro Wat</strong>

@@ -86,13 +86,14 @@ export default function DishSearch() {
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    padding: "0.5rem 0.75rem",
+                    padding: "0.6rem 0.85rem",
                     background: "#ffffff",
                     border: "1px solid #e5dcc3",
-                    borderRadius: "6px",
+                    borderRadius: "12px",
                     textDecoration: "none",
                     color: "inherit",
-                    fontSize: "0.875rem"
+                    fontSize: "0.875rem",
+                    boxShadow: "0 1px 4px rgba(24, 84, 42, 0.03)"
                   }}
                 >
                   <div>

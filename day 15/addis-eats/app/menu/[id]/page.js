@@ -79,8 +79,9 @@ export default async function DishPage({ params }) {
         style={{
           background: "#fffefa",
           border: "1px solid #e7e0d4",
-          borderRadius: "10px",
+          borderRadius: "16px",
           overflow: "hidden",
+          boxShadow: "0 4px 16px rgba(24, 84, 42, 0.05)",
         }}
       >
         <Image

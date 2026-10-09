@@ -3,11 +3,11 @@
 
 ## 1. Visual Theme & Atmosphere
 
-Addis Eats is an authentic, human-designed culinary application for traditional Ethiopian dining in Addis Ababa. Rather than looking like a generic AI-generated SaaS dashboard or template, the design draws directly from physical Ethiopian culinary culture: warm earthen tones, handmade teff injera textures, fresh berbere spices, and local neighborhood warmth.
+Addis Eats is a culinary application for traditional Ethiopian dining in Addis Ababa. Rather than looking like a generic AI-generated SaaS dashboard or template, the design draws directly from physical Ethiopian culinary culture: warm earthen tones, handmade teff injera textures, fresh berbere spices, and local neighborhood warmth.
 
 The canvas sits on a rich **Cream** (`#f3e8cc`), evoking warm linen and natural surfaces. Deep **Forest Green** (`#18542a`) grounds the brand identity and typography with quiet confidence. **Tomato Burst** (`#d52518`) commands primary actions and price callouts, while **Sunshine** (`#ffc926`) and **Crisp Carrot** (`#f96015`) provide lively warmth.
 
-### 🚫 The Zero-Badge Policy (Human vs. AI Design)
+###  The Zero-Badge Policy (Human vs. AI Design)
 One of the clearest signals of generic AI-generated templates is the excessive use of rounded pill badges, colored tag chips, and status bubbles across every card and header. In Addis Eats:
 - **No pill badges or tags allowed.** Every item card is clean and unencumbered.
 - Dietary designations (such as fasting or meat categories) are displayed as understated, elegant typographic notes (e.g. *የጾም · Fasting* in muted italic serif text) directly beside or below dish names.
@@ -17,8 +17,8 @@ One of the clearest signals of generic AI-generated templates is the excessive u
 ### Key Characteristics
 - **Typography:** Modern vibe-coded typography pairing **Plus Jakarta Sans** (geometric neo-grotesque with tight tracking) for UI/body/forms and **Playfair Display** (editorial display serif) for curated culinary presence, with **JetBrains Mono** / tabular numerals for pricing and order receipts.
 - **Aside Navigation:** Strict `border: none !important;` and `box-shadow: none !important;`. The category sidebar blends naturally into the page hierarchy without artificial box borders.
-- **Clean Elevation:** Restrained borders (`#e5dcc3`) and minimal shadows keep cards flat, honest, and grounded.
-- **Micro-Interactions:** Subtle border color shift (`#f96015`) and soft hover lift on food cards without flashy gimmicks.
+- **Card Radii & Elevation:** Organic 16px card border-radius (`--radius-card: 16px`) with gentle overflow clipping, warm border lines (`#e5dcc3`), and soft atmospheric depth.
+- **Micro-Interactions & UX:** Smooth 4px card lift on hover, subtle 1.035x dish photo zoom, tactile pill buttons (`--radius-pill: 9999px`), and a real-time kitchen beacon pulse on live order status.
 
 ---
 
@@ -89,11 +89,11 @@ One of the clearest signals of generic AI-generated templates is the excessive u
 - Active: Solid Sunshine (`#ffc926`), `#18542a` text, bold weight.
 
 ### 4. Menu Item Card
-- Crisp white background (`#ffffff`), 1px `#e5dcc3` border, 6px border radius.
-- Real dish photograph (175px height, object-fit cover).
-- Header: Dish name in Forest Green + Price in Tomato Burst.
+- Crisp white background (`#ffffff`), 1px `#e5dcc3` border, organic 16px border radius (`--radius-card: 16px`).
+- Real dish photograph (175px height, object-fit cover, subtle 1.035x scale on hover).
+- Header: Dish name in Forest Green + Price in Tomato Burst (`1.05rem`, bold 800).
 - Dietary note: Understated italic text (`የጾም · Fasting` or category name), **strictly no badge pills**.
-- Footer: Teff injera ingredients description + order link.
+- Footer: Teff injera ingredients description + tactile `View Dish →` pill button (`.menu-order-action`).
 
 ### 5. Orders & Kitchen Tickets
 - Ticket card in white (`#ffffff`) with `#e5dcc3` border.
@@ -105,9 +105,10 @@ One of the clearest signals of generic AI-generated templates is the excessive u
 
 ## 5. Technical Implementation Checklist
 - [x] `DESIGN.md` registered in project root.
-- [x] Aside element set to `border: none !important;` without artificial borders.
+- [x] Aside element set to `border: none !important;` without artificial borders or radii.
 - [x] Vibe-coded typography applied (`Plus Jakarta Sans` + `Playfair Display`).
+- [x] Card border-radius increased to organic 16px with smooth hover lift and image zoom.
 - [x] Color palette strictly mapped to Cream, Forest Green, Tomato Burst, Crisp Carrot, Sunshine, Kiwi.
 - [x] All badges and tag pills removed from the UI.
-- [x] SWR real-time updates and Server Actions preserved.
+- [x] SWR real-time updates with live beacon pulse and Server Actions preserved.
 - [x] Zero build or lint regressions.

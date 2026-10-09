@@ -30,8 +30,8 @@ export default async function Home() {
         style={{
           background: "#fffefa",
           border: "1px solid #e7e0d4",
-          borderRadius: "10px",
-          padding: "0.75rem 1rem",
+          borderRadius: "16px",
+          padding: "0.85rem 1.15rem",
           marginBottom: "1.5rem",
           display: "flex",
           alignItems: "center",
@@ -39,6 +39,7 @@ export default async function Home() {
           flexWrap: "wrap",
           gap: "0.75rem",
           fontSize: "0.9375rem",
+          boxShadow: "0 2px 8px rgba(24, 84, 42, 0.04)",
         }}
       >
         {session ? (
@@ -72,7 +73,7 @@ export default async function Home() {
         <div className="category-filters">
           <Link href="/menu" className="category-btn active">All Dishes</Link>
           <Link href="/menu?category=Traditional" className="category-btn">Traditional</Link>
-          <Link href="/menu?category=Fasting" className="category-btn">Fasting (የጾም)</Link>
+          <Link href="/menu?category=Fasting" className="category-btn">Fasting</Link>
           <Link href="/menu?category=Tibs" className="category-btn">Tibs</Link>
         </div>
       </div>
@@ -107,7 +108,7 @@ export default async function Home() {
                 </div>
                 <p className="menu-item-ingredients">{dish.ingredients}</p>
                 <div className="menu-item-footer">
-                  <span style={{ fontSize: "0.875rem", color: "#d52518", fontWeight: 700 }}>
+                  <span className="menu-order-action">
                     View Dish &rarr;
                   </span>
                 </div>
@@ -122,13 +123,14 @@ export default async function Home() {
         style={{
           background: "#fffefa",
           border: "1px solid #e7e0d4",
-          borderRadius: "10px",
-          padding: "1rem 1.25rem",
+          borderRadius: "16px",
+          padding: "1.1rem 1.35rem",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           flexWrap: "wrap",
           gap: "1rem",
+          boxShadow: "0 2px 8px rgba(24, 84, 42, 0.04)",
         }}
       >
         <div>

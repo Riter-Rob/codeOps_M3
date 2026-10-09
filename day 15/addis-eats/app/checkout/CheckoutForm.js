@@ -34,7 +34,7 @@ export default function CheckoutForm() {
           Thank you, <strong>{state.order.name}</strong>. Your order has been sent to the kitchen.
         </p>
 
-        <div style={{ background: "#fdfbf7", border: "1px solid #e5dcc3", borderRadius: "6px", padding: "0.75rem 1rem", marginBottom: "1.25rem", fontSize: "0.875rem" }}>
+        <div style={{ background: "#fdfbf7", border: "1px solid #e5dcc3", borderRadius: "14px", padding: "0.85rem 1.15rem", marginBottom: "1.25rem", fontSize: "0.875rem" }}>
           <p style={{ margin: "0.25rem 0" }}><strong>Delivery Area:</strong> {state.order.area}</p>
           <p style={{ margin: "0.25rem 0" }}><strong>Phone:</strong> {state.order.phone}</p>
           <p style={{ margin: "0.25rem 0" }}><strong>Status:</strong> <span style={{ fontWeight: 600, color: "#b45309", textTransform: "capitalize" }}>{state.order.status}</span></p>

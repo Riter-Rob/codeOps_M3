@@ -1,27 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;600&display=swap');
 
-/* Addis Eats — Authentic Ethiopian Restaurant Design
-   Palette:
-   - Cream: #f3e8cc (Page background)
-   - Forest Green: #18542a (Brand title, headings, primary accents)
-   - Tomato Burst: #d52518 (Primary buttons, dish prices, cart pill)
-   - Crisp Carrot: #f96015 (Warm accent, focus rings, hover states)
-   - Sunshine: #ffc926 (Active category tabs, warning indicators)
-   - Kiwi: #9abc05 (Fasting / vegetarian accents)
-   - Surface / Card: #ffffff
-   - Border: #e5dcc3
-   Typography:
-   - Font Family: 'Plus Jakarta Sans', sans-serif (Vibe-coded modern geometric stack)
-   - Editorial Accent: 'Playfair Display', serif (Curated culinary headings)
-   - Monospace: 'JetBrains Mono', monospace (Tabular figures, receipt codes)
-   Aside:
-   - Border: none !important
-*/
 
 :root {
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Modern Card & Element Radii (Enhanced UX) */
+  --radius-card: 16px;
+  --radius-btn: 12px;
+  --radius-input: 10px;
+  --radius-pill: 9999px;
 
   --color-cream: #f3e8cc;
   --color-forest: #18542a;
@@ -218,11 +207,69 @@ p {
   text-decoration: underline;
 }
 
-/* Aside - Strictly No Border */
-aside {
+/* Menu Sidebar Layout */
+.menu-layout {
+  display: flex;
+  gap: 1.75rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+aside,
+.menu-sidebar {
+  width: 210px;
+  flex-shrink: 0;
   border: none !important;
   background: #ffffff;
   box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 1rem;
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+.sidebar-title {
+  font-family: 'Times New Roman', Times, serif !important;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+  color: #18542a;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sidebar-link {
+  font-family: 'Times New Roman', Times, serif !important;
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: #18542a;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.2rem 0.35rem;
+  border-radius: 4px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.sidebar-link:hover {
+  color: #d52518;
+  background-color: #fdfbf7;
+}
+
+.sidebar-section {
+  border-top: 1px solid #f3e8cc;
+  padding-top: 0.85rem;
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+.menu-content {
+  flex: 1;
+  min-width: 280px;
 }
 
 /* Food Menu Grid */
@@ -236,18 +283,19 @@ aside {
 .menu-item {
   background: #ffffff;
   border: 1px solid #e5dcc3;
-  border-radius: 6px;
+  border-radius: var(--radius-card, 16px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.18s ease;
 }
 
 .menu-item:hover {
+  transform: translateY(-4px);
   border-color: #f96015; /* CRISP CARROT */
-  box-shadow: 0 4px 12px rgba(24, 84, 42, 0.08);
 }
 
 .menu-item-image {
@@ -256,10 +304,15 @@ aside {
   object-fit: cover;
   background: #fdfbf7;
   display: block;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.menu-item:hover .menu-item-image {
+  transform: scale(1.035);
 }
 
 .menu-item-info {
-  padding: 1rem;
+  padding: 1.1rem 1.15rem;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -279,8 +332,8 @@ aside {
 }
 
 .menu-item-price {
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 800;
+  font-size: 1.05rem;
   color: #d52518; /* TOMATO BURST */
 }
 
@@ -293,11 +346,32 @@ aside {
 
 .menu-item-footer {
   margin-top: auto;
-  padding-top: 0.5rem;
+  padding-top: 0.65rem;
   border-top: 1px solid #f3e8cc;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.menu-order-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #d52518;
+  background: #fdf5f3;
+  border: 1px solid #fed7aa;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-pill, 9999px);
+  transition: all 0.18s ease;
+}
+
+.menu-item:hover .menu-order-action {
+  background: #d52518;
+  color: #ffffff;
+  border-color: #d52518;
+  transform: translateY(-1px);
 }
 
 /* Dietary Note (Zero-Badge Policy) */
@@ -320,18 +394,22 @@ aside {
   background: #ffffff;
   border: 1px solid #d5cdb5;
   color: #18542a;
-  padding: 0.4rem 0.85rem;
-  border-radius: 6px;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-pill, 9999px);
   font-size: 0.9375rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .category-btn:hover {
-  background: #fdfbf7;
+  background: #ffffff;
   border-color: #f96015; /* CRISP CARROT */
+  color: #d52518;
+  transform: translateY(-1px);
 }
 
 .category-btn.active {
@@ -346,14 +424,19 @@ aside {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1rem;
+  padding: 0.55rem 1.15rem;
   font-size: 0.9375rem;
   font-weight: 600;
-  border-radius: 6px;
+  border-radius: var(--radius-btn, 12px);
   border: 1px solid transparent;
   cursor: pointer;
   text-decoration: none;
   line-height: 1.25;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn:active {
+  transform: scale(0.98);
 }
 
 .btn-primary {
@@ -363,6 +446,7 @@ aside {
 
 .btn-primary:hover {
   background-color: #b91c1c;
+  transform: translateY(-1px);
 }
 
 .btn-secondary {
@@ -373,7 +457,9 @@ aside {
 
 .btn-secondary:hover {
   background-color: #fdfbf7;
-  border-color: #18542a;
+  border-color: #f96015;
+  color: #d52518;
+  transform: translateY(-1px);
 }
 
 .btn-danger {
@@ -386,15 +472,16 @@ aside {
 }
 
 .btn-sm {
-  padding: 0.25rem 0.6rem;
+  padding: 0.35rem 0.75rem;
   font-size: 0.8125rem;
+  border-radius: var(--radius-pill, 9999px);
 }
 
 /* Forms & Inputs */
 .form-box {
   background: #ffffff;
   border: 1px solid #e5dcc3;
-  border-radius: 6px;
+  border-radius: var(--radius-card, 16px);
   padding: 1.5rem;
   max-width: 480px;
 }
@@ -419,13 +506,14 @@ input[type="email"],
 select,
 textarea {
   width: 100%;
-  padding: 0.5rem 0.75rem;
+  padding: 0.6rem 0.85rem;
   border: 1px solid #d5cdb5;
-  border-radius: 6px;
+  border-radius: var(--radius-input, 10px);
   font-size: 0.9375rem;
   color: #1f2937;
   background: #ffffff;
   font-family: inherit;
+  transition: border-color 0.15s ease;
 }
 
 .form-control:focus,
@@ -437,7 +525,6 @@ select:focus,
 textarea:focus {
   outline: none;
   border-color: #f96015; /* CRISP CARROT */
-  box-shadow: 0 0 0 1px #f96015;
 }
 
 .field-error,
@@ -451,8 +538,8 @@ textarea:focus {
 .order-ticket {
   background: #ffffff;
   border: 1px solid #e5dcc3;
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
+  border-radius: var(--radius-card, 16px);
+  padding: 1.25rem 1.4rem;
   margin-bottom: 0.75rem;
 }
 
@@ -463,19 +550,63 @@ textarea:focus {
   margin-bottom: 0.5rem;
 }
 
+/* Live Beacon Pulse */
+.live-beacon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #18542a;
+}
 
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #18542a;
+  position: relative;
+  display: inline-block;
+}
+
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 50%;
+  border: 2px solid #18542a;
+  animation: beaconPulse 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes beaconPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
 
 .card {
   background: #ffffff;
   border: 1px solid #e5dcc3;
-  border-radius: 6px;
+  border-radius: var(--radius-card, 16px);
   padding: 1.25rem;
 }
 
 .form-card {
   background: #ffffff;
   border: 1px solid #e5dcc3;
-  border-radius: 6px;
+  border-radius: var(--radius-card, 16px);
   padding: 1.5rem;
   max-width: 520px;
 }

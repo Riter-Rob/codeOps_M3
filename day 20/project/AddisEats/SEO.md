@@ -81,7 +81,7 @@ export async function generateMetadata({ params }) {
 }
 ```
 - **Different descriptions per dish**:
-  - `/menu/1` (Doro Wat): *"Slow-simmered tender chicken leg in rich berbere sauce with hard-boiled egg and seasoned butter."*
+  - `/menu/1` (Doro Wot): *"Slow-simmered tender chicken leg in rich berbere sauce with hard-boiled egg and seasoned butter."*
   - `/menu/2` (Kitfo): *"Minced prime beef gently warmed with spiced clarified butter and mitmita chili powder."*
   - `/menu/3` (Shiro): *"Creamy slow-cooked chickpea powder stew infused with garlic, ginger, and Ethiopian herbs."*
 
