@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 const CATEGORIES = [
   { id: "all", label: "All Dishes" },
   { id: "Traditional", label: "Traditional" },
-  { id: "Fasting", label: "Fasting (የጾም)" },
+  { id: "Fasting", label: "Fasting " },
   { id: "Tibs", label: "Tibs" },
 ];
 

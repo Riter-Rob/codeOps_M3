@@ -37,13 +37,7 @@ export default async function Menu({ searchParams }) {
 
         <div className="menu-promo-cards">
           <div className="promo-badge-card">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#18542a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
-              <path d="M15 18H9" />
-              <path d="M19 18h2a1 1 0 0 0 1-1v-5.2a2 2 0 0 0-.58-1.42l-2.84-2.84A2 2 0 0 0 17.16 7H15v11Z" />
-              <circle cx="17" cy="18" r="2" />
-              <circle cx="7" cy="18" r="2" />
-            </svg>
+            
             <div>
               <strong>Fast Delivery</strong>
               <span>Bole & Kazanchis</span>
@@ -51,10 +45,7 @@ export default async function Menu({ searchParams }) {
           </div>
 
           <div className="promo-badge-card">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f96015" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
+            
             <div>
               <strong>Hot & Fresh</strong>
               <span>Made to order</span>
