@@ -286,25 +286,12 @@ aside {
   align-items: center;
 }
 
-/* Badges & Tags */
-.tag {
-  display: inline-block;
-  font-size: 0.75rem;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-weight: 600;
-}
-
-.tag-fasting {
-  background-color: #f4f8e8;
-  color: #18542a;
-  border: 1px solid #9abc05; /* KIWI */
-}
-
-.tag-meat {
-  background-color: #fdf2f0;
-  color: #d52518;
-  border: 1px solid #f96015; /* CRISP CARROT */
+/* Dietary Note (Zero-Badge Policy) */
+.diet-note {
+  font-size: 0.8125rem;
+  font-style: italic;
+  margin-bottom: 0.35rem;
+  color: #78716c;
 }
 
 /* Category Filter Buttons */
@@ -462,31 +449,7 @@ textarea:focus {
   margin-bottom: 0.5rem;
 }
 
-.status-badge {
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 4px;
-  text-transform: capitalize;
-}
 
-.status-preparing {
-  background-color: #fef3c7;
-  color: #92400e;
-  border: 1px solid #ffc926; /* SUNSHINE */
-}
-
-.status-delivered {
-  background-color: #f4f8e8;
-  color: #18542a;
-  border: 1px solid #9abc05; /* KIWI */
-}
-
-.status-cancelled {
-  background-color: #fee2e2;
-  color: #d52518;
-  border: none;
-}
 
 .card {
   background: #ffffff;
@@ -515,32 +478,7 @@ textarea:focus {
   color: #18542a;
 }
 
-.badge {
-  display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 4px;
-  text-transform: capitalize;
-}
 
-.badge-success {
-  background-color: #f4f8e8;
-  color: #18542a;
-  border: 1px solid #9abc05;
-}
-
-.badge-warning {
-  background-color: #fffbeb;
-  color: #92400e;
-  border: 1px solid #ffc926;
-}
-
-.badge-danger {
-  background-color: #fee2e2;
-  color: #d52518;
-  border: none;
-}
 
 :focus-visible {
   outline: 2px solid #f96015;

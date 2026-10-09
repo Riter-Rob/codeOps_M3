@@ -22,9 +22,9 @@ export default async function KitchenPage() {
     return (
       <div style={{ maxWidth: "480px", margin: "2rem auto" }}>
         <div style={{ background: "#ffffff", border: "1px solid #e5dcc3", borderRadius: "6px", padding: "1.75rem" }}>
-          <span className="status-badge status-cancelled" style={{ marginBottom: "0.5rem" }}>
+          <div style={{ color: "#d52518", fontWeight: 700, fontSize: "0.875rem", marginBottom: "0.5rem" }}>
             Access Restricted
-          </span>
+          </div>
           <h1 style={{ fontSize: "1.375rem", margin: "0.5rem 0" }}>Staff Access Only</h1>
           <p style={{ color: "#6b7280", marginBottom: "1.25rem", fontSize: "0.875rem" }}>
             The kitchen queue is restricted to restaurant staff. You are currently logged in as <strong>{session.role}</strong>.
@@ -86,7 +86,7 @@ export default async function KitchenPage() {
                       {order.name}
                     </span>
                   </div>
-                  <span className={`status-badge ${statusClass}`}>
+                  <span style={{ fontWeight: 700, fontSize: "0.875rem", color: order.status === "cancelled" ? "#d52518" : order.status === "delivered" ? "#18542a" : "#b45309", textTransform: "capitalize" }}>
                     {order.status}
                   </span>
                 </div>

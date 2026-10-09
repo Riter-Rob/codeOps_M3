@@ -95,16 +95,14 @@ export default async function DishPage({ params }) {
 
         <div style={{ padding: "1.5rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.5rem" }}>
-            <h1 style={{ margin: 0, fontSize: "1.625rem", color: "#365746" }}>{dish.name}</h1>
-            <div style={{ fontSize: "1.375rem", fontWeight: "700", color: "#ad503c" }} className="tabular">
+            <h1 style={{ margin: 0, fontSize: "1.625rem", color: "#18542a" }}>{dish.name}</h1>
+            <div style={{ fontSize: "1.375rem", fontWeight: "700", color: "#d52518" }} className="tabular">
               {dish.price} ETB
             </div>
           </div>
 
-          <div style={{ marginBottom: "1rem" }}>
-            <span className={`tag ${dish.fasting ? "tag-fasting" : "tag-meat"}`}>
-              {dish.fasting ? "የጾም / Fasting" : dish.category}
-            </span>
+          <div style={{ marginBottom: "1rem", fontSize: "0.9375rem", color: dish.fasting ? "#18542a" : "#78716c", fontStyle: "italic" }}>
+            {dish.fasting ? "የጾም · Fasting" : dish.category}
           </div>
 
           <div style={{ marginBottom: "1rem" }}>

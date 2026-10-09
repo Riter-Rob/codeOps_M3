@@ -44,9 +44,9 @@ export default async function Home() {
         {session ? (
           <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
             <span>
-              Signed in as <strong style={{ color: "#365746" }}>{session.name}</strong>{" "}
-              <span className={`badge ${session.role === "staff" ? "badge-warning" : "badge-success"}`}>
-                {session.role}
+              Signed in as <strong style={{ color: "#18542a" }}>{session.name}</strong>{" "}
+              <span style={{ fontSize: "0.8125rem", color: "#6b7280" }}>
+                ({session.role})
               </span>
             </span>
             <form action={signOut}>
@@ -102,14 +102,12 @@ export default async function Home() {
                   <span className="menu-item-name">{dish.name}</span>
                   <span className="menu-item-price tabular">{dish.price} ETB</span>
                 </div>
-                <div style={{ marginBottom: "0.5rem" }}>
-                  <span className={`tag ${dish.fasting ? "tag-fasting" : "tag-meat"}`}>
-                    {dish.fasting ? "የጾም / Fasting" : dish.category}
-                  </span>
+                <div style={{ fontSize: "0.8125rem", color: dish.fasting ? "#18542a" : "#78716c", fontStyle: "italic", marginBottom: "0.35rem" }}>
+                  {dish.fasting ? "የጾም · Fasting" : dish.category}
                 </div>
                 <p className="menu-item-ingredients">{dish.ingredients}</p>
                 <div className="menu-item-footer">
-                  <span style={{ fontSize: "0.875rem", color: "#ad503c", fontWeight: 700 }}>
+                  <span style={{ fontSize: "0.875rem", color: "#d52518", fontWeight: 700 }}>
                     View Dish &rarr;
                   </span>
                 </div>

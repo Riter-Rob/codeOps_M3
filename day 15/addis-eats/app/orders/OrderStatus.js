@@ -23,7 +23,9 @@ export default function OrderStatus({ id = "1", fallbackData }) {
     <div className="order-ticket" style={{ maxWidth: "440px" }}>
       <div className="order-ticket-header">
         <h2 style={{ margin: 0, fontSize: "1.0625rem" }}>Order #{order.id}</h2>
-        <span className={`status-badge ${statusClass}`}>{order.status}</span>
+        <span style={{ fontWeight: 700, fontSize: "0.9375rem", color: order.status === "cancelled" ? "#d52518" : order.status === "delivered" ? "#18542a" : "#b45309", textTransform: "capitalize" }}>
+          Status: {order.status}
+        </span>
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem", fontSize: "0.875rem", margin: "0.5rem 0" }}>

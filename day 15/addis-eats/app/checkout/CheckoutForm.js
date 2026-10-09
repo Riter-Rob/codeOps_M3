@@ -27,7 +27,7 @@ export default function CheckoutForm() {
       <div className="order-ticket" style={{ maxWidth: "480px", margin: "1rem auto", padding: "1.5rem" }}>
         <div className="order-ticket-header">
           <h2 style={{ margin: 0, fontSize: "1.125rem" }}>Order Confirmed</h2>
-          <span className="status-badge status-preparing">Ticket #{state.order.id}</span>
+          <span style={{ fontWeight: 700, fontSize: "0.9375rem", color: "#18542a" }}>Ticket #{state.order.id}</span>
         </div>
 
         <p style={{ margin: "0.5rem 0 1rem", fontSize: "0.875rem", color: "#6b7280" }}>
@@ -37,7 +37,7 @@ export default function CheckoutForm() {
         <div style={{ background: "#fdfbf7", border: "1px solid #e5dcc3", borderRadius: "6px", padding: "0.75rem 1rem", marginBottom: "1.25rem", fontSize: "0.875rem" }}>
           <p style={{ margin: "0.25rem 0" }}><strong>Delivery Area:</strong> {state.order.area}</p>
           <p style={{ margin: "0.25rem 0" }}><strong>Phone:</strong> {state.order.phone}</p>
-          <p style={{ margin: "0.25rem 0" }}><strong>Status:</strong> <span className="status-badge status-preparing">{state.order.status}</span></p>
+          <p style={{ margin: "0.25rem 0" }}><strong>Status:</strong> <span style={{ fontWeight: 600, color: "#b45309", textTransform: "capitalize" }}>{state.order.status}</span></p>
         </div>
 
         {cancelMessage && (

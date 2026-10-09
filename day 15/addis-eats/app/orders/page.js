@@ -89,7 +89,7 @@ export default async function OrdersPage() {
                   </span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                  <span className={`status-badge ${statusClass}`}>
+                  <span style={{ fontWeight: 600, fontSize: "0.8125rem", color: order.status === "cancelled" ? "#d52518" : order.status === "delivered" ? "#18542a" : "#b45309", textTransform: "capitalize" }}>
                     {order.status}
                   </span>
                   <span style={{ color: "#d52518", fontSize: "0.8125rem", fontWeight: 500 }}>

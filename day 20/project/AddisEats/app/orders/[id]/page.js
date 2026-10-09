@@ -22,9 +22,9 @@ export default async function OrderDetailPage({ params }) {
     return (
       <div style={{ maxWidth: "520px", margin: "2rem auto" }}>
         <div className="card" style={{ padding: "2.5rem" }}>
-          <span className="badge badge-danger" style={{ marginBottom: "0.75rem" }}>
+          <div style={{ color: "#d52518", fontWeight: 700, fontSize: "0.875rem", marginBottom: "0.5rem" }}>
             Access Denied
-          </span>
+          </div>
           <h1 style={{ fontSize: "1.75rem", margin: "0.5rem 0" }}>Protected Customer Order</h1>
           <p style={{ color: "var(--color-text-muted)", marginBottom: "1.25rem" }}>
             This order ticket belongs to another customer account. You cannot inspect receipts or details across account boundaries.
