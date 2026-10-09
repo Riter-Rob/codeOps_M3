@@ -8,8 +8,7 @@ export default function MenuLayout({ children }) {
         style={{
           width: "200px",
           flexShrink: 0,
-          background: "#ffffff",
-          border: "none",
+          border : "none",
           padding: "1rem",
         }}
       >

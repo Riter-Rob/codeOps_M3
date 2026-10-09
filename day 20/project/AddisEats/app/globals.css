@@ -1,22 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;600&display=swap');
 
-/* Addis Eats — Authentic Ethiopian Restaurant Design
-   Palette:
-   - Cream: #f3e8cc (Page background)
-   - Forest Green: #18542a (Brand title, headings, primary accents)
-   - Tomato Burst: #d52518 (Primary buttons, dish prices, cart pill)
-   - Crisp Carrot: #f96015 (Warm accent, focus rings, hover states)
-   - Sunshine: #ffc926 (Active category tabs, warning indicators)
-   - Kiwi: #9abc05 (Fasting / vegetarian accents)
-   - Surface / Card: #ffffff
-   - Border: #e5dcc3
-   Typography:
-   - Font Family: 'Plus Jakarta Sans', sans-serif (Vibe-coded modern geometric stack)
-   - Editorial Accent: 'Playfair Display', serif (Curated culinary headings)
-   - Monospace: 'JetBrains Mono', monospace (Tabular figures, receipt codes)
-   Aside:
-   - Border: none !important
-*/
 
 :root {
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -218,7 +201,6 @@ p {
   text-decoration: underline;
 }
 
-/* Aside - Strictly No Border */
 aside {
   border: none !important;
   background: #ffffff;

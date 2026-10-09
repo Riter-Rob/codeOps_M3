@@ -5,14 +5,19 @@ export async function GET(request, { params }) {
   const { id } = await params;
   const session = await getSession(request);
 
-  if (!session) {
-    return Response.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
   const order = orders.find((o) => String(o.id) === String(id));
 
   if (!order) {
     return Response.json({ error: "Order not found" }, { status: 404 });
+  }
+
+  // Public live status tracking for demo Order #1 (or unassigned demo tickets)
+  if (String(id) === "1" || !order.sessionId) {
+    return Response.json(order);
+  }
+
+  if (!session) {
+    return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   if (order.sessionId && order.sessionId !== session.id && session.role !== "staff") {

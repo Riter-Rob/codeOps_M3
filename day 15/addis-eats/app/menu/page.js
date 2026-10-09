@@ -31,8 +31,7 @@ export default async function Menu({ searchParams }) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem", flexWrap: "wrap", gap: "1rem" }}>
         <div>
           <h1 style={{ margin: 0 }}>Menu</h1>
-          <p style={{ marginTop: "0.25rem", color: "#6b7280" }}>
-            Freshly prepared dishes served with teff injera.
+          <p style={{ marginTop: "0.25rem", color: "#6b7280" }}> Meals
           </p>
         </div>
         <NavigationButton />

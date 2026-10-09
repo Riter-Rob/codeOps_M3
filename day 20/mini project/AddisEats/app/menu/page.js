@@ -32,7 +32,7 @@ export default async function Menu({ searchParams }) {
         <div>
           <h1 style={{ margin: 0 }}>Menu</h1>
           <p style={{ marginTop: "0.25rem", color: "#6b7280" }}>
-            Freshly prepared dishes served with teff injera.
+            Meals
           </p>
         </div>
         <NavigationButton />
