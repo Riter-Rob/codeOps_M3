@@ -10,7 +10,6 @@ export default function MenuLayout({ children }) {
           flexShrink: 0,
           background: "#ffffff",
           border: "none",
-          borderRadius: "6px",
           padding: "1rem",
         }}
       >

@@ -22,6 +22,14 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>
         <Providers>
           <header className="site-header">
@@ -43,7 +51,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
 
           <footer>
-            <p>Addis Eats · Food delivery in Bole, Kazanchis, Megenagna &amp; Piassa · Open daily 11am – 10pm</p>
+            <p>Addis Eats
+                   </p>
           </footer>
         </Providers>
 

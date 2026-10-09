@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@500;600&display=swap');
+
 /* Addis Eats — Authentic Ethiopian Restaurant Design
    Palette:
    - Cream: #f3e8cc (Page background)
@@ -5,16 +7,22 @@
    - Tomato Burst: #d52518 (Primary buttons, dish prices, cart pill)
    - Crisp Carrot: #f96015 (Warm accent, focus rings, hover states)
    - Sunshine: #ffc926 (Active category tabs, warning indicators)
-   - Kiwi: #9abc05 (Fasting / vegetarian badges)
+   - Kiwi: #9abc05 (Fasting / vegetarian accents)
    - Surface / Card: #ffffff
    - Border: #e5dcc3
    Typography:
-   - Font Family: 'Times New Roman', Times, serif
+   - Font Family: 'Plus Jakarta Sans', sans-serif (Vibe-coded modern geometric stack)
+   - Editorial Accent: 'Playfair Display', serif (Curated culinary headings)
+   - Monospace: 'JetBrains Mono', monospace (Tabular figures, receipt codes)
    Aside:
    - Border: none !important
 */
 
 :root {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
   --color-cream: #f3e8cc;
   --color-forest: #18542a;
   --color-tomato: #d52518;
@@ -49,13 +57,16 @@
 }
 
 body {
-  font-family: 'Times New Roman', Times, serif !important;
+  font-family: var(--font-sans);
   color: #1f2937;
   background-color: #f3e8cc; /* CREAM */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   line-height: 1.5;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 button,
@@ -64,7 +75,7 @@ select,
 textarea,
 .form-control,
 .form-input {
-  font-family: 'Times New Roman', Times, serif !important;
+  font-family: inherit;
 }
 
 .tabular {
@@ -91,12 +102,12 @@ textarea,
 }
 
 .brand-title {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.45rem;
+  font-weight: 800;
   color: #18542a; /* FOREST GREEN */
   text-decoration: none;
-  letter-spacing: -0.01em;
-  font-family: 'Times New Roman', Times, serif !important;
+  letter-spacing: -0.03em;
+  font-family: var(--font-sans);
 }
 
 .header-nav {
@@ -156,26 +167,30 @@ footer {
 /* Typography */
 h1 {
   font-size: 1.85rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #18542a; /* FOREST GREEN */
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
   margin-bottom: 0.5rem;
-  font-family: 'Times New Roman', Times, serif !important;
+  font-family: var(--font-sans);
+  line-height: 1.25;
 }
 
 h2 {
   font-size: 1.3rem;
   font-weight: 700;
   color: #18542a; /* FOREST GREEN */
+  letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
-  font-family: 'Times New Roman', Times, serif !important;
+  font-family: var(--font-sans);
+  line-height: 1.3;
 }
 
 h3 {
   font-size: 1.1rem;
   font-weight: 700;
   color: #18542a;
-  font-family: 'Times New Roman', Times, serif !important;
+  letter-spacing: -0.015em;
+  font-family: var(--font-sans);
 }
 
 p {
@@ -207,7 +222,6 @@ p {
 aside {
   border: none !important;
   background: #ffffff;
-  border-radius: 6px;
   box-shadow: none !important;
 }
 
@@ -411,7 +425,7 @@ textarea {
   font-size: 0.9375rem;
   color: #1f2937;
   background: #ffffff;
-  font-family: 'Times New Roman', Times, serif !important;
+  font-family: inherit;
 }
 
 .form-control:focus,

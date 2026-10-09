@@ -15,7 +15,7 @@ One of the clearest signals of generic AI-generated templates is the excessive u
 - Account roles are indicated in understated parenthetical notation `(customer)` or `(staff)`.
 
 ### Key Characteristics
-- **Typography:** Universal `'Times New Roman', Times, serif` across all headings, body text, buttons, and navigation for an authentic, printed-menu editorial aesthetic.
+- **Typography:** Modern vibe-coded typography pairing **Plus Jakarta Sans** (geometric neo-grotesque with tight tracking) for UI/body/forms and **Playfair Display** (editorial display serif) for curated culinary presence, with **JetBrains Mono** / tabular numerals for pricing and order receipts.
 - **Aside Navigation:** Strict `border: none !important;` and `box-shadow: none !important;`. The category sidebar blends naturally into the page hierarchy without artificial box borders.
 - **Clean Elevation:** Restrained borders (`#e5dcc3`) and minimal shadows keep cards flat, honest, and grounded.
 - **Micro-Interactions:** Subtle border color shift (`#f96015`) and soft hover lift on food cards without flashy gimmicks.
@@ -43,16 +43,24 @@ One of the clearest signals of generic AI-generated templates is the excessive u
 
 ## 3. Typography Rules
 
-### Font Family
-- **Universal Stack:** `'Times New Roman', Times, serif !important`
-- Applied across `body`, `h1`, `h2`, `h3`, `button`, `input`, `select`, `textarea`, and `.tabular`.
+### Font Families
+- **Primary Sans (UI & Body):** `'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif`
+- **Editorial Display (Brand & Headings):** `'Playfair Display', Georgia, serif`
+- **Monospace & Receipts:** `'JetBrains Mono', ui-monospace, monospace`
+- **Vibe-Coded Letter Spacing:**
+  - Brand title: `-0.03em`
+  - H1 Headings: `-0.025em`
+  - H2 Headings: `-0.02em`
+  - H3 Headings: `-0.015em`
+  - Body & UI: `-0.011em`
 
 ### Typographic Scale
-| Role | Size | Weight | Line Height | Color |
+| Role | Size | Weight | Tracking | Color |
 |---|---|---|---|---|
-| Brand Title | 1.4rem | 700 | 1.2 | Forest Green (`#18542a`) |
-| Page Heading (H1) | 1.85rem | 700 | 1.2 | Forest Green (`#18542a`) |
-| Section Heading (H2) | 1.3rem | 700 | 1.3 | Forest Green (`#18542a`) |
+| Brand Title | 1.45rem | 800 | -0.03em | Forest Green (`#18542a`) |
+| Page Heading (H1) | 1.85rem | 800 | -0.025em | Forest Green (`#18542a`) |
+| Section Heading (H2) | 1.3rem | 700 | -0.02em | Forest Green (`#18542a`) |
+| Subsection (H3) | 1.1rem | 700 | -0.015em | Forest Green (`#18542a`) |
 | Subheading (H3) | 1.1rem | 700 | 1.3 | Forest Green (`#18542a`) |
 | Dish Name | 1.1rem | 700 | 1.3 | Forest Green (`#18542a`) |
 | Dish Price | 1.0rem | 700 | 1.2 | Tomato Burst (`#d52518`) |
@@ -97,8 +105,8 @@ One of the clearest signals of generic AI-generated templates is the excessive u
 
 ## 5. Technical Implementation Checklist
 - [x] `DESIGN.md` registered in project root.
-- [x] Aside element set to `border: none !important;`.
-- [x] Font set to `'Times New Roman', Times, serif`.
+- [x] Aside element set to `border: none !important;` without artificial borders.
+- [x] Vibe-coded typography applied (`Plus Jakarta Sans` + `Playfair Display`).
 - [x] Color palette strictly mapped to Cream, Forest Green, Tomato Burst, Crisp Carrot, Sunshine, Kiwi.
 - [x] All badges and tag pills removed from the UI.
 - [x] SWR real-time updates and Server Actions preserved.
