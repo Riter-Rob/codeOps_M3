@@ -1,5 +1,4 @@
-import Image from "next/image";
-import Link from "next/link";
+import FoodCard from "@/app/components/FoodCard";
 import { dishes } from "@/app/data/dishes";
 
 export default async function DishList({ category }) {
@@ -15,35 +14,7 @@ export default async function DishList({ category }) {
 
       <div className="menu-grid">
         {filtered.map((dish) => (
-          <Link
-            key={dish.id}
-            href={`/menu/${dish.id}`}
-            className="menu-item"
-          >
-            <Image
-              src={dish.image}
-              alt={dish.name}
-              width={300}
-              height={170}
-              className="menu-item-image"
-              sizes="(max-width: 640px) 100vw, 300px"
-            />
-            <div className="menu-item-info">
-              <div className="menu-item-header">
-                <span className="menu-item-name">{dish.name}</span>
-                <span className="menu-item-price tabular">{dish.price} ETB</span>
-              </div>
-              <div style={{ fontSize: "0.8125rem", color: dish.fasting ? "#18542a" : "#78716c", fontStyle: "italic", marginBottom: "0.35rem" }}>
-                {dish.fasting ? "የጾም · Fasting" : dish.category}
-              </div>
-              <p className="menu-item-ingredients">{dish.ingredients}</p>
-              <div className="menu-item-footer">
-                <span className="menu-order-action">
-                  View Dish &rarr;
-                </span>
-              </div>
-            </div>
-          </Link>
+          <FoodCard key={dish.id} dish={dish} />
         ))}
       </div>
     </div>

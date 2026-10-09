@@ -88,12 +88,17 @@ One of the clearest signals of generic AI-generated templates is the excessive u
 - Inactive: White surface, `#d5cdb5` border, `#18542a` text.
 - Active: Solid Sunshine (`#ffc926`), `#18542a` text, bold weight.
 
-### 4. Menu Item Card
-- Crisp white background (`#ffffff`), 1px `#e5dcc3` border, organic 16px border radius (`--radius-card: 16px`).
-- Real dish photograph (175px height, object-fit cover, subtle 1.035x scale on hover).
-- Header: Dish name in Forest Green + Price in Tomato Burst (`1.05rem`, bold 800).
-- Dietary note: Understated italic text (`የጾም · Fasting` or category name), **strictly no badge pills**.
-- Footer: Teff injera ingredients description + tactile `View Dish →` pill button (`.menu-order-action`).
+### 4. Food Card (Modern Immersive Design)
+- **Geometry & Atmosphere:** High-end dark card body (`#181b20`) with 28px organic corner radius (`border-radius: 28px`), subtle outer border (`rgba(255, 255, 255, 0.08)`), and deep atmospheric drop shadow.
+- **Media & Gradient Overlay:** Full-width dish photography (220px height) smoothly fading into the card body through a vertical gradient overlay (`rgba(24, 27, 32, 0)` &rarr; `#181b20`).
+- **Floating Controls (Top Bar):**
+  - Top-Left: Translucent frosted glass dietary pill badge (`Veg` / category) with `backdrop-filter: blur(12px)`.
+  - Top-Right: Circular frosted glass bookmark button (36px circle) with interactive saved state.
+- **Typography & Content:**
+  - Dish Name: Bold, high-contrast white text (`#ffffff`, 1.35rem, weight 800, tight tracking).
+  - Price: Prominently formatted in warm Sunshine gold (`#ffc926`) or tabular numerals.
+  - Description: Two-line clamped summary in soft muted silver (`rgba(255, 255, 255, 0.72)`).
+- **Primary CTA:** Full-width solid white pill button (`border-radius: 9999px`) labeled **"Add to Cart"** with dark charcoal bold text, subtle lift on hover, and tactile click response.
 
 ### 5. Orders & Kitchen Tickets
 - Ticket card in white (`#ffffff`) with `#e5dcc3` border.
