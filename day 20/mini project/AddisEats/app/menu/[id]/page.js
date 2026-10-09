@@ -61,7 +61,7 @@ export default async function DishPage({ params }) {
   };
 
   return (
-    <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+    <div style={{ maxWidth: "680px", margin: "0 auto" }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -72,63 +72,67 @@ export default async function DishPage({ params }) {
         <span className="separator">/</span>
         <Link href="/menu">Menu</Link>
         <span className="separator">/</span>
-        <span style={{ color: "#706b61" }}>{dish.name}</span>
+        <span style={{ color: "#6b7280" }}>{dish.name}</span>
       </nav>
 
       <div
+        className="food-card"
         style={{
-          background: "#fffefa",
-          border: "1px solid #e7e0d4",
-          borderRadius: "16px",
+          background: "#ffffff",
+          border: "1px solid #e5dcc3",
+          borderRadius: "26px",
           overflow: "hidden",
-          boxShadow: "0 4px 16px rgba(24, 84, 42, 0.05)",
+          boxShadow: "0 8px 24px rgba(24, 84, 42, 0.08)",
+          color: "inherit",
+          cursor: "default"
         }}
       >
-        <Image
-          src={dish.image}
-          alt={dish.name}
-          width={720}
-          height={380}
-          priority
-          sizes="(max-width: 720px) 100vw, 720px"
-          style={{ width: "100%", height: "auto", display: "block" }}
-        />
+        <div style={{ position: "relative", width: "100%", height: "260px", overflow: "hidden", background: "#f8f6f0" }}>
+          <Image
+            src={dish.image}
+            alt={dish.name}
+            fill
+            priority
+            sizes="(max-width: 720px) 100vw, 680px"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
 
-        <div style={{ padding: "1.5rem" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.5rem" }}>
-            <h1 style={{ margin: 0, fontSize: "1.625rem", color: "#18542a" }}>{dish.name}</h1>
-            <div style={{ fontSize: "1.375rem", fontWeight: "700", color: "#d52518" }} className="tabular">
+        <div style={{ padding: "1.35rem 1.5rem" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.35rem" }}>
+            <h1 style={{ margin: 0, fontSize: "1.5rem", fontWeight: 800, color: "#18542a" }}>{dish.name}</h1>
+            <div style={{ fontSize: "1.25rem", fontWeight: 800, color: "#d52518" }} className="tabular">
               {dish.price} ETB
             </div>
           </div>
 
-          <div style={{ marginBottom: "1rem", fontSize: "0.9375rem", color: dish.fasting ? "#18542a" : "#78716c", fontStyle: "italic" }}>
+          <div style={{ marginBottom: "0.85rem", fontSize: "0.875rem", color: dish.fasting ? "#18542a" : "#6b7280", fontStyle: "italic" }}>
             {dish.fasting ? "የጾም · Fasting" : dish.category}
           </div>
 
-          <div style={{ marginBottom: "1rem" }}>
-            <strong style={{ fontSize: "0.875rem", color: "#18542a", display: "block", marginBottom: "0.25rem" }}>
+          <div style={{ marginBottom: "0.85rem" }}>
+            <strong style={{ fontSize: "0.85rem", color: "#18542a", display: "block", marginBottom: "0.2rem" }}>
               Ingredients
             </strong>
-            <p style={{ margin: 0, fontSize: "0.9375rem", color: "#4b5563" }}>
+            <p style={{ margin: 0, fontSize: "0.875rem", color: "#4b5563", lineHeight: 1.5 }}>
               {dish.ingredients}
             </p>
           </div>
 
-          <div style={{ marginBottom: "1.5rem" }}>
-            <strong style={{ fontSize: "0.875rem", color: "#18542a", display: "block", marginBottom: "0.25rem" }}>
+          <div style={{ marginBottom: "1.25rem" }}>
+            <strong style={{ fontSize: "0.85rem", color: "#18542a", display: "block", marginBottom: "0.2rem" }}>
               About this dish
             </strong>
-            <p style={{ margin: 0, fontSize: "0.9375rem", color: "#4b5563", lineHeight: 1.6 }}>
+            <p style={{ margin: 0, fontSize: "0.875rem", color: "#4b5563", lineHeight: 1.55 }}>
               {dish.summary}
             </p>
           </div>
 
-          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", borderTop: "1px solid #e5dcc3", paddingTop: "1.25rem" }}>
-            <Link href="/menu" className="btn btn-secondary">
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", borderTop: "1px solid #f3e8cc", paddingTop: "1.15rem" }}>
+            <Link href="/menu" className="btn btn-secondary" style={{ borderRadius: "9999px" }}>
               &larr; Back to Menu
             </Link>
-            <Link href="/checkout" className="btn btn-primary">
+            <Link href="/checkout" className="btn btn-primary" style={{ borderRadius: "9999px" }}>
               Order This Dish ({dish.price} ETB)
             </Link>
           </div>

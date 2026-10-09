@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 const CATEGORIES = [
   { id: "all", label: "All Dishes" },
   { id: "Traditional", label: "Traditional" },
-  { id: "Fasting", label: "Fasting " },
+  { id: "Fasting", label: "Fasting (የጾም)" },
   { id: "Tibs", label: "Tibs" },
 ];
 
@@ -26,7 +26,7 @@ export default function CategoryBar() {
   }
 
   return (
-    <div className="category-filters" role="tablist" aria-label="Menu categories">
+    <div className="categories-pill-row" role="tablist" aria-label="Menu categories">
       {CATEGORIES.map((cat) => {
         const isActive = activeCategory.toLowerCase() === cat.id.toLowerCase();
         return (
@@ -35,7 +35,7 @@ export default function CategoryBar() {
             type="button"
             role="tab"
             aria-selected={isActive}
-            className={`category-btn ${isActive ? "active" : ""}`}
+            className={`category-item-btn ${isActive ? "active" : ""}`}
             onClick={() => handleSelect(cat.id)}
           >
             {cat.label}

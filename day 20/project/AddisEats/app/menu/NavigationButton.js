@@ -10,7 +10,12 @@ export default function NavigationButton() {
   }
 
   return (
-    <button type="button" onClick={goToCart} className="btn btn-secondary">
+    <button
+      type="button"
+      onClick={goToCart}
+      className="btn btn-secondary btn-sm"
+      style={{ borderRadius: "9999px", fontWeight: 700, padding: "0.45rem 1rem" }}
+    >
       View Cart &rarr;
     </button>
   );

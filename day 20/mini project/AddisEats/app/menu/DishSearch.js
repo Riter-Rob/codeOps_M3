@@ -26,7 +26,7 @@ export default function DishSearch() {
     ? `/api/dishes?search=${encodeURIComponent(debouncedTerm.trim())}&page=${page}`
     : null;
 
-  const { data, isValidating } = useSWR(key, fetcher, {
+  const { data } = useSWR(key, fetcher, {
     keepPreviousData: true
   });
 
@@ -43,6 +43,10 @@ export default function DishSearch() {
     router.push(`?${params.toString()}`);
   };
 
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+  };
+
   const setPage = (newPage) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("page", String(newPage));
@@ -50,18 +54,21 @@ export default function DishSearch() {
   };
 
   return (
-    <div style={{ margin: "1rem 0 1.5rem", maxWidth: "480px" }}>
-      <div style={{ position: "relative" }}>
+    <div className="search-widget-container">
+      <form onSubmit={handleSearchSubmit} className="search-pill-bar">
         <input
           id="dish-search-input"
           type="text"
           value={term}
           onChange={handleSearchChange}
-          placeholder="Search by name, stew type, or ingredients..."
-          className="form-input"
+          placeholder="Search stews, tibs, shiro..."
+          className="search-pill-input"
           aria-label="Search menu"
         />
-      </div>
+        <button type="submit" className="search-pill-btn">
+          Search
+        </button>
+      </form>
 
       {debouncedTerm.trim() && (
         <div style={{ marginTop: "0.75rem" }}>
@@ -86,14 +93,14 @@ export default function DishSearch() {
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    padding: "0.6rem 0.85rem",
+                    padding: "0.65rem 0.95rem",
                     background: "#ffffff",
                     border: "1px solid #e5dcc3",
-                    borderRadius: "12px",
+                    borderRadius: "16px",
                     textDecoration: "none",
                     color: "inherit",
                     fontSize: "0.875rem",
-                    boxShadow: "0 1px 4px rgba(24, 84, 42, 0.03)"
+                    boxShadow: "0 2px 6px rgba(24, 84, 42, 0.04)"
                   }}
                 >
                   <div>
@@ -102,7 +109,7 @@ export default function DishSearch() {
                       ({dish.category})
                     </span>
                   </div>
-                  <span style={{ color: "#d52518", fontWeight: "600" }} className="tabular">
+                  <span style={{ color: "#d52518", fontWeight: "700" }} className="tabular">
                     {dish.price} ETB
                   </span>
                 </Link>

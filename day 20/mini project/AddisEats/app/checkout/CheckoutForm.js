@@ -34,7 +34,7 @@ export default function CheckoutForm() {
           Thank you, <strong>{state.order.name}</strong>. Your order has been sent to the kitchen.
         </p>
 
-        <div style={{ background: "#fdfbf7", border: "1px solid #e5dcc3", borderRadius: "14px", padding: "0.85rem 1.15rem", marginBottom: "1.25rem", fontSize: "0.875rem" }}>
+        <div style={{ background: "#fdfbf7", border: "1px solid #e5dcc3", borderRadius: "18px", padding: "0.85rem 1.15rem", marginBottom: "1.25rem", fontSize: "0.875rem" }}>
           <p style={{ margin: "0.25rem 0" }}><strong>Delivery Area:</strong> {state.order.area}</p>
           <p style={{ margin: "0.25rem 0" }}><strong>Phone:</strong> {state.order.phone}</p>
           <p style={{ margin: "0.25rem 0" }}><strong>Status:</strong> <span style={{ fontWeight: 600, color: "#b45309", textTransform: "capitalize" }}>{state.order.status}</span></p>
@@ -52,7 +52,7 @@ export default function CheckoutForm() {
               type="button"
               onClick={() => handleCancel(state.order.id)}
               className="btn btn-secondary btn-sm"
-              style={{ color: "#d52518" }}
+              style={{ color: "#d52518", borderRadius: "9999px" }}
             >
               Cancel Order
             </button>
@@ -61,6 +61,7 @@ export default function CheckoutForm() {
           <Link
             href={`/order-status?id=${state.order.id}`}
             className="btn btn-primary btn-sm"
+            style={{ borderRadius: "9999px" }}
           >
             Track in Real Time &rarr;
           </Link>
@@ -138,7 +139,7 @@ export default function CheckoutForm() {
         type="submit"
         disabled={isPending}
         className="btn btn-primary"
-        style={{ width: "100%", marginTop: "0.5rem" }}
+        style={{ width: "100%", marginTop: "0.5rem", borderRadius: "9999px" }}
       >
         {isPending ? "Confirming..." : "Place Delivery Order"}
       </button>

@@ -46,60 +46,51 @@ export default async function OrdersPage() {
 
       <h2>Past Orders</h2>
       {userOrders.length === 0 ? (
-        <div style={{ background: "#ffffff", border: "1px solid #e5dcc3", borderRadius: "16px", padding: "2.25rem", textAlign: "center", boxShadow: "0 2px 8px rgba(24, 84, 42, 0.04)" }}>
+        <div style={{ background: "#ffffff", border: "1px solid #e5dcc3", borderRadius: "26px", padding: "2.25rem", textAlign: "center", boxShadow: "0 2px 8px rgba(24, 84, 42, 0.04)" }}>
           <p style={{ margin: "0 0 1rem", color: "#6b7280" }}>
             No orders placed yet.
           </p>
-          <Link href="/menu" className="btn btn-primary btn-sm">
+          <Link href="/menu" className="btn btn-primary btn-sm" style={{ borderRadius: "9999px" }}>
             Browse Menu
           </Link>
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: "0.6rem", maxWidth: "600px" }}>
-          {userOrders.map((order) => {
-            const statusClass =
-              order.status === "cancelled"
-                ? "status-cancelled"
-                : order.status === "delivered"
-                ? "status-delivered"
-                : "status-preparing";
-
-            return (
-              <Link
-                key={order.id}
-                href={`/orders/${order.id}`}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  padding: "0.85rem 1.15rem",
-                  background: "#ffffff",
-                  border: "1px solid #e5dcc3",
-                  borderRadius: "14px",
-                  textDecoration: "none",
-                  color: "inherit",
-                  boxShadow: "0 1px 4px rgba(24, 84, 42, 0.03)"
-                }}
-              >
-                <div>
-                  <strong style={{ color: "#18542a", fontSize: "0.9375rem" }}>
-                    Ticket #{order.id}
-                  </strong>
-                  <span style={{ marginLeft: "0.75rem", color: "#6b7280", fontSize: "0.8125rem" }}>
-                    {order.area} · {order.name}
-                  </span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
-                  <span style={{ fontWeight: 600, fontSize: "0.8125rem", color: order.status === "cancelled" ? "#d52518" : order.status === "delivered" ? "#18542a" : "#b45309", textTransform: "capitalize" }}>
-                    {order.status}
-                  </span>
-                  <span style={{ color: "#d52518", fontSize: "0.8125rem", fontWeight: 500 }}>
-                    Details &rarr;
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
+          {userOrders.map((order) => (
+            <Link
+              key={order.id}
+              href={`/orders/${order.id}`}
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: "0.85rem 1.15rem",
+                background: "#ffffff",
+                border: "1px solid #e5dcc3",
+                borderRadius: "18px",
+                textDecoration: "none",
+                color: "inherit",
+                boxShadow: "0 1px 4px rgba(24, 84, 42, 0.03)"
+              }}
+            >
+              <div>
+                <strong style={{ color: "#18542a", fontSize: "0.9375rem" }}>
+                  Ticket #{order.id}
+                </strong>
+                <span style={{ marginLeft: "0.75rem", color: "#6b7280", fontSize: "0.8125rem" }}>
+                  {order.area} · {order.name}
+                </span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+                <span style={{ fontWeight: 600, fontSize: "0.8125rem", color: order.status === "cancelled" ? "#d52518" : order.status === "delivered" ? "#18542a" : "#b45309", textTransform: "capitalize" }}>
+                  {order.status}
+                </span>
+                <span style={{ color: "#d52518", fontSize: "0.8125rem", fontWeight: 500 }}>
+                  Details &rarr;
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       )}
     </div>

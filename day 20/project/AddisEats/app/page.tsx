@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { getSession } from "@/lib/auth";
 import { signOut } from "./actions/auth";
@@ -26,13 +25,12 @@ export default async function Home() {
         </p>
       </div>
 
-      {/* Account bar */}
       <div
         style={{
-          background: "#fffefa",
-          border: "1px solid #e7e0d4",
-          borderRadius: "16px",
-          padding: "0.85rem 1.15rem",
+          background: "#ffffff",
+          border: "1px solid #e5dcc3",
+          borderRadius: "26px",
+          padding: "0.95rem 1.25rem",
           marginBottom: "1.5rem",
           display: "flex",
           alignItems: "center",
@@ -69,21 +67,19 @@ export default async function Home() {
         )}
       </div>
 
-      {/* Quick Category Filters */}
       <div style={{ marginBottom: "1.5rem" }}>
-        <div className="category-filters">
-          <Link href="/menu" className="category-btn active">All Dishes</Link>
-          <Link href="/menu?category=Traditional" className="category-btn">Traditional</Link>
-          <Link href="/menu?category=Fasting" className="category-btn">Fasting</Link>
-          <Link href="/menu?category=Tibs" className="category-btn">Tibs</Link>
+        <div className="categories-pill-row">
+          <Link href="/menu" className="category-item-btn active">All Dishes</Link>
+          <Link href="/menu?category=Traditional" className="category-item-btn">Traditional</Link>
+          <Link href="/menu?category=Fasting" className="category-item-btn">Fasting</Link>
+          <Link href="/menu?category=Tibs" className="category-item-btn">Tibs</Link>
         </div>
       </div>
 
-      {/* Popular Dishes */}
       <div style={{ marginBottom: "2rem" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.75rem" }}>
           <h2>Popular in Addis</h2>
-          <Link href="/menu" style={{ fontSize: "0.9375rem", color: "#ad503c", textDecoration: "none", fontWeight: 700 }}>
+          <Link href="/menu" style={{ fontSize: "0.9375rem", color: "#d52518", textDecoration: "none", fontWeight: 700 }}>
             Full menu &rarr;
           </Link>
         </div>
@@ -95,12 +91,11 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* Practical Delivery Notice */}
       <div
         style={{
-          background: "#fffefa",
-          border: "1px solid #e7e0d4",
-          borderRadius: "16px",
+          background: "#ffffff",
+          border: "1px solid #e5dcc3",
+          borderRadius: "26px",
           padding: "1.1rem 1.35rem",
           display: "flex",
           justifyContent: "space-between",
@@ -111,7 +106,7 @@ export default async function Home() {
         }}
       >
         <div>
-          <strong style={{ fontSize: "1rem", color: "#365746", display: "block" }}>
+          <strong style={{ fontSize: "1rem", color: "#18542a", display: "block" }}>
             Delivery Districts
           </strong>
           <span style={{ fontSize: "0.875rem", color: "#706b61" }}>
