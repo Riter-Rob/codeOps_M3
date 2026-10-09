@@ -40,7 +40,7 @@ export default async function DishList({ category }) {
               </div>
               <p className="menu-item-ingredients">{dish.ingredients}</p>
               <div className="menu-item-footer">
-                <span style={{ fontSize: "0.8125rem", color: "#b91c1c", fontWeight: 500 }}>
+                <span style={{ fontSize: "0.875rem", color: "#d52518", fontWeight: 700 }}>
                   Order &rarr;
                 </span>
               </div>

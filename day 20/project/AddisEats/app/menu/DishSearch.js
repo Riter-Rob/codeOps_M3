@@ -88,7 +88,7 @@ export default function DishSearch() {
                     alignItems: "center",
                     padding: "0.5rem 0.75rem",
                     background: "#ffffff",
-                    border: "1px solid #e5e7eb",
+                    border: "1px solid #e5dcc3",
                     borderRadius: "6px",
                     textDecoration: "none",
                     color: "inherit",
@@ -96,12 +96,12 @@ export default function DishSearch() {
                   }}
                 >
                   <div>
-                    <strong style={{ color: "#111827" }}>{dish.name}</strong>
+                    <strong style={{ color: "#18542a" }}>{dish.name}</strong>
                     <span style={{ marginLeft: "0.5rem", fontSize: "0.75rem", color: "#6b7280" }}>
                       ({dish.category})
                     </span>
                   </div>
-                  <span style={{ color: "#b91c1c", fontWeight: "600" }} className="tabular">
+                  <span style={{ color: "#d52518", fontWeight: "600" }} className="tabular">
                     {dish.price} ETB
                   </span>
                 </Link>

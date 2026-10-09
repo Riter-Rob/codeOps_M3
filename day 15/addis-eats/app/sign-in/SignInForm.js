@@ -23,8 +23,8 @@ export default function SignInForm({ nextUrl }) {
       </p>
 
       {nextUrl && (
-        <div style={{ padding: "0.4rem 0.65rem", backgroundColor: "#f9fafb", borderRadius: "6px", marginBottom: "1rem", fontSize: "0.8125rem", border: "1px solid #e5e7eb" }}>
-          Redirect destination: <code style={{ color: "#b91c1c", fontWeight: 600 }}>{nextUrl}</code>
+        <div style={{ padding: "0.4rem 0.65rem", backgroundColor: "#fcf9f0", borderRadius: "6px", marginBottom: "1rem", fontSize: "0.8125rem", border: "1px solid #e5dcc3" }}>
+          Redirect destination: <code style={{ color: "#d52518", fontWeight: 600 }}>{nextUrl}</code>
         </div>
       )}
 
@@ -74,8 +74,8 @@ export default function SignInForm({ nextUrl }) {
         </button>
       </form>
 
-      <div style={{ marginTop: "1.5rem", borderTop: "1px solid #e5e7eb", paddingTop: "1rem" }}>
-        <p style={{ fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.03em", color: "#9ca3af", marginBottom: "0.5rem" }}>
+      <div style={{ marginTop: "1.5rem", borderTop: "1px solid #f3e8cc", paddingTop: "1rem" }}>
+        <p style={{ fontSize: "0.75rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.03em", color: "#78716c", marginBottom: "0.5rem" }}>
           Quick Test Accounts:
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>

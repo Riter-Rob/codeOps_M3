@@ -34,7 +34,7 @@ export default function CheckoutForm() {
           Thank you, <strong>{state.order.name}</strong>. Your order has been sent to the kitchen.
         </p>
 
-        <div style={{ background: "#f9fafb", border: "1px solid #e5e7eb", borderRadius: "6px", padding: "0.75rem 1rem", marginBottom: "1.25rem", fontSize: "0.875rem" }}>
+        <div style={{ background: "#fdfbf7", border: "1px solid #e5dcc3", borderRadius: "6px", padding: "0.75rem 1rem", marginBottom: "1.25rem", fontSize: "0.875rem" }}>
           <p style={{ margin: "0.25rem 0" }}><strong>Delivery Area:</strong> {state.order.area}</p>
           <p style={{ margin: "0.25rem 0" }}><strong>Phone:</strong> {state.order.phone}</p>
           <p style={{ margin: "0.25rem 0" }}><strong>Status:</strong> <span className="status-badge status-preparing">{state.order.status}</span></p>
@@ -52,7 +52,7 @@ export default function CheckoutForm() {
               type="button"
               onClick={() => handleCancel(state.order.id)}
               className="btn btn-secondary btn-sm"
-              style={{ color: "#b91c1c" }}
+              style={{ color: "#d52518" }}
             >
               Cancel Order
             </button>

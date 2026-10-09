@@ -72,14 +72,14 @@ export default async function DishPage({ params }) {
         <span className="separator">/</span>
         <Link href="/menu">Menu</Link>
         <span className="separator">/</span>
-        <span style={{ color: "#6b7280" }}>{dish.name}</span>
+        <span style={{ color: "#706b61" }}>{dish.name}</span>
       </nav>
 
       <div
         style={{
-          background: "#ffffff",
-          border: "1px solid #e5e7eb",
-          borderRadius: "6px",
+          background: "#fffefa",
+          border: "1px solid #e7e0d4",
+          borderRadius: "10px",
           overflow: "hidden",
         }}
       >
@@ -95,8 +95,8 @@ export default async function DishPage({ params }) {
 
         <div style={{ padding: "1.5rem" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", flexWrap: "wrap", gap: "0.5rem", marginBottom: "0.5rem" }}>
-            <h1 style={{ margin: 0, fontSize: "1.5rem" }}>{dish.name}</h1>
-            <div style={{ fontSize: "1.375rem", fontWeight: "700", color: "#b91c1c" }} className="tabular">
+            <h1 style={{ margin: 0, fontSize: "1.625rem", color: "#365746" }}>{dish.name}</h1>
+            <div style={{ fontSize: "1.375rem", fontWeight: "700", color: "#ad503c" }} className="tabular">
               {dish.price} ETB
             </div>
           </div>
@@ -108,16 +108,16 @@ export default async function DishPage({ params }) {
           </div>
 
           <div style={{ marginBottom: "1rem" }}>
-            <strong style={{ fontSize: "0.8125rem", color: "#374151", display: "block", marginBottom: "0.25rem" }}>
+            <strong style={{ fontSize: "0.875rem", color: "#18542a", display: "block", marginBottom: "0.25rem" }}>
               Ingredients
             </strong>
-            <p style={{ margin: 0, fontSize: "0.875rem", color: "#6b7280" }}>
+            <p style={{ margin: 0, fontSize: "0.9375rem", color: "#4b5563" }}>
               {dish.ingredients}
             </p>
           </div>
 
           <div style={{ marginBottom: "1.5rem" }}>
-            <strong style={{ fontSize: "0.8125rem", color: "#374151", display: "block", marginBottom: "0.25rem" }}>
+            <strong style={{ fontSize: "0.875rem", color: "#18542a", display: "block", marginBottom: "0.25rem" }}>
               About this dish
             </strong>
             <p style={{ margin: 0, fontSize: "0.9375rem", color: "#4b5563", lineHeight: 1.6 }}>
@@ -125,7 +125,7 @@ export default async function DishPage({ params }) {
             </p>
           </div>
 
-          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", borderTop: "1px solid #e5e7eb", paddingTop: "1.25rem" }}>
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", borderTop: "1px solid #e5dcc3", paddingTop: "1.25rem" }}>
             <Link href="/menu" className="btn btn-secondary">
               &larr; Back to Menu
             </Link>

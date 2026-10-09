@@ -21,7 +21,7 @@ export default async function KitchenPage() {
   if (session.role !== "staff") {
     return (
       <div style={{ maxWidth: "480px", margin: "2rem auto" }}>
-        <div style={{ background: "#ffffff", border: "1px solid #e5e7eb", borderRadius: "6px", padding: "1.75rem" }}>
+        <div style={{ background: "#ffffff", border: "1px solid #e5dcc3", borderRadius: "6px", padding: "1.75rem" }}>
           <span className="status-badge status-cancelled" style={{ marginBottom: "0.5rem" }}>
             Access Restricted
           </span>
@@ -53,13 +53,13 @@ export default async function KitchenPage() {
           </p>
         </div>
         <div style={{ fontSize: "0.8125rem", color: "#6b7280" }}>
-          Staff: <strong style={{ color: "#111827" }}>{session.name}</strong>
+          Staff: <strong style={{ color: "#18542a" }}>{session.name}</strong>
         </div>
       </div>
 
       <h2>Incoming Tickets</h2>
       {orders.length === 0 ? (
-        <div style={{ background: "#ffffff", border: "1px solid #e5e7eb", borderRadius: "6px", padding: "2rem", textAlign: "center" }}>
+        <div style={{ background: "#ffffff", border: "1px solid #e5dcc3", borderRadius: "6px", padding: "2rem", textAlign: "center" }}>
           <p style={{ margin: 0, color: "#6b7280" }}>No pending orders in the kitchen queue.</p>
         </div>
       ) : (
@@ -79,7 +79,7 @@ export default async function KitchenPage() {
               >
                 <div className="order-ticket-header">
                   <div>
-                    <strong style={{ fontSize: "0.9375rem", color: "#111827" }}>
+                    <strong style={{ fontSize: "0.9375rem", color: "#18542a" }}>
                       Ticket #{order.id}
                     </strong>
                     <span style={{ marginLeft: "0.75rem", fontSize: "0.875rem", color: "#4b5563" }}>
@@ -97,7 +97,7 @@ export default async function KitchenPage() {
                 </div>
 
                 {order.notes && (
-                  <div style={{ background: "#f9fafb", padding: "0.4rem 0.6rem", borderRadius: "4px", fontSize: "0.8125rem", color: "#4b5563", marginTop: "0.35rem" }}>
+                  <div style={{ background: "#fdfbf7", padding: "0.4rem 0.6rem", borderRadius: "4px", fontSize: "0.8125rem", color: "#4b5563", marginTop: "0.35rem" }}>
                     <strong>Note:</strong> {order.notes}
                   </div>
                 )}

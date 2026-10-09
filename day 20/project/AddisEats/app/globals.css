@@ -1,3 +1,44 @@
+/* Addis Eats — Authentic Ethiopian Restaurant Design
+   Palette:
+   - Cream: #f3e8cc (Page background)
+   - Forest Green: #18542a (Brand title, headings, primary accents)
+   - Tomato Burst: #d52518 (Primary buttons, dish prices, cart pill)
+   - Crisp Carrot: #f96015 (Warm accent, focus rings, hover states)
+   - Sunshine: #ffc926 (Active category tabs, warning indicators)
+   - Kiwi: #9abc05 (Fasting / vegetarian badges)
+   - Surface / Card: #ffffff
+   - Border: #e5dcc3
+   Typography:
+   - Font Family: 'Times New Roman', Times, serif
+   Aside:
+   - Border: none !important
+*/
+
+:root {
+  --color-cream: #f3e8cc;
+  --color-forest: #18542a;
+  --color-tomato: #d52518;
+  --color-carrot: #f96015;
+  --color-sunshine: #ffc926;
+  --color-kiwi: #9abc05;
+  --color-card-bg: #ffffff;
+  --color-border: #e5dcc3;
+  --color-text-main: #1f2937;
+  --color-text-muted: #6b7280;
+
+  /* Aliases for backwards compatibility */
+  --paper: #f3e8cc;
+  --surface: #ffffff;
+  --line: #e5dcc3;
+  --ink: #1f2937;
+  --muted: #6b7280;
+  --forest: #18542a;
+  --rust: #d52518;
+  --rust-dark: #b91c1c;
+  --ochre: #ffc926;
+  --sage: #f4f8e8;
+  --sage-line: #9abc05;
+}
 
 *,
 *::before,
@@ -8,20 +49,32 @@
 }
 
 body {
-  font-family:  Courier, monospace, 'Times New Roman', Times, serif, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Times New Roman', Times, serif !important;
   color: #1f2937;
-  background-color: #dce0e4;
+  background-color: #f3e8cc; /* CREAM */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   line-height: 1.5;
 }
+
+button,
+input,
+select,
+textarea,
+.form-control,
+.form-input {
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
 .tabular {
   font-variant-numeric: tabular-nums;
 }
+
+/* Header & Navigation */
 .site-header {
   background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 2px solid #e5dcc3;
   position: sticky;
   top: 0;
   z-index: 40;
@@ -38,48 +91,51 @@ body {
 }
 
 .brand-title {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: #0a4d17;
+  color: #18542a; /* FOREST GREEN */
   text-decoration: none;
   letter-spacing: -0.01em;
+  font-family: 'Times New Roman', Times, serif !important;
 }
 
 .header-nav {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.35rem;
 }
 
 .header-nav a {
-  color: #4b5563;
+  color: #18542a;
   text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 500;
-  padding: 0.4rem 0.65rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
   border-radius: 6px;
+  transition: all 0.15s ease;
 }
 
 .header-nav a:hover {
-  color: #111827;
-  background-color: #f3f4f6;
+  color: #d52518;
+  background-color: #fcf9f0;
 }
 
 .header-nav a.active-link {
-  color: #b91c1c;
+  color: #d52518;
   background-color: #fef2f2;
 }
 
 .cart-pill {
-  background-color: #b91c1c;
+  background-color: #d52518 !important; /* TOMATO BURST */
   color: #ffffff !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
 }
 
 .cart-pill:hover {
-  background-color: #991b1b !important;
+  background-color: #b91c1c !important;
 }
 
+/* Main Layout */
 main {
   flex: 1;
   max-width: 1040px;
@@ -89,28 +145,37 @@ main {
 }
 
 footer {
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #e5dcc3;
   background: #ffffff;
   padding: 1.5rem 1rem;
   text-align: center;
-  font-size: 0.8125rem;
-  color: #6b7280;
+  font-size: 0.875rem;
+  color: #18542a;
 }
 
-
+/* Typography */
 h1 {
-  font-size: 1.625rem;
+  font-size: 1.85rem;
   font-weight: 700;
-  color: #111827;
+  color: #18542a; /* FOREST GREEN */
   letter-spacing: -0.01em;
   margin-bottom: 0.5rem;
+  font-family: 'Times New Roman', Times, serif !important;
 }
 
 h2 {
-  font-size: 1.1875rem;
-  font-weight: 600;
-  color: #111827;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #18542a; /* FOREST GREEN */
   margin-bottom: 0.5rem;
+  font-family: 'Times New Roman', Times, serif !important;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #18542a;
+  font-family: 'Times New Roman', Times, serif !important;
 }
 
 p {
@@ -118,25 +183,35 @@ p {
   font-size: 0.9375rem;
 }
 
+/* Breadcrumbs */
 .breadcrumbs {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   margin-bottom: 1rem;
   color: #6b7280;
 }
 
 .breadcrumbs a {
-  color: #4b5563;
+  color: #18542a;
   text-decoration: none;
 }
 
 .breadcrumbs a:hover {
-  color: #b91c1c;
+  color: #d52518;
   text-decoration: underline;
 }
 
+/* Aside - Strictly No Border */
+aside {
+  border: none !important;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: none !important;
+}
+
+/* Food Menu Grid */
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -146,25 +221,26 @@ p {
 
 .menu-item {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5dcc3;
   border-radius: 6px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .menu-item:hover {
-  border-color: #9ca3af;
+  border-color: #f96015; /* CRISP CARROT */
+  box-shadow: 0 4px 12px rgba(24, 84, 42, 0.08);
 }
 
 .menu-item-image {
   width: 100%;
-  height: 170px;
+  height: 175px;
   object-fit: cover;
-  background: #f3f4f6;
+  background: #fdfbf7;
   display: block;
 }
 
@@ -183,19 +259,19 @@ p {
 }
 
 .menu-item-name {
-  font-weight: 600;
-  font-size: 1rem;
-  color: #111827;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #18542a; /* FOREST GREEN */
 }
 
 .menu-item-price {
   font-weight: 700;
-  font-size: 0.9375rem;
-  color: #b91c1c;
+  font-size: 1rem;
+  color: #d52518; /* TOMATO BURST */
 }
 
 .menu-item-ingredients {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: #6b7280;
   margin-bottom: 0.75rem;
   line-height: 1.4;
@@ -204,30 +280,31 @@ p {
 .menu-item-footer {
   margin-top: auto;
   padding-top: 0.5rem;
-  border-top: 1px solid #f3f4f6;
+  border-top: 1px solid #f3e8cc;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* Badges & Tags */
 .tag {
   display: inline-block;
   font-size: 0.75rem;
-  padding: 2px 6px;
+  padding: 2px 8px;
   border-radius: 4px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .tag-fasting {
-  background-color: #ecfdf5;
-  color: #047857;
-  border: 1px solid #a7f3d0;
+  background-color: #f4f8e8;
+  color: #18542a;
+  border: 1px solid #9abc05; /* KIWI */
 }
 
 .tag-meat {
-  background-color: #fef2f2;
-  color: #b91c1c;
-  border: 1px solid #fecaca;
+  background-color: #fdf2f0;
+  color: #d52518;
+  border: 1px solid #f96015; /* CRISP CARROT */
 }
 
 /* Category Filter Buttons */
@@ -240,34 +317,37 @@ p {
 
 .category-btn {
   background: #ffffff;
-  border: 1px solid #d1d5db;
-  color: #374151;
+  border: 1px solid #d5cdb5;
+  color: #18542a;
   padding: 0.4rem 0.85rem;
   border-radius: 6px;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.9375rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.15s ease;
+  text-decoration: none;
 }
 
 .category-btn:hover {
-  background: #f9fafb;
-  border-color: #9ca3af;
+  background: #fdfbf7;
+  border-color: #f96015; /* CRISP CARROT */
 }
 
 .category-btn.active {
-  background: #111827;
-  color: #ffffff;
-  border-color: #111827;
+  background: #ffc926 !important; /* SUNSHINE */
+  color: #18542a !important; /* FOREST GREEN */
+  border-color: #ffc926 !important;
+  font-weight: 700 !important;
 }
 
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.9375rem;
+  font-weight: 600;
   border-radius: 6px;
   border: 1px solid transparent;
   cursor: pointer;
@@ -276,41 +356,43 @@ p {
 }
 
 .btn-primary {
-  background-color: #b91c1c;
+  background-color: #d52518; /* TOMATO BURST */
   color: #ffffff;
 }
 
 .btn-primary:hover {
-  background-color: #991b1b;
+  background-color: #b91c1c;
 }
 
 .btn-secondary {
   background-color: #ffffff;
-  border: 1px solid #d1d5db;
-  color: #374151;
+  border: 1px solid #d5cdb5;
+  color: #18542a;
 }
 
 .btn-secondary:hover {
-  background-color: #f9fafb;
+  background-color: #fdfbf7;
+  border-color: #18542a;
 }
 
 .btn-danger {
-  background-color: #ef4444;
+  background-color: #d52518;
   color: #ffffff;
 }
 
 .btn-danger:hover {
-  background-color: #dc2626;
+  background-color: #b91c1c;
 }
 
 .btn-sm {
-  padding: 0.25rem 0.5rem;
-  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.8125rem;
 }
 
+/* Forms & Inputs */
 .form-box {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5dcc3;
   border-radius: 6px;
   padding: 1.5rem;
   max-width: 480px;
@@ -323,12 +405,13 @@ p {
 .form-field label {
   display: block;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 0.35rem;
-  color: #374151;
+  color: #18542a;
 }
 
 .form-control,
+.form-input,
 input[type="text"],
 input[type="tel"],
 input[type="email"],
@@ -336,33 +419,37 @@ select,
 textarea {
   width: 100%;
   padding: 0.5rem 0.75rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid #d5cdb5;
   border-radius: 6px;
-  font-size: 0.875rem;
-  color: #111827;
+  font-size: 0.9375rem;
+  color: #1f2937;
   background: #ffffff;
+  font-family: 'Times New Roman', Times, serif !important;
 }
 
 .form-control:focus,
+.form-input:focus,
 input[type="text"]:focus,
 input[type="tel"]:focus,
 input[type="email"]:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #b91c1c;
-  box-shadow: 0 0 0 1px #b91c1c;
+  border-color: #f96015; /* CRISP CARROT */
+  box-shadow: 0 0 0 1px #f96015;
 }
 
-.field-error {
-  color: #b91c1c;
-  font-size: 0.75rem;
+.field-error,
+.form-error {
+  color: #d52518;
+  font-size: 0.8125rem;
   margin-top: 0.25rem;
 }
 
+/* Orders List & Receipts */
 .order-ticket {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5dcc3;
   border-radius: 6px;
   padding: 1rem 1.25rem;
   margin-bottom: 0.75rem;
@@ -377,7 +464,7 @@ textarea:focus {
 
 .status-badge {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 2px 8px;
   border-radius: 4px;
   text-transform: capitalize;
@@ -386,28 +473,31 @@ textarea:focus {
 .status-preparing {
   background-color: #fef3c7;
   color: #92400e;
+  border: 1px solid #ffc926; /* SUNSHINE */
 }
 
 .status-delivered {
-  background-color: #ecfdf5;
-  color: #065f46;
+  background-color: #f4f8e8;
+  color: #18542a;
+  border: 1px solid #9abc05; /* KIWI */
 }
 
 .status-cancelled {
   background-color: #fee2e2;
-  color: #991b1b;
+  color: #d52518;
+  border: none;
 }
 
 .card {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5dcc3;
   border-radius: 6px;
   padding: 1.25rem;
 }
 
 .form-card {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5dcc3;
   border-radius: 6px;
   padding: 1.5rem;
   max-width: 520px;
@@ -420,57 +510,72 @@ textarea:focus {
 .form-group label {
   display: block;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 0.35rem;
-  color: #374151;
-}
-
-.form-input {
-  width: 100%;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  font-size: 0.875rem;
-  color: #111827;
-  background: #ffffff;
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: #b91c1c;
-  box-shadow: 0 0 0 1px #b91c1c;
-}
-
-.form-error {
-  color: #b91c1c;
-  font-size: 0.8125rem;
-  margin-top: 0.25rem;
+  color: #18542a;
 }
 
 .badge {
   display: inline-block;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 2px 8px;
   border-radius: 4px;
   text-transform: capitalize;
 }
 
 .badge-success {
-  background-color: #ecfdf5;
-  color: #065f46;
-  border: 1px solid #a7f3d0;
+  background-color: #f4f8e8;
+  color: #18542a;
+  border: 1px solid #9abc05;
 }
 
 .badge-warning {
-  background-color: #fef3c7;
+  background-color: #fffbeb;
   color: #92400e;
-  border: 1px solid #fde68a;
+  border: 1px solid #ffc926;
 }
 
 .badge-danger {
   background-color: #fee2e2;
-  color: #991b1b;
+  color: #d52518;
   border: none;
+}
+
+:focus-visible {
+  outline: 2px solid #f96015;
+  outline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .header-container {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .header-nav {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 0.15rem;
+  }
+
+  .header-nav a {
+    padding-inline: 0.55rem;
+  }
+
+  main {
+    padding: 1.5rem 1rem 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 

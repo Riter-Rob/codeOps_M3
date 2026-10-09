@@ -7,7 +7,7 @@ export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://addis-eats-six.vercel.app"),
   title: {
     default: "Addis Eats Ethiopian Food Delivery",
-    template: "%s | Addis Eats",
+    template: "%s  Addis Eats",
   },
   description: "Order Ethiopian food in Addis Ababa. Fresh Doro Wat, Tibs, and Beyainatu.",
   openGraph: {

@@ -32,7 +32,7 @@ export default function OrderStatus({ id = "1", fallbackData }) {
         <p style={{ margin: 0 }}><strong>Delivery Area:</strong> {order.area}</p>
       </div>
 
-      <div style={{ marginTop: "0.5rem", paddingTop: "0.5rem", borderTop: "1px solid #f3f4f6", fontSize: "0.75rem", color: "#9ca3af" }}>
+      <div style={{ marginTop: "0.5rem", paddingTop: "0.5rem", borderTop: "1px solid #f3e8cc", fontSize: "0.75rem", color: "#78716c" }}>
         Live status · updates every 5s
       </div>
     </div>

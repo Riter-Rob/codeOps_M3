@@ -8,7 +8,7 @@ export default function Counter() {
   return (
     <div>
       <p style={{ fontSize: "0.8125rem", color: "#6b7280", marginBottom: "0.4rem" }}>
-        Order count: <strong style={{ color: "#b91c1c" }} className="tabular">{count}</strong>
+        Order count: <strong style={{ color: "#d52518" }} className="tabular">{count}</strong>
       </p>
       <div style={{ display: "flex", gap: "0.35rem" }}>
         <button

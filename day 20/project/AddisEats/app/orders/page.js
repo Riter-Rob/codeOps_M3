@@ -46,7 +46,7 @@ export default async function OrdersPage() {
 
       <h2>Past Orders</h2>
       {userOrders.length === 0 ? (
-        <div style={{ background: "#ffffff", border: "1px solid #e5e7eb", borderRadius: "6px", padding: "2rem", textAlign: "center" }}>
+        <div style={{ background: "#ffffff", border: "1px solid #e5dcc3", borderRadius: "6px", padding: "2rem", textAlign: "center" }}>
           <p style={{ margin: "0 0 1rem", color: "#6b7280" }}>
             No orders placed yet.
           </p>
@@ -74,14 +74,14 @@ export default async function OrdersPage() {
                   alignItems: "center",
                   padding: "0.75rem 1rem",
                   background: "#ffffff",
-                  border: "1px solid #e5e7eb",
+                  border: "1px solid #e5dcc3",
                   borderRadius: "6px",
                   textDecoration: "none",
                   color: "inherit",
                 }}
               >
                 <div>
-                  <strong style={{ color: "#111827", fontSize: "0.9375rem" }}>
+                  <strong style={{ color: "#18542a", fontSize: "0.9375rem" }}>
                     Ticket #{order.id}
                   </strong>
                   <span style={{ marginLeft: "0.75rem", color: "#6b7280", fontSize: "0.8125rem" }}>
@@ -92,7 +92,7 @@ export default async function OrdersPage() {
                   <span className={`status-badge ${statusClass}`}>
                     {order.status}
                   </span>
-                  <span style={{ color: "#b91c1c", fontSize: "0.8125rem", fontWeight: 500 }}>
+                  <span style={{ color: "#d52518", fontSize: "0.8125rem", fontWeight: 500 }}>
                     Details &rarr;
                   </span>
                 </div>

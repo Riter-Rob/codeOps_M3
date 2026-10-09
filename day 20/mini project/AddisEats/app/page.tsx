@@ -6,7 +6,7 @@ import { dishes } from "./data/dishes";
 
 export const metadata = {
   title: "Home",
-  description: "Authentic Ethiopian food delivered to your door in Addis Ababa. Fresh Doro Wat, sizzling Tibs, and fasting Beyainatu.",
+  description: "Ethiopian food in Addis Ababa. Fresh Doro Wat, Tibs, and Beyainatu.",
   alternates: {
     canonical: "/",
   },
@@ -20,7 +20,7 @@ export default async function Home() {
     <div>
       <div style={{ marginBottom: "1.5rem" }}>
         <h1>What are you eating today?</h1>
-        <p style={{ color: "#6b7280", marginTop: "0.25rem" }}>
+        <p style={{ color: "#706b61", marginTop: "0.25rem" }}>
           Fresh dishes delivered to your door in Bole, Kazanchis, Megenagna, and Piassa.
         </p>
       </div>
@@ -28,9 +28,9 @@ export default async function Home() {
       {/* Account bar */}
       <div
         style={{
-          background: "#ffffff",
-          border: "1px solid #e5e7eb",
-          borderRadius: "6px",
+          background: "#fffefa",
+          border: "1px solid #e7e0d4",
+          borderRadius: "10px",
           padding: "0.75rem 1rem",
           marginBottom: "1.5rem",
           display: "flex",
@@ -38,13 +38,13 @@ export default async function Home() {
           justifyContent: "space-between",
           flexWrap: "wrap",
           gap: "0.75rem",
-          fontSize: "0.875rem",
+          fontSize: "0.9375rem",
         }}
       >
         {session ? (
           <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
             <span>
-              Signed in as <strong style={{ color: "#111827" }}>{session.name}</strong>{" "}
+              Signed in as <strong style={{ color: "#365746" }}>{session.name}</strong>{" "}
               <span className={`badge ${session.role === "staff" ? "badge-warning" : "badge-success"}`}>
                 {session.role}
               </span>
@@ -57,7 +57,7 @@ export default async function Home() {
           </div>
         ) : (
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%", flexWrap: "wrap", gap: "0.5rem" }}>
-            <span style={{ color: "#6b7280" }}>
+            <span style={{ color: "#706b61" }}>
               Sign in to save your delivery address and view past orders.
             </span>
             <Link href="/sign-in" className="btn btn-primary btn-sm">
@@ -81,7 +81,7 @@ export default async function Home() {
       <div style={{ marginBottom: "2rem" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.75rem" }}>
           <h2>Popular in Addis</h2>
-          <Link href="/menu" style={{ fontSize: "0.875rem", color: "#b91c1c", textDecoration: "none", fontWeight: 500 }}>
+          <Link href="/menu" style={{ fontSize: "0.9375rem", color: "#ad503c", textDecoration: "none", fontWeight: 700 }}>
             Full menu &rarr;
           </Link>
         </div>
@@ -109,7 +109,7 @@ export default async function Home() {
                 </div>
                 <p className="menu-item-ingredients">{dish.ingredients}</p>
                 <div className="menu-item-footer">
-                  <span style={{ fontSize: "0.8125rem", color: "#b91c1c", fontWeight: 500 }}>
+                  <span style={{ fontSize: "0.875rem", color: "#ad503c", fontWeight: 700 }}>
                     View Dish &rarr;
                   </span>
                 </div>
@@ -122,9 +122,9 @@ export default async function Home() {
       {/* Practical Delivery Notice */}
       <div
         style={{
-          background: "#ffffff",
-          border: "1px solid #e5e7eb",
-          borderRadius: "6px",
+          background: "#fffefa",
+          border: "1px solid #e7e0d4",
+          borderRadius: "10px",
           padding: "1rem 1.25rem",
           display: "flex",
           justifyContent: "space-between",
@@ -134,10 +134,10 @@ export default async function Home() {
         }}
       >
         <div>
-          <strong style={{ fontSize: "0.9375rem", color: "#111827", display: "block" }}>
+          <strong style={{ fontSize: "1rem", color: "#365746", display: "block" }}>
             Delivery Districts
           </strong>
-          <span style={{ fontSize: "0.8125rem", color: "#6b7280" }}>
+          <span style={{ fontSize: "0.875rem", color: "#706b61" }}>
             Bole (25–35m) · Kazanchis (30–40m) · Megenagna (35–45m) · Piassa (40–50m)
           </span>
         </div>
