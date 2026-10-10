@@ -2,6 +2,7 @@ import Link from "next/link";
 import Script from "next/script";
 import "./globals.css";
 import Providers from "./components/Providers";
+import CartLink from "./components/CartLink";
 
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://addis-eats-six.vercel.app"),
@@ -43,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/orders">Orders</Link>
                 <Link href="/order-status">Live Status</Link>
                 <Link href="/kitchen">Kitchen</Link>
-                <Link href="/cart" className="cart-pill">Cart</Link>
+                <CartLink />
               </nav>
             </div>
           </header>
@@ -51,8 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
 
           <footer>
-            <p>Addis Eats
-                   </p>
+            <p>Addis Eats.</p>
           </footer>
         </Providers>
 

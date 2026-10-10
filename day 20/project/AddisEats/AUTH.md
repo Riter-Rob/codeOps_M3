@@ -2,6 +2,8 @@
 
 This document details the authentication model, route guards, ownership verification, and security testing against Addis Eats.
 
+> **Review correction (current code):** The checks below are historical demo tests, not proof of production-safe authentication. `app/actions/auth.js` trusts a self-selected `staff` role and `lib/auth.js` has a fallback signing secret. Public order-status paths can expose customer details. See the [current review risk register](VERIFICATION.md#d-adoption-and-existing-risk-register) before relying on these claims.
+
 ---
 
 ## 1. Decision One: Who May See What

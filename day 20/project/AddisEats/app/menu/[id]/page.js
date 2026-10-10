@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { dishes } from "@/app/data/dishes";
+import NavigationButton from "../NavigationButton";
 
 export async function generateStaticParams() {
   return dishes.map((dish) => ({ id: String(dish.id) }));
@@ -128,13 +129,9 @@ export default async function DishPage({ params }) {
             </p>
           </div>
 
-          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", borderTop: "1px solid #f3e8cc", paddingTop: "1.15rem" }}>
-            <Link href="/menu" className="btn btn-secondary" style={{ borderRadius: "9999px" }}>
-              &larr; Back to Menu
-            </Link>
-            <Link href="/checkout" className="btn btn-primary" style={{ borderRadius: "9999px" }}>
-              Order This Dish ({dish.price} ETB)
-            </Link>
+          <div className="dish-actions">
+            <NavigationButton dish={{ id: dish.id, name: dish.name, price: dish.price, image: dish.image }} />
+            <Link href="/menu" className="btn btn-secondary">Back to menu</Link>
           </div>
         </div>
       </div>

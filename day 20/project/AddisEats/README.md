@@ -4,6 +4,8 @@
 **Module 3 · Frontend: React & Next.js · Day 45 (Day 20) Advanced Project**  
 **Deployed URL**: [https://addis-eats-six.vercel.app](https://addis-eats-six.vercel.app)
 
+> **Security status:** This is a demo, not production-ready authentication or private order handling. The sign-in action trusts a user-selected staff role, the session signing key has a fallback, and public order-status paths can reveal customer details. See the [initial code review risk register](VERIFICATION.md#d-adoption-and-existing-risk-register). The historical security claims below describe a narrower test and are not a production security approval.
+
 ---
 
 ## 1. Project Overview & Deliverable
@@ -92,5 +94,11 @@ Full details and logs are recorded in [VERIFICATION.md](VERIFICATION.md).
 - **[DATA.md](DATA.md)**: Query inventory, caching strategies, debouncing, and SWR fallback hydration.
 - **[PERF.md](PERF.md)**: Core Web Vitals before & after audit, asset pipeline analysis, and Lighthouse report.
 - **[DECISIONS.md](DECISIONS.md)**: The three pre-build architectural decision tables.
-- **[VERIFICATION.md](VERIFICATION.md)**: Tool-based verification checklist, 8-minute presentation walkthrough, and review questions.
+- **[VERIFICATION.md](VERIFICATION.md)**: Tool-based verification checklist, presentation walkthrough, review questions, and the active code review standard and workflow.
 - **[FINDABLE.md](FINDABLE.md)** / **[SEO.md](SEO.md)**: Metadata, OpenGraph cards, sitemap, robots, and JSON-LD structured data.
+
+---
+
+## 7. Code Review: Start Here
+
+All changes to Addis Eats go through the [code review standard and process](VERIFICATION.md#5-code-review-standard-and-process). Keep changes small, run `npm run check` (lint + TypeScript) and `npm run build`, and attach the results and relevant behavior/security evidence to the PR. At least one independent reviewer approves; changes to authentication, authorization, order data, or deployment/security settings require two reviewers, one familiar with that area. Any blocking finding must be fixed and re-reviewed before merge. There is no automated test suite or repository-level required CI gate yet; local checks and review sign-off must not be described as an enforced branch protection rule. A repository administrator must separately configure branch protection and required CI checks before calling this an automatic gate.

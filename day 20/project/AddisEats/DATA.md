@@ -2,6 +2,8 @@
 
 This document details the data fetching architecture, query boundaries, cache strategies, and refresh rules for Addis Eats, adhering to the principle: **Server unless the person triggers it; then seed the exception with fallbackData.**
 
+> **Review correction (current code):** Server seeding does not make private data safe to expose. `app/order-status/page.js` can seed a requested order without an ownership check, and `app/api/orders/[id]/route.js` exposes full details for demo order #1 before authentication. See the [current review risk register](VERIFICATION.md#d-adoption-and-existing-risk-register).
+
 ---
 
 ## 1. Decision Two: Where Data is Fetched

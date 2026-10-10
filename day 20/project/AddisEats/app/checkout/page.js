@@ -4,8 +4,8 @@ import CheckoutForm from "./CheckoutForm";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Secure Checkout",
-  description: "Complete your order with secure delivery details and seamless payment.",
+  title: "Checkout",
+  description: "Review your dishes and delivery details in the Addis Eats demo checkout.",
   alternates: {
     canonical: "/checkout",
   },
@@ -28,10 +28,11 @@ export default async function Checkout() {
         <span style={{ color: "var(--color-text-muted)" }}>Checkout</span>
       </nav>
 
-      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-        <h1 style={{ margin: 0 }}>Secure Order Checkout</h1>
-        <p style={{ color: "var(--color-text-muted)", marginTop: "0.25rem" }}>
-          Ordering as <strong>{session.name}</strong> · TeleBirr and cash on delivery supported across Addis Ababa.
+      <div className="page-heading">
+        <h1>Checkout</h1>
+        <p>
+          Ordering as <strong>{session.name}</strong>. This is a demo flow: your order is recorded so you can follow
+          its status, but no payment is collected and nothing is delivered.
         </p>
       </div>
 

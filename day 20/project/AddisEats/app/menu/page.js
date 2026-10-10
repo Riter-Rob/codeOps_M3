@@ -4,7 +4,6 @@ import CategoryBar from "./CategoryBar";
 import DishList from "./DishList";
 import DishSearch from "./DishSearch";
 import NavigationButton from "./NavigationButton";
-import FilterShell from "./FilterShell";
 
 export const revalidate = 60;
 
@@ -19,55 +18,43 @@ export const metadata = {
 export default async function Menu({ searchParams }) {
   const params = await searchParams;
   const category = params?.category || "all";
+  const search = params?.search || "";
 
   return (
     <div className="menu-page-container">
       <nav className="breadcrumbs" aria-label="Breadcrumbs">
         <Link href="/">Home</Link>
-        <span className="separator">/</span>
-        <span style={{ color: "#6b7280" }}>Menu</span>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Menu</span>
       </nav>
 
-      <div className="menu-top-toolbar">
-        <div className="menu-search-wrapper">
-          <Suspense fallback={<div className="search-pill-bar" />}>
-            <DishSearch />
-          </Suspense>
-        </div>
+      <div className="page-heading">
+        <h1>Today&rsquo;s menu</h1>
+        <p>Nine Ethiopian favorites, cooked to order and delivered across Addis Ababa.</p>
+      </div>
 
+      <div className="menu-top-toolbar">
+        <Suspense fallback={<div className="search-pill-bar" />}>
+          <DishSearch />
+        </Suspense>
         <div className="menu-promo-cards">
           <div className="promo-badge-card">
-            
             <div>
-              <strong>Fast Delivery</strong>
-              <span>Bole & Kazanchis</span>
+              <strong>Fast delivery</strong>
+              <span>Bole &amp; Kazanchis</span>
             </div>
           </div>
-
-          <div className="promo-badge-card">
-            
-            <div>
-              <strong>Hot & Fresh</strong>
-              <span>Made to order</span>
-            </div>
-          </div>
-
           <NavigationButton />
         </div>
       </div>
 
-      <div className="categories-section-wrapper">
-        <h2 className="categories-section-title">Categories</h2>
-        <Suspense fallback={null}>
-          <CategoryBar />
-        </Suspense>
-      </div>
+      <Suspense fallback={null}>
+        <CategoryBar />
+      </Suspense>
 
-      <FilterShell>
-        <Suspense fallback={<p style={{ color: "#6b7280" }}>Loading dishes...</p>}>
-          <DishList category={category} />
-        </Suspense>
-      </FilterShell>
+      <Suspense fallback={<p className="helper-text">Loading dishes...</p>}>
+        <DishList category={category} search={search} />
+      </Suspense>
     </div>
   );
 }

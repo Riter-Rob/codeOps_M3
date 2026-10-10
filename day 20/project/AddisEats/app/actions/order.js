@@ -2,6 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { validate } from "../lib/validate";
+import { resolveCartItems, getCartTotals } from "../lib/cart";
+import { dishes } from "../data/dishes";
 import { orders } from "../data/orders";
 import { getSession } from "@/lib/auth";
 
@@ -33,9 +35,28 @@ export async function placeOrder(prevState, formData) {
     };
   }
 
+  // Never trust browser-supplied names or prices: rebuild the cart from the catalog.
+  let lineItems;
+  try {
+    const parsed = JSON.parse(formData.get("selection") || "[]");
+    lineItems = resolveCartItems(parsed, dishes);
+  } catch (error) {
+    return {
+      fieldErrors: { cart: error.message || "Your cart could not be verified. Please review it and try again." },
+      data,
+      success: false
+    };
+  }
+
+  const totals = getCartTotals(lineItems);
+
   const order = {
     id: String(Date.now()),
     ...data,
+    lineItems: lineItems.map(({ id, name, price, quantity }) => ({ id, name, price, quantity })),
+    subtotal: totals.subtotal,
+    deliveryFee: totals.deliveryFee,
+    total: totals.total,
     userId: session.id,
     sessionId: session.id,
     owner: session.name,
